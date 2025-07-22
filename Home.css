@@ -1,5 +1,4 @@
-
-    * {
+* {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
@@ -12,8 +11,8 @@
 
     :root {
         --text-color: #000000;
-        --bg-color: #fff;
-        --second-bg-color: #d0d9e2;
+        --bg-color:  #ffffff;
+        --second-bg-color: #f9e7eb;
         --main-color: #ff6666;
         --other-color: #3f4246;
 
@@ -48,7 +47,7 @@
         background: transparent;
         transition: all .50s ease;
         padding: 10px 5%;
-        background-color: #ffff;
+        background-color:#F8F6F0;
         border-bottom: 0.2px solid var(--main-color);
     }
 
@@ -125,7 +124,7 @@
         align-items: center;
         justify-content: flex-start;
         overflow: hidden;
-
+        perspective: 1000px;
     }
 
     .hero img {
@@ -134,10 +133,12 @@
         right: -280px;
         width: 1000px;
         height: 750px;
-        max-width: 100%;
+        max-width: 80%;
         max-height: 100%;
         z-index: -1;
         animation: bobbing 4s ease-in-out infinite alternate;
+        transform: translateZ(-50px) scale(1.1);
+        transition: transform 0.5s ease;
     }
 
     @keyframes bobbing {
@@ -270,7 +271,7 @@
     .Diff {
         width: 98.6vw;
     height: 80px; 
-    background: url(../Downloads/Frame\ 2.png);
+    background: url(./Assets/Frame\ 2.png);
     background-size: auto 100%;
     overflow-x: hidden;
   
@@ -300,8 +301,14 @@
         border-radius: 15px;
         transform-style: preserve-3d;
         /* Ensure child elements maintain 3D position */
-        animation: tiltPhone 4s ease-in-out infinite alternate;
+        animation: tiltPhone 4s ease-in-out infinite;
         /* Adjust animation duration and timing */
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        transition: transform 0.5s ease;
+    }
+
+    .about-img:hover img {
+        transform: perspective(1000px) rotateY(15deg) rotateX(-10deg);
     }
 
     .about-img::after {
@@ -483,6 +490,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        transform-style: preserve-3d;
     }
 
 
@@ -707,11 +715,11 @@
 
         .box p {
             font-size: 16px;
-            /* Adjusted font size for smaller screens */
+            
             line-height: 25px;
-            /* Adjusted line height for smaller screens */
+            
             margin-bottom: 15px;
-            /* Adjusted margin for smaller screens */
+           
         }
 
         .about {
@@ -770,9 +778,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Center items horizontally */
+            
             justify-content: center;
-            /* Center items vertically */
+            
         }
 
         .services h2 {
@@ -861,7 +869,8 @@
         }
 
         .hero img {
-            max-width: 100%;
+            max-width: 80%;
+            max-height: 100%;
             /* Ensure the image doesn't overflow its container */
             height: auto;
         }
@@ -1082,8 +1091,8 @@
     }
 
     .hero img {
-        bottom: -320px;
-        right: -300px;
+        bottom: -55%;
+        right: -30%;
     }
 
     .text {
@@ -1515,3 +1524,143 @@
 
 
     }
+
+    /* 3D Parallax Effect for Hero Section */
+.hero {
+    perspective: 1000px;
+}
+.hero img {
+    transform: translateZ(-50px) scale(1.1);
+    transition: transform 0.5s ease;
+}
+.hero:hover img {
+    transform: translateZ(0) scale(1);
+}
+
+/* 3D Tilt Effect for About Section */
+.about-img img {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    transition: transform 0.5s ease;
+}
+.about-img:hover img {
+    transform: perspective(1000px) rotateY(15deg) rotateX(-10deg);
+}
+
+/* 3D Flip Effect for Service Boxes */
+.box {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+.box:hover {
+    transform: rotateY(180deg);
+}
+.box .content {
+    backface-visibility: hidden;
+}
+.box .content-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+/* 3D Floating Effect for Join Us Section */
+.join-content {
+    perspective: 1000px;
+}
+.join-content .image img {
+    transform: translateZ(50px);
+    transition: transform 0.5s ease;
+}
+.join-content:hover .image img {
+    transform: translateZ(100px);
+}
+
+/* 3D Wave Animation for Footer */
+.footer {
+    position: relative;
+    overflow: hidden;
+}
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background: linear-gradient(45deg, var(--main-color), var(--second-bg-color));
+    animation: wave 5s infinite linear;
+}
+@keyframes wave {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Tearing Paper Animation Effect */
+.section-divider {
+    position: relative;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--bg-color), var(--second-bg-color));
+    overflow: hidden;
+}
+
+.section-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('./Assets/tear-texture.png') repeat-x;
+    transform: translateY(0);
+    animation: tearEffect 1s ease forwards;
+}
+
+@keyframes tearEffect {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.section-divider {
+    position: relative;
+    height: 50px;
+    overflow: hidden;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--bg-color);
+    top: 0;
+    transition: transform 1s ease;
+}
+
+.section-divider::before {
+    left: 0;
+    transform: translateX(0);
+}
+
+.section-divider::after {
+    right: 0;
+    transform: translateX(0);
+}
+
+.section-divider.split::before {
+    transform: translateX(-100%);
+}
+
+.section-divider.split::after {
+    transform: translateX(100%);
+}
