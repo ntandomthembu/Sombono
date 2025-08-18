@@ -630,18 +630,100 @@
   
     <!--Contact Me-->
     <section class="Contact" id="Contact">
-        <div class="center-text">
-            <h2>Contact<span>Us</span></h2>
-        </div>
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2>Get in <span>Touch</span></h2>
+                <p>Ready to transform your ideas into reality? Let's start a conversation.</p>
+            </div>
 
-        <div class="contact-form">
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="Your name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <textarea name="message" cols="30" rows="10" placeholder="Write your message here..." required></textarea>
-                <input type="submit" value="Send Message" class="send-btn">
-            </form>
-        </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-phone-line"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Phone</h4>
+                            <p>073 934 7913</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Email</h4>
+                            <p>hello@sombono.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-map-pin-line"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Location</h4>
+                            <p>South Africa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-time-line"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Response Time</h4>
+                            <p>Within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <i class="ri-user-line"></i>
+                                <input type="text" name="name" placeholder="Your Full Name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-group">
+                                <i class="ri-mail-line"></i>
+                                <input type="email" name="email" placeholder="Your Email Address" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-group">
+                                <i class="ri-briefcase-line"></i>
+                                <select name="service" required>
+                                    <option value="">Select Service Type</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="mobile-app">Mobile App Development</option>
+                                    <option value="e-commerce">E-Commerce Solutions</option>
+                                    <option value="analytics">Data Analytics</option>
+                                    <option value="consultation">Technical Consultation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-group textarea-group">
+                                <i class="ri-message-3-line"></i>
+                                <textarea name="message" rows="5" placeholder="Tell us about your project or how we can help you..." required></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="ri-send-plane-line"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -734,13 +816,78 @@
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
+            const submitBtn = this.querySelector('.submit-btn');
+            const btnText = submitBtn.querySelector('span');
+            const btnIcon = submitBtn.querySelector('i');
+            
+            // Update button to loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            btnIcon.className = 'ri-loader-4-line';
+            btnIcon.style.animation = 'spin 1s linear infinite';
+
             emailjs.sendForm('your-service-id', 'your-template-id', this) // Replace with your EmailJS service and template IDs
                 .then(function() {
-                    alert('Message sent successfully!');
+                    // Success state
+                    btnText.textContent = 'Message Sent!';
+                    btnIcon.className = 'ri-check-line';
+                    btnIcon.style.animation = 'none';
+                    submitBtn.style.background = 'linear-gradient(135deg, #4caf50, #66bb6a)';
+                    
+                    // Show success message
+                    showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+                    
+                    // Reset form
+                    document.getElementById('contact-form').reset();
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        btnText.textContent = 'Send Message';
+                        btnIcon.className = 'ri-send-plane-line';
+                        submitBtn.style.background = 'linear-gradient(135deg, #e57373, #ff8a80)';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                    
                 }, function(error) {
-                    alert('Failed to send message. Please try again.');
+                    // Error state
+                    btnText.textContent = 'Failed to Send';
+                    btnIcon.className = 'ri-error-warning-line';
+                    btnIcon.style.animation = 'none';
+                    submitBtn.style.background = 'linear-gradient(135deg, #f44336, #ef5350)';
+                    
+                    showNotification('Failed to send message. Please try again or contact us directly.', 'error');
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        btnText.textContent = 'Send Message';
+                        btnIcon.className = 'ri-send-plane-line';
+                        submitBtn.style.background = 'linear-gradient(135deg, #e57373, #ff8a80)';
+                        submitBtn.disabled = false;
+                    }, 3000);
                 });
         });
+
+        // Notification system
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="${type === 'success' ? 'ri-check-circle-line' : 'ri-error-warning-line'}"></i>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()" class="close-btn">
+                    <i class="ri-close-line"></i>
+                </button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
 
         // WhatsApp functionality
         document.addEventListener('DOMContentLoaded', function() {
