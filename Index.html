@@ -515,8 +515,8 @@
                 </div>
                 <div class="testimonial-author">
                     <div class="author-info">
-                        <h4>Michael Chen</h4>
-                        <span>Founder, InnovateCorp</span>
+                        <h4>Ntando Mthembu</h4>
+                        <span>Founder, Unipply</span>
                     </div>
                 </div>
             </div>
@@ -741,6 +741,27 @@
                     alert('Failed to send message. Please try again.');
                 });
         });
+
+        // WhatsApp functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const whatsappFloat = document.getElementById('whatsapp-float');
+            
+            // Show/hide WhatsApp button based on scroll position
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    whatsappFloat.style.opacity = '1';
+                    whatsappFloat.style.visibility = 'visible';
+                } else {
+                    whatsappFloat.style.opacity = '0.7';
+                }
+            });
+
+            // Track WhatsApp button clicks
+            whatsappFloat.addEventListener('click', function() {
+                // You can add analytics tracking here if needed
+                console.log('WhatsApp button clicked');
+            });
+        });
     </script>
 
     <style>
@@ -765,6 +786,14 @@ document.addEventListener('scroll', () => {
     }
 });
 </script>
+
+<!-- WhatsApp Floating Button -->
+<div class="whatsapp-float" id="whatsapp-float">
+    <a href="https://wa.me/27123456789?text=Hi%20Sombono!%20I'm%20interested%20in%20your%20services" target="_blank" class="whatsapp-button">
+        <i class="ri-whatsapp-line"></i>
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+    </a>
+</div>
 
 </body>
 
