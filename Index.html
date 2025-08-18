@@ -832,7 +832,7 @@
                     btnText.textContent = 'Message Sent!';
                     btnIcon.className = 'ri-check-line';
                     btnIcon.style.animation = 'none';
-                    submitBtn.style.background = 'linear-gradient(135deg, #4caf50, #66bb6a)';
+                    submitBtn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
                     
                     // Show success message
                     showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
@@ -844,7 +844,7 @@
                     setTimeout(() => {
                         btnText.textContent = 'Send Message';
                         btnIcon.className = 'ri-send-plane-line';
-                        submitBtn.style.background = 'linear-gradient(135deg, #e57373, #ff8a80)';
+                        submitBtn.style.background = 'linear-gradient(135deg, #d32f2f, #f44336)';
                         submitBtn.disabled = false;
                     }, 3000);
                     
@@ -853,7 +853,7 @@
                     btnText.textContent = 'Failed to Send';
                     btnIcon.className = 'ri-error-warning-line';
                     btnIcon.style.animation = 'none';
-                    submitBtn.style.background = 'linear-gradient(135deg, #f44336, #ef5350)';
+                    submitBtn.style.background = 'linear-gradient(135deg, #dc3545, #e74c3c)';
                     
                     showNotification('Failed to send message. Please try again or contact us directly.', 'error');
                     
@@ -861,7 +861,7 @@
                     setTimeout(() => {
                         btnText.textContent = 'Send Message';
                         btnIcon.className = 'ri-send-plane-line';
-                        submitBtn.style.background = 'linear-gradient(135deg, #e57373, #ff8a80)';
+                        submitBtn.style.background = 'linear-gradient(135deg, #d32f2f, #f44336)';
                         submitBtn.disabled = false;
                     }, 3000);
                 });
