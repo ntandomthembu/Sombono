@@ -30,7 +30,7 @@
 
     /* Modern Footer */
     .footer {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
         color: white;
         padding: 60px 0 20px 0;
         position: relative;
@@ -204,6 +204,12 @@
     section {
         position: relative;
         z-index: 1;
+        padding-top: 100px; /* Account for fixed header */
+    }
+
+    /* Hero section override - no top padding needed */
+    .hero {
+        padding-top: 0;
     }
 
     /* Responsive footer */
@@ -1621,6 +1627,32 @@
 
 
     /* //////////////SERVICEs//////////// */
+    .services {
+        background: var(--second-bg-color);
+        padding: 80px 16% 70px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .box-section {
+        width: 100%;
+        padding: 0;
+    }
+
+    .box-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .services-content {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -1628,12 +1660,7 @@
         align-items: center;
         gap: 2.3rem;
         margin-top: 4.2rem;
-        width: 80vw;
         width: 100%;
-        top: 0;
-        right: 0;
-        z-index: 1000;
-
     }
 
 
@@ -2285,17 +2312,23 @@
 
 
         .services {
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            
-            justify-content: center;
-            
+            padding: 80px 5% 60px;
+            min-height: auto;
         }
 
         .services h2 {
-            padding: 17px;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .box-container {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 0 20px;
+        }
+
+        .box-section {
+            padding: 0;
         }
 
         .about p {
