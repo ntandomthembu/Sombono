@@ -36,10 +36,13 @@ class CookieManager {
         const consentGiven = localStorage.getItem('sombono_cookie_consent_given');
         const consentDate = localStorage.getItem('sombono_cookie_consent_date');
         
-        // Show banner if no consent given or consent is older than 365 days
+        // Show overlay and block page if no consent given or consent is older than 365 days
         if (!consentGiven || this.isConsentExpired(consentDate)) {
-            this.showCookieBanner();
+            this.showCookieOverlay();
+            this.blockPageInteraction();
         } else {
+            this.hideCookieOverlay();
+            this.unblockPageInteraction();
             this.applyCookieSettings();
         }
     }
@@ -68,6 +71,68 @@ class CookieManager {
         const banner = document.getElementById('cookieBanner');
         if (banner) {
             banner.classList.remove('show');
+        }
+    }
+
+    showCookieOverlay() {
+        const overlay = document.getElementById('cookieOverlay');
+        if (overlay) {
+            overlay.classList.remove('hidden');
+            // Ensure overlay is visible immediately
+            setTimeout(() => {
+                overlay.style.display = 'flex';
+            }, 100);
+        }
+    }
+
+    hideCookieOverlay() {
+        const overlay = document.getElementById('cookieOverlay');
+        if (overlay) {
+            overlay.classList.add('hidden');
+            // Hide after animation completes
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 500);
+        }
+    }
+
+    blockPageInteraction() {
+        // Disable scrolling
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        
+        // Add event listeners to block interactions
+        this.blockEvents = ['click', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'keydown', 'keyup'];
+        this.blockHandler = (e) => {
+            const overlay = document.getElementById('cookieOverlay');
+            const overlayContent = document.querySelector('.cookie-overlay-content');
+            
+            // Allow interactions only within the cookie overlay
+            if (overlay && !overlay.classList.contains('hidden')) {
+                if (!overlayContent.contains(e.target)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+            }
+        };
+        
+        // Add event listeners to document
+        this.blockEvents.forEach(event => {
+            document.addEventListener(event, this.blockHandler, { capture: true, passive: false });
+        });
+    }
+
+    unblockPageInteraction() {
+        // Re-enable scrolling
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        
+        // Remove event listeners
+        if (this.blockHandler && this.blockEvents) {
+            this.blockEvents.forEach(event => {
+                document.removeEventListener(event, this.blockHandler, { capture: true });
+            });
         }
     }
 
@@ -114,6 +179,25 @@ class CookieManager {
         this.showConsentToast('All cookies accepted');
     }
 
+    acceptAllCookiesFromOverlay() {
+        this.cookieSettings = {
+            essential: true,
+            analytics: true,
+            marketing: true
+        };
+        this.saveCookieSettings();
+        this.applyCookieSettings();
+        this.hideCookieOverlay();
+        this.unblockPageInteraction();
+        this.showConsentToast('All cookies accepted - Welcome to Sombono!');
+    }
+
+    showCookieModalFromOverlay() {
+        this.hideCookieOverlay();
+        this.showCookieModal();
+        // Don't unblock page interaction yet - wait for modal completion
+    }
+
     rejectAllCookies() {
         this.cookieSettings = {
             essential: true,
@@ -124,6 +208,8 @@ class CookieManager {
         this.applyCookieSettings();
         this.hideCookieBanner();
         this.hideCookieModal();
+        this.hideCookieOverlay();
+        this.unblockPageInteraction();
         this.showConsentToast('Only essential cookies enabled');
     }
 
@@ -133,6 +219,8 @@ class CookieManager {
         this.applyCookieSettings();
         this.hideCookieBanner();
         this.hideCookieModal();
+        this.hideCookieOverlay();
+        this.unblockPageInteraction();
         this.showConsentToast('Cookie preferences saved');
     }
 
@@ -270,6 +358,18 @@ class CookieManager {
         const settingsBtn = document.getElementById('cookieSettings');
         if (settingsBtn) {
             settingsBtn.addEventListener('click', () => this.showCookieModal());
+        }
+
+        // Overlay accept button
+        const overlayAcceptBtn = document.getElementById('cookieOverlayAccept');
+        if (overlayAcceptBtn) {
+            overlayAcceptBtn.addEventListener('click', () => this.acceptAllCookiesFromOverlay());
+        }
+
+        // Overlay settings button
+        const overlaySettingsBtn = document.getElementById('cookieOverlaySettings');
+        if (overlaySettingsBtn) {
+            overlaySettingsBtn.addEventListener('click', () => this.showCookieModalFromOverlay());
         }
 
         // Close modal button

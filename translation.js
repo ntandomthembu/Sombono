@@ -78,6 +78,8 @@ class TranslationManager {
                 'cookie-description': 'We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.',
                 'cookie-settings': 'Settings',
                 'cookie-accept': 'Accept All',
+                'cookie-required-title': 'Cookie Consent Required',
+                'cookie-required-desc': 'To ensure compliance with privacy regulations and provide you with the best experience, please accept our cookie policy to continue using this website.',
                 'cookie-preferences': 'Cookie Preferences',
                 'cookie-modal-description': 'Manage your cookie preferences. You can enable or disable different types of cookies below.',
                 'cookie-essential': 'Essential Cookies',
@@ -153,6 +155,8 @@ class TranslationManager {
                 'cookie-description': 'Wij gebruiken cookies om uw browse-ervaring te verbeteren, gepersonaliseerde content te leveren en ons verkeer te analyseren. Door op "Alles Accepteren" te klikken, stemt u in met ons gebruik van cookies.',
                 'cookie-settings': 'Instellingen',
                 'cookie-accept': 'Alles Accepteren',
+                'cookie-required-title': 'Cookie Toestemming Vereist',
+                'cookie-required-desc': 'Om naleving van privacyregels te waarborgen en u de beste ervaring te bieden, accepteer alstublieft ons cookiebeleid om deze website te blijven gebruiken.',
                 'cookie-preferences': 'Cookie Voorkeuren',
                 'cookie-modal-description': 'Beheer uw cookie voorkeuren. U kunt verschillende soorten cookies hieronder in- of uitschakelen.',
                 'cookie-essential': 'Essentiële Cookies',
@@ -265,5 +269,243 @@ class TranslationManager {
 
 // Initialize translation system when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new TranslationManager();
+    window.translationManager = new TranslationManager();
+    
+    // Wait a bit for all elements to load, then initialize mobile language dropdown
+    setTimeout(initializeMobileLanguageDropdown, 500);
 });
+
+// Enhanced mobile language switching
+function initializeMobileLanguageDropdown() {
+    const languageBtn = document.getElementById('languageBtn');
+    const languageOptions = document.getElementById('languageOptions');
+    const languageContainer = document.querySelector('.language-dropdown-container');
+    
+    console.log('Language elements:', { languageBtn, languageOptions, languageContainer });
+    
+    if (!languageBtn || !languageOptions || !languageContainer) {
+        console.error('Language dropdown elements not found!');
+        return;
+    }
+    
+    let isDropdownOpen = false;
+    
+    // Force show language button on mobile
+    function ensureMobileVisibility() {
+        if (window.innerWidth <= 768) {
+            languageContainer.style.display = 'flex';
+            languageContainer.style.visibility = 'visible';
+            languageContainer.style.opacity = '1';
+            languageBtn.style.display = 'flex';
+            languageBtn.style.visibility = 'visible';
+            languageBtn.style.opacity = '1';
+        }
+    }
+    
+    // Call on load and resize
+    ensureMobileVisibility();
+    window.addEventListener('resize', ensureMobileVisibility);
+    
+    function toggleLanguageDropdown(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('Toggle dropdown clicked, current state:', isDropdownOpen);
+        
+        isDropdownOpen = !isDropdownOpen;
+        
+        if (isDropdownOpen) {
+            languageOptions.classList.add('active');
+            languageContainer.classList.add('active');
+            languageBtn.setAttribute('aria-expanded', 'true');
+            
+            // Prevent body scroll on mobile
+            if (window.innerWidth <= 768) {
+                document.body.style.overflow = 'hidden';
+            }
+            
+            console.log('Dropdown opened');
+        } else {
+            closeLanguageDropdown();
+        }
+    }
+    
+    function closeLanguageDropdown() {
+        isDropdownOpen = false;
+        languageOptions.classList.remove('active');
+        languageContainer.classList.remove('active');
+        languageBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        
+        console.log('Dropdown closed');
+    }
+    
+    function selectLanguage(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const option = e.target.closest('.language-option');
+        if (!option) return;
+        
+        const selectedLang = option.getAttribute('data-lang');
+        console.log('Language selected:', selectedLang);
+        
+        // Update flag
+        const selectedFlag = option.querySelector('.flag-icon');
+        const currentFlag = document.querySelector('.current-flag');
+        
+        if (selectedFlag && currentFlag) {
+            currentFlag.src = selectedFlag.src;
+            currentFlag.alt = selectedFlag.alt;
+        }
+        
+        // Update active state
+        document.querySelectorAll('.language-option').forEach(opt => {
+            opt.classList.remove('active');
+        });
+        option.classList.add('active');
+        
+        // Change language
+        if (window.translationManager && typeof window.translationManager.setLanguage === 'function') {
+            window.translationManager.setLanguage(selectedLang);
+        }
+        
+        // Close dropdown
+        closeLanguageDropdown();
+        
+        // Mobile feedback
+        if ('vibrate' in navigator && window.innerWidth <= 768) {
+            navigator.vibrate(50);
+        }
+        
+        // Show toast
+        showMobileToast(selectedLang === 'en' ? 'English Selected' : 'Nederlands Geselecteerd');
+    }
+    
+    function showMobileToast(message) {
+        // Remove existing toast
+        const existingToast = document.querySelector('.mobile-language-toast');
+        if (existingToast) {
+            existingToast.remove();
+        }
+        
+        const toast = document.createElement('div');
+        toast.className = 'mobile-language-toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.classList.add('show'), 100);
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 2000);
+    }
+    
+    // Remove existing event listeners to prevent duplicates
+    const newLanguageBtn = languageBtn.cloneNode(true);
+    languageBtn.parentNode.replaceChild(newLanguageBtn, languageBtn);
+    
+    // Add event listeners
+    newLanguageBtn.addEventListener('click', toggleLanguageDropdown);
+    newLanguageBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        toggleLanguageDropdown(e);
+    }, { passive: false });
+    
+    // Language selection
+    languageOptions.addEventListener('click', selectLanguage);
+    languageOptions.addEventListener('touchstart', function(e) {
+        selectLanguage(e);
+    }, { passive: false });
+    
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+        if (!languageContainer.contains(e.target) && isDropdownOpen) {
+            closeLanguageDropdown();
+        }
+    });
+    
+    document.addEventListener('touchstart', function(e) {
+        if (!languageContainer.contains(e.target) && isDropdownOpen) {
+            closeLanguageDropdown();
+        }
+    });
+    
+    // Close on escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isDropdownOpen) {
+            closeLanguageDropdown();
+        }
+    });
+    
+    // Handle mobile menu integration
+    const menuIcon = document.getElementById('menu-icon');
+    if (menuIcon) {
+        menuIcon.addEventListener('click', function() {
+            closeLanguageDropdown();
+            // Ensure language button stays visible even when mobile menu is open
+            setTimeout(ensureMobileVisibility, 100);
+        });
+    }
+    
+    console.log('Mobile language dropdown initialized successfully');
+    
+    // Initialize mobile fallback button
+    initializeMobileFallback();
+}
+
+// Mobile fallback language button
+function initializeMobileFallback() {
+    const mobileLangBtn = document.getElementById('mobileLangBtn');
+    const mobileCurrentFlag = document.getElementById('mobileCurrentFlag');
+    
+    if (!mobileLangBtn || !mobileCurrentFlag) {
+        console.log('Mobile fallback elements not found');
+        return;
+    }
+    
+    let currentLang = 'en';
+    
+    function toggleMobileLanguage() {
+        // Switch between languages
+        currentLang = currentLang === 'en' ? 'nl' : 'en';
+        
+        // Update flag
+        const newFlag = currentLang === 'en' ? 
+            'https://flagcdn.com/24x18/za.png' : 
+            'https://flagcdn.com/24x18/nl.png';
+        
+        mobileCurrentFlag.src = newFlag;
+        mobileCurrentFlag.alt = currentLang === 'en' ? 'South Africa' : 'Netherlands';
+        
+        // Update main dropdown flag too
+        const mainCurrentFlag = document.querySelector('.current-flag');
+        if (mainCurrentFlag) {
+            mainCurrentFlag.src = newFlag;
+            mainCurrentFlag.alt = mobileCurrentFlag.alt;
+        }
+        
+        // Change language
+        if (window.translationManager && typeof window.translationManager.setLanguage === 'function') {
+            window.translationManager.setLanguage(currentLang);
+        }
+        
+        // Mobile feedback
+        if ('vibrate' in navigator) {
+            navigator.vibrate(100);
+        }
+        
+        // Show toast
+        showMobileToast(currentLang === 'en' ? 'English Selected' : 'Nederlands Geselecteerd');
+        
+        console.log('Mobile fallback: Language changed to', currentLang);
+    }
+    
+    mobileLangBtn.addEventListener('click', toggleMobileLanguage);
+    mobileLangBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        toggleMobileLanguage();
+    }, { passive: false });
+    
+    console.log('Mobile fallback button initialized');
+}
