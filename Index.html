@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -74,7 +74,13 @@
 
         <div class="bx bx-menu" id="menu-icon"></div>
 
-
+        <!-- Mobile Language Fallback Button -->
+        <!-- <div class="mobile-language-fallback" id="mobileLangFallback">
+            <button class="mobile-lang-btn" id="mobileLangBtn">
+                <img src="https://flagcdn.com/24x18/za.png" alt="Current Language" class="mobile-current-flag" id="mobileCurrentFlag">
+                <span>🌐</span>
+            </button>
+        </div> -->
 
     </header>
     <!--Hero Sections-->
@@ -90,6 +96,11 @@
                 <a href="#services" class="btn btn2" data-translate="our-services">Our Services</a>
             </div>
         </div>
+
+        <!-- Faded South African flag outline background -->
+        <div class="sa-flag-bg"></div>
+        <!-- Faded logo background -->
+        <img src="./Assets/Frame 2.png" alt="Sombono Logo" class="hero-logo-bg" />
     </section>
 
     <!-- Section Transition -->
@@ -156,9 +167,9 @@
                             </div>
                         </div>
                         <div class="tech-stack">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag" style="color: black;">React</span>
+                            <span class="tech-tag" style="color: black;">Node.js</span>
+                            <span class="tech-tag" style="color: black;">MongoDB</span>
                         </div>
                     </div>
                     <div class="portfolio-info">
@@ -433,13 +444,13 @@
             </div>
         </div>
         
-        <div class="portfolio-cta">
+        <!-- <div class="portfolio-cta">
             <p>Interested in seeing more of our work?</p>
             <a href="#Contact" class="cta-btn">
                 <i class="ri-folder-line"></i>
                 View Full Portfolio
             </a>
-        </div>
+        </div> -->
     </section>
 
     <!-- Process Section -->
@@ -686,7 +697,7 @@
         </div>
     </section>
     
-    <div class="Diff"></div>
+    <!-- <div class="Diff"></div> -->
 
     <section class="join-us" id="Join">
         <div class="join-content">
@@ -1186,25 +1197,59 @@
             transform: rotateY(360deg);
             animation-iteration-count: 1;
         }
+
+        /* Faded South African flag outline background for hero section */
+        .sa-flag-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 600,0 600,400 0,400" fill="white" fill-opacity="0"/><polygon points="0,0 300,200 0,400" fill="black" fill-opacity="0.04"/><polygon points="0,0 600,0 300,200" fill="green" fill-opacity="0.04"/><polygon points="0,400 600,400 300,200" fill="red" fill-opacity="0.04"/><polygon points="600,0 600,400 300,200" fill="blue" fill-opacity="0.04"/><polygon points="0,0 0,400 300,200" fill="yellow" fill-opacity="0.04"/></svg>');
+            background-repeat: no-repeat;
+            background-size: 70% auto;
+            background-position: center;
+            opacity: 0.12;
+            filter: blur(1px);
+        }
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        /* Faded logo in hero section */
+        .hero-logo-bg {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 120px;
+            opacity: 0.10;
+            z-index: 1;
+            pointer-events: none;
+            filter: blur(0.5px);
+        }
     </style>
     <script>
-document.addEventListener('scroll', () => {
+document.addEventListener('scroll', () => {     
     const divider = document.querySelector('.section-divider');
-    const rect = divider.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-        divider.classList.add('split');
-    } else {
-        divider.classList.remove('split');
+    if (divider) {
+        const rect = divider.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            divider.classList.add('split');
+        } else {
+            divider.classList.remove('split');
+        }
     }
-});
+}); 
 
 // Dark Mode Toggle Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const darkModeIcon = document.getElementById('darkModeIcon');
     
-    // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
+    // Check for saved theme preference or default to dark mode
+    const currentTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', currentTheme);
     
     // Update icon based on current theme
@@ -1238,6 +1283,21 @@ document.addEventListener('DOMContentLoaded', function() {
         <i class="ri-whatsapp-line"></i>
         <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
     </a>
+</div>
+
+<!-- Cookie Consent Page Overlay - Blocks all interaction until consent -->
+<div class="cookie-overlay" id="cookieOverlay">
+    <div class="cookie-overlay-content">
+        <div class="cookie-overlay-icon">
+            <i class="ri-shield-check-line"></i>
+        </div>
+        <h2 data-translate="cookie-required-title">Cookie Consent Required</h2>
+        <p data-translate="cookie-required-desc">To ensure compliance with privacy regulations and provide you with the best experience, please accept our cookie policy to continue using this website.</p>
+        <div class="cookie-overlay-actions">
+            <button class="cookie-btn cookie-btn-secondary" id="cookieOverlaySettings" data-translate="cookie-settings">Cookie Settings</button>
+            <button class="cookie-btn cookie-btn-primary" id="cookieOverlayAccept" data-translate="cookie-accept">Accept & Continue</button>
+        </div>
+    </div>
 </div>
 
 <!-- Cookie Consent Banner -->
@@ -1313,7 +1373,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Scripts -->
 <script src="translation.js"></script>
-<script src="cookies.js"></script>
+    <script src="cookies.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Force overlay visible if no consent
+        const overlay = document.getElementById('cookieOverlay');
+        const consentGiven = localStorage.getItem('sombono_cookie_consent_given');
+        if (!consentGiven) {
+            overlay.classList.remove('hidden');
+            overlay.style.display = 'flex';
+        }
+    });
+    </script>
 
 </body>
 
