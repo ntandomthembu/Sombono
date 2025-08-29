@@ -1,0 +1,24 @@
+DNS records to add for sombono.com
+
+1) GitHub Pages (site)
+- A records (for apex):
+  - 185.199.108.153
+  - 185.199.109.153
+  - 185.199.110.153
+  - 185.199.111.153
+- CNAME for www:
+  - Name: www  -> Value: <your-github-username>.github.io
+  - Name: www  -> Value: ntandomthembu.github.io
+
+2) GoDaddy Email (your mailbox)
+- CNAME:
+  - Host/Name: email  -> Value: email.secureserver.net
+- MX records:
+  - Host/Name: @    Value: smtp.secureserver.net    Priority: 0
+  - Host/Name: @    Value: mailstore1.secureserver.net    Priority: 10
+- Recommended SPF TXT record:
+  - Name: @    Value: v=spf1 include:secureserver.net ~all
+
+Notes:
+- If you already have a mailbox with GoDaddy (Titan), these MX/CNAME values are needed so mail for sales@sombono.com routes to your GoDaddy mailbox.
+- DNS propagation may take minutes to a few hours.

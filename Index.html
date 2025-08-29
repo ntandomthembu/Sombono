@@ -75,12 +75,12 @@
         <div class="bx bx-menu" id="menu-icon"></div>
 
         <!-- Mobile Language Fallback Button -->
-        <div class="mobile-language-fallback" id="mobileLangFallback">
+        <!-- <div class="mobile-language-fallback" id="mobileLangFallback">
             <button class="mobile-lang-btn" id="mobileLangBtn">
                 <img src="https://flagcdn.com/24x18/za.png" alt="Current Language" class="mobile-current-flag" id="mobileCurrentFlag">
                 <span>🌐</span>
             </button>
-        </div>
+        </div> -->
 
     </header>
     <!--Hero Sections-->
@@ -99,8 +99,8 @@
 
         <!-- Faded South African flag outline background -->
         <div class="sa-flag-bg"></div>
-        <!-- Faded logo background -->
-        <!-- <img src="./Assets/Frame 2.png" alt="Sombono Logo" class="hero-logo-bg" /> -->
+    <!-- Faded logo background -->
+   
     </section>
 
     <!-- Section Transition -->
@@ -850,7 +850,13 @@
                 </div>
 
                 <div class="contact-form">
-                    <form id="contact-form">
+                    <form id="contact-form" action="https://formspree.io/f/mandqkal" method="POST">
+                        <!-- Formspree form ID installed: f/mandqkal -->
+                        <input type="hidden" name="_subject" value="New Contact Form Submission from Website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <!-- Formspree: reply-to and redirect -->
+                        <input type="hidden" name="_replyto" value="sales@sombono.com">
+                        <input type="hidden" name="_next" value="https://sombono.com/thank-you.html">
                         <div class="form-group">
                             <div class="input-group">
                                 <i class="ri-user-line"></i>
@@ -887,6 +893,7 @@
                             </div>
                         </div>
                         
+                        <div id="contact-status" class="contact-status" style="display:none;margin-bottom:12px;color:#2b7a2b;"></div>
                         <button type="submit" class="submit-btn">
                             <span>Send Message</span>
                             <i class="ri-send-plane-line"></i>
@@ -896,6 +903,78 @@
             </div>
         </div>
     </section>
+
+    <script>
+    // Contact form: robust submit handler for Formspree
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('contact-form');
+        var status = document.getElementById('contact-status');
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+            // Prevent other submit handlers from running (avoid duplicate handlers)
+            e.preventDefault();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+            var btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            status.style.display = 'block';
+            status.style.color = '#333';
+            status.textContent = 'Sending...';
+
+            var formData = new FormData(form);
+
+            fetch(form.action || './send_email.php', {
+                method: form.method || 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            }).then(function (res) {
+                // Treat any 2xx as success unless JSON contains explicit errors
+                var ct = res.headers.get('content-type') || '';
+                if (!res.ok) {
+                    // try to parse JSON error message
+                    if (ct.indexOf('application/json') !== -1) {
+                        return res.json().then(function (data) {
+                            throw new Error(data.error || data.message || 'Server returned ' + res.status);
+                        }).catch(function () { throw new Error('Server returned ' + res.status); });
+                    }
+                    throw new Error('Server returned ' + res.status);
+                }
+
+                if (ct.indexOf('application/json') !== -1) {
+                    return res.json().then(function (data) {
+                        // Formspree returns { ok: true } on success in many cases
+                        if (data.ok === true || data.success === true) {
+                            status.style.color = '#2b7a2b';
+                            status.textContent = data.message || 'Message sent. Thank you!';
+                            form.reset();
+                        } else if (data.errors && data.errors.length) {
+                            throw new Error(data.errors.map(function (i) { return i.message || i; }).join('; '));
+                        } else {
+                            // No explicit errors — treat as success
+                            status.style.color = '#2b7a2b';
+                            status.textContent = data.message || 'Message sent. Thank you!';
+                            form.reset();
+                        }
+                    });
+                }
+
+                // Non-JSON but OK
+                status.style.color = '#2b7a2b';
+                status.textContent = 'Message sent. Thank you!';
+                form.reset();
+            }).catch(function (err) {
+                status.style.color = '#b02a2a';
+                status.textContent = 'Failed to send message. ' + (err && err.message ? err.message : 'Please try again later.');
+            }).finally(function () {
+                btn.disabled = false;
+                setTimeout(function () { status.style.display = 'none'; }, 6000);
+            });
+        }, { once: false });
+    });
+    </script>
 
     <!--Footer-->
     <footer class="footer" id="footer">
@@ -1085,64 +1164,6 @@
             });
         });
     </script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        emailjs.init("HwE_xq6xFlplyEcjE"); // Replace "your-user-id" with your EmailJS user ID
-
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const submitBtn = this.querySelector('.submit-btn');
-            const btnText = submitBtn.querySelector('span');
-            const btnIcon = submitBtn.querySelector('i');
-            
-            // Update button to loading state
-            submitBtn.disabled = true;
-            btnText.textContent = 'Sending...';
-            btnIcon.className = 'ri-loader-4-line';
-            btnIcon.style.animation = 'spin 1s linear infinite';
-
-            emailjs.sendForm('your-service-id', 'your-template-id', this) // Replace with your EmailJS service and template IDs
-                .then(function() {
-                    // Success state
-                    btnText.textContent = 'Message Sent!';
-                    btnIcon.className = 'ri-check-line';
-                    btnIcon.style.animation = 'none';
-                    submitBtn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-                    
-                    // Show success message
-                    showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-                    
-                    // Reset form
-                    document.getElementById('contact-form').reset();
-                    
-                    // Reset button after 3 seconds
-                    setTimeout(() => {
-                        btnText.textContent = 'Send Message';
-                        btnIcon.className = 'ri-send-plane-line';
-                        submitBtn.style.background = 'linear-gradient(135deg, #d32f2f, #f44336)';
-                        submitBtn.disabled = false;
-                    }, 3000);
-                    
-                }, function(error) {
-                    // Error state
-                    btnText.textContent = 'Failed to Send';
-                    btnIcon.className = 'ri-error-warning-line';
-                    btnIcon.style.animation = 'none';
-                    submitBtn.style.background = 'linear-gradient(135deg, #dc3545, #e74c3c)';
-                    
-                    showNotification('Failed to send message. Please try again or contact us directly.', 'error');
-                    
-                    // Reset button after 3 seconds
-                    setTimeout(() => {
-                        btnText.textContent = 'Send Message';
-                        btnIcon.className = 'ri-send-plane-line';
-                        submitBtn.style.background = 'linear-gradient(135deg, #d32f2f, #f44336)';
-                        submitBtn.disabled = false;
-                    }, 3000);
-                });
-        });
-
         // Notification system
         function showNotification(message, type) {
             const notification = document.createElement('div');
@@ -1229,6 +1250,55 @@
             pointer-events: none;
             filter: blur(0.5px);
         }
+        /* Notification / toast styling (more visible) */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            color: #ffffff;
+            z-index: 99999;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+            max-width: 460px;
+            min-width: 260px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transform-origin: top right;
+            animation: toast-in 240ms ease-out;
+        }
+
+        .notification.success { background: linear-gradient(135deg,#28a745,#34ce57); }
+        .notification.error   { background: linear-gradient(135deg,#dc3545,#e74c3c); }
+
+        .notification i { font-size: 20px; opacity: 0.96; }
+        .notification span { line-height: 1.2; font-size: 14px; }
+        .notification .close-btn { background: transparent; border: none; color: rgba(255,255,255,0.95); cursor: pointer; font-size: 18px; margin-left: 8px; }
+
+        @keyframes toast-in {
+            from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Inline contact status (below form) */
+        #contact-status {
+            display: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+            background: rgba(0,0,0,0.06);
+            color: #222;
+            margin-bottom: 12px;
+        }
+
+        /* Error state overrides for contact status */
+        #contact-status.error { background: linear-gradient(90deg,#fff0f0,#ffecec); color: #a10f0f; }
+        #contact-status.success { background: linear-gradient(90deg,#f0fff4,#ecfff5); color: #0a6b2d; }
     </style>
     <script>
 document.addEventListener('scroll', () => {     
