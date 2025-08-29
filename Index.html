@@ -20,1125 +20,1006 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        <!DOCTYPE html>
-        <html lang="en">
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lora&family=Poppins:ital,wght@1,200&display=swap"
+        rel="stylesheet">
+    <!--carousel fonts-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.css"
+        integrity="sha512-6fa77z38zYI1sU8SpABTKGd4FA21UoVc7/SmTFlVTr8n+4o5MZgfNjkXHn7Kz9nTnk5s/y20HVKreiT7wGuOMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content="Sombono - Reshaping Digital Possibilities. End-to-end technology solutions, custom software development, and digital transformation services that drive real results.">
-            <title>Sombono - Digital Solutions & Innovation</title>
-            <link rel="stylesheet" href="./Home.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.min.js"
+        integrity="sha512-uRGAgdi/3oUy3PAbQAH/kkq5zNxEj/7KZbjL2AXVaGfYNvwBqaZTLD7v/n57H2r36wkkNpmCt8TAPVD9Rdq7qQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
 
-            <!--Box Icons-->
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-            <!-- or -->
-            <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
-            <!--Remix Icons-->
-            <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
-
-            <!--Google fonts-->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lora&family=Poppins:ital,wght@1,200&display=swap"
-                rel="stylesheet">
-            <!--carousel fonts-->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.css"
-                integrity="sha512-6fa77z38zYI1sU8SpABTKGd4FA21UoVc7/SmTFlVTr8n+4o5MZgfNjkXHn7Kz9nTnk5s/y20HVKreiT7wGuOMQ=="
-                crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.min.js"
-                integrity="sha512-uRGAgdi/3oUy3PAbQAH/kkq5zNxEj/7KZbjL2AXVaGfYNvwBqaZTLD7v/n57H2r36wkkNpmCt8TAPVD9Rdq7qQ=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        </head>
-
-        <body>
-            <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-            <!--Header-->
-            <header>
-                <a href="#" class="logo">Sombon<span>o.</span></a>
+<body>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <!--Header-->
+    <header>
+        <a href="#" class="logo">Sombon<span>o.</span></a>
 
 
 
-                <ul class="navlist">
-                    <li><a href="#home" data-translate="nav-home">Home</a></li>
-                    <li><a href="#about" data-translate="nav-about">About</a></li>
-                    <li><a href="#services" data-translate="nav-services">Services</a></li>
-                    <li><a href="#portfolio" data-translate="nav-portfolio">Portfolio</a></li>
-                    <li><a href="#process" data-translate="nav-process">Process</a></li>
-                </ul>
+        <ul class="navlist">
+            <li><a href="#home" data-translate="nav-home">Home</a></li>
+            <li><a href="#about" data-translate="nav-about">About</a></li>
+           
+            <li><a href="#portfolio" data-translate="nav-portfolio">Portfolio</a></li>
+            <li><a href="#process" data-translate="nav-process">Our Process</a></li>
+             <li><a href="#services" data-translate="nav-services">Services</a></li>
+        </ul>
 
-                <div class="top-btnn">
-                    <!-- Language Flags -->
-                    <div class="language-flags">
-                        <a href="#" class="flag-option active" data-lang="en" title="English (South Africa)">��</a>
-                        <a href="#" class="flag-option" data-lang="nl" title="Nederlands">🇳🇱</a>
-                    </div>
-                    <a href="#Contact" class="h-bt" data-translate="contact-us">Contact Us</a>
-                </div>
-
-                <div class="bx bx-menu" id="menu-icon"></div>
-
-
-
-            </header>
-            <!--Hero Sections-->
-            <section class="hero" id="home">
-                <img src="./Assets/Sombono mobile app mock up.png">
-                <div class="main-content">
-                    <h4 data-translate="hero-subtitle">Reshaping Digital Possibilities</h4>
-                    <h1><span data-translate="hero-title-1">End-to-end</span> <span data-translate="hero-title-2">technology solutions</span> <span data-translate="hero-title-3">that drive</span> <span data-translate="hero-title-4">real results</span>.</h1>
-                    <p data-translate="hero-description">We collaborate with our clients to deliver custom software, digital platforms, and innovative solutions that help businesses go from good to great.</p>
+        <div class="top-btnn">
+            <a href="#Contact" class="h-bt" data-translate="contact-us">Contact Us</a>
             
-                    <div class="main-btn">
-                        <a href="#Contact" class="btn" data-translate="start-project">Start a Project</a>
-                        <a href="#services" class="btn btn2" data-translate="our-services">Our Services</a>
+            <!-- Language Dropdown -->
+            <div class="language-dropdown-container">
+                <button class="language-btn" id="languageBtn">
+                    <img src="https://flagcdn.com/24x18/za.png" alt="South Africa" class="current-flag">
+                    <i class="ri-arrow-down-s-line"></i>
+                </button>
+                <div class="language-options" id="languageOptions">
+                    <div class="language-option active" data-lang="en">
+                        <img src="https://flagcdn.com/24x18/za.png" alt="South Africa" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                    <div class="language-option" data-lang="nl">
+                        <img src="https://flagcdn.com/24x18/nl.png" alt="Netherlands" class="flag-icon">
+                        <span>Nederlands</span>
                     </div>
                 </div>
-            </section>
-
-            <!-- Floating Dark Mode Toggle -->
-            <div class="floating-dark-mode-toggle" id="darkModeToggle">
-                <i class="ri-sun-line" id="darkModeIcon"></i>
             </div>
+        </div>
 
-            <!--About-->
-            <section class="about" id="about">
-                <div class="about-img">
-                    <img src="./Assets/Somboni option 2.png">
-                </div>
-                <div class="about-text">
-                    <h2 data-translate="about-title">Technology Partners for <span>Growth</span></h2>
-                    <div class="exp-area">
-                        <p class="exp" data-translate="about-description">From strategy and design to development, testing and deployment, we challenge conventional thinking to understand your business and engineer solutions that deliver measurable returns.</br></br>We specialize in custom software development, digital transformation, and innovative technology solutions that help businesses achieve their full potential in the digital age.
-                            <span></span>
-                        </p>
+        <div class="bx bx-menu" id="menu-icon"></div>
 
-                        </br>
-                        <a href="#services" class="btn" data-translate="our-services">Our Services</a>
-                    </div>
-            </section>
+        <!-- Mobile Language Fallback Button -->
+        <div class="mobile-language-fallback" id="mobileLangFallback">
+            <button class="mobile-lang-btn" id="mobileLangBtn">
+                <img src="https://flagcdn.com/24x18/za.png" alt="Current Language" class="mobile-current-flag" id="mobileCurrentFlag">
+                <span>🌐</span>
+            </button>
+        </div>
 
-            <!-- Portfolio/Projects Section -->
-            <section class="portfolio" id="portfolio">
-                <div class="center-text">
-                    <h2>Featured <span>Projects</span></h2>
-                    <p>Showcasing our latest work and innovative solutions</p>
-                </div>
+    </header>
+    <!--Hero Sections-->
+    <section class="hero" id="home">
+        <img src="./Assets/Sombono mobile app mock up.png">
+        <div class="main-content">
+            <h4 data-translate="hero-subtitle">Reshaping Digital Possibilities</h4>
+            <h1><span data-translate="hero-title-1">End-to-end</span> <span data-translate="hero-title-2">technology solutions</span> <span data-translate="hero-title-3">that drive</span> <span data-translate="hero-title-4">real results</span>.</h1>
+            <p data-translate="hero-description">We collaborate with our clients to deliver custom software, digital platforms, and innovative solutions that help businesses go from good to great.</p>
+            
+            <div class="main-btn">
+                <a href="#Contact" class="btn" data-translate="start-project">Start a Project</a>
+                <a href="#services" class="btn btn2" data-translate="our-services">Our Services</a>
+            </div>
+        </div>
+
+        <!-- Faded South African flag outline background -->
+        <div class="sa-flag-bg"></div>
+        <!-- Faded logo background -->
+        <!-- <img src="./Assets/Frame 2.png" alt="Sombono Logo" class="hero-logo-bg" /> -->
+    </section>
+
+    <!-- Section Transition -->
+    <div class="section-transition"></div>
+
+    <!-- Floating Dark Mode Toggle -->
+    <div class="floating-dark-mode-toggle" id="darkModeToggle">
+        <i class="ri-sun-line" id="darkModeIcon"></i>
+    </div>
+
+
+    
+    <!--About Section -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="./Assets/Somboni option 2.png">
+        </div>
+        <div class="about-text">
+            <h2 data-translate="about-title">Technology Partners for <span>Growth</span></h2>
+            <div class="exp-area">
+                <p class="exp" data-translate="about-description">From strategy and design to development, testing and deployment, we challenge conventional thinking to understand your business and engineer solutions that deliver measurable returns.</br></br>We specialize in custom software development, digital transformation, and innovative technology solutions that help businesses achieve their full potential in the digital age.
+                    <span></span>
+                </p>
+
+                </br>
+                <a href="#services" class="btn" data-translate="our-services">Our Services</a>
+            </div>
+    </section>
+
+    <!-- Portfolio/Projects Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="center-text">
+            <h2>Featured <span>Projects</span></h2>
+            <p>Showcasing our latest work and innovative solutions</p>
+        </div>
         
-                <div class="portfolio-container">
-                    <div class="portfolio-item featured">
-                        <div class="portfolio-content">
-                            <div class="portfolio-image">
-                                <div class="project-mockup ecommerce-mockup">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span></span><span></span><span></span>
-                                        </div>
-                                        <div class="mockup-title">NextGen E-Commerce</div>
-                                    </div>
-                                    <div class="mockup-content">
-                                        <div class="mockup-nav">
-                                            <div class="nav-item active">Dashboard</div>
-                                            <div class="nav-item">Products</div>
-                                            <div class="nav-item">Analytics</div>
-                                        </div>
-                                        <div class="mockup-stats">
-                                            <div class="stat-card">
-                                                <div class="stat-value">$125K</div>
-                                                <div class="stat-label">Revenue</div>
-                                            </div>
-                                            <div class="stat-card">
-                                                <div class="stat-value">2.4K</div>
-                                                <div class="stat-label">Orders</div>
-                                            </div>
-                                        </div>
-                                    </div>
+        <div class="portfolio-container">
+            <div class="portfolio-item featured">
+                <div class="portfolio-content">
+                    <div class="portfolio-image">
+                        <div class="project-mockup ecommerce-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-dots">
+                                    <span></span><span></span><span></span>
                                 </div>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">MongoDB</span>
+                                <div class="mockup-title">NextGen E-Commerce</div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="mockup-nav">
+                                    <div class="nav-item active">Dashboard</div>
+                                    <div class="nav-item">Products</div>
+                                    <div class="nav-item">Analytics</div>
+                                </div>
+                                <div class="mockup-stats">
+                                    <div class="stat-card">
+                                        <div class="stat-value">$125K</div>
+                                        <div class="stat-label">Revenue</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-value">2.4K</div>
+                                        <div class="stat-label">Orders</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="portfolio-info">
-                                <div class="project-category">Web Application</div>
-                                <h3>NextGen E-Commerce Platform</h3>
-                                <p>A comprehensive e-commerce solution featuring real-time inventory management, advanced analytics, and seamless payment integration. Built for scalability and optimal user experience.</p>
-                                <div class="project-highlights">
-                                    <div class="highlight">
-                                        <i class="ri-speed-up-line"></i>
-                                        <span>40% faster load times</span>
-                                    </div>
-                                    <div class="highlight">
-                                        <i class="ri-user-line"></i>
-                                        <span>10K+ active users</span>
-                                    </div>
-                                    <div class="highlight">
-                                        <i class="ri-growth-line"></i>
-                                        <span>300% sales increase</span>
-                                    </div>
-                                </div>
-                                <div class="project-actions">
-                                    <a href="#Contact" class="view-project-btn primary">
-                                        <i class="ri-external-link-line"></i>
-                                        Request a Demo
-                                    </a>
-                                    <a href="#Contact" class="view-project-btn secondary">
-                                        <i class="ri-code-line"></i>
-                                        View Details
-                                    </a>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag" style="color: black;">React</span>
+                            <span class="tech-tag" style="color: black;">Node.js</span>
+                            <span class="tech-tag" style="color: black;">MongoDB</span>
                         </div>
                     </div>
-            
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <div class="project-mockup banking-mockup">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span></span><span></span><span></span>
-                                        </div>
-                                        <div class="mockup-title">SecureBank Mobile</div>
-                                    </div>
-                                    <div class="mockup-content">
-                                        <div class="mobile-interface">
-                                            <div class="account-card">
-                                                <div class="account-header">
-                                                    <div class="account-type">Checking</div>
-                                                    <div class="balance">$12,450.87</div>
-                                                </div>
-                                                <div class="card-number">****  ****  ****  2847</div>
-                                            </div>
-                                            <div class="quick-actions">
-                                                <div class="action-btn">💸 Transfer</div>
-                                                <div class="action-btn">📱 Pay</div>
-                                                <div class="action-btn">💰 Deposit</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <div class="overlay-content">
-                                        <div class="project-category">Mobile App</div>
-                                        <h3>SecureBank Mobile</h3>
-                                        <p>Revolutionary banking app with biometric authentication and AI-powered financial insights.</p>
-                                        <div class="tech-stack">
-                                            <span class="tech-tag">React Native</span>
-                                            <span class="tech-tag">Firebase</span>
-                                            <span class="tech-tag">AI/ML</span>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-actions">
-                                        <a href="#Contact" class="overlay-btn">
-                                            <i class="ri-eye-line"></i>
-                                            Request a Demo
-                                        </a>
-                                        <a href="#Contact" class="overlay-btn">
-                                            <i class="ri-code-line"></i>
-                                            View Details
-                                        </a>
-                                    </div>
-                                </div>
+                    <div class="portfolio-info">
+                        <div class="project-category">Web Application</div>
+                        <h3>NextGen E-Commerce Platform</h3>
+                        <p>A comprehensive e-commerce solution featuring real-time inventory management, advanced analytics, and seamless payment integration. Built for scalability and optimal user experience.</p>
+                        <div class="project-highlights">
+                            <div class="highlight">
+                                <i class="ri-speed-up-line"></i>
+                                <span>40% faster load times</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="ri-user-line"></i>
+                                <span>10K+ active users</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="ri-growth-line"></i>
+                                <span>300% sales increase</span>
                             </div>
                         </div>
-                
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <div class="project-mockup analytics-mockup">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span></span><span></span><span></span>
-                                        </div>
-                                        <div class="mockup-title">Analytics Dashboard</div>
-                                    </div>
-                                    <div class="mockup-content">
-                                        <div class="dashboard-grid">
-                                            <div class="chart-container">
-                                                <div class="chart-title">Revenue Trends</div>
-                                                <div class="line-chart">
-                                                    <div class="chart-line"></div>
-                                                    <div class="data-points">
-                                                        <div class="point"></div>
-                                                        <div class="point"></div>
-                                                        <div class="point active"></div>
-                                                        <div class="point"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="metrics-panel">
-                                                <div class="metric">
-                                                    <div class="metric-value">87%</div>
-                                                    <div class="metric-label">Accuracy</div>
-                                                </div>
-                                                <div class="metric">
-                                                    <div class="metric-value">2.4M</div>
-                                                    <div class="metric-label">Records</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <div class="overlay-content">
-                                        <div class="project-category">Data Analytics</div>
-                                        <h3>Smart Analytics Hub</h3>
-                                        <p>Real-time business intelligence platform with predictive analytics and automated reporting.</p>
-                                        <div class="tech-stack">
-                                            <span class="tech-tag">Vue.js</span>
-                                            <span class="tech-tag">Python</span>
-                                            <span class="tech-tag">D3.js</span>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-actions">
-                                        <a href="#Contact" class="overlay-btn">
-                                            <i class="ri-eye-line"></i>
-                                            Request a Demo
-                                        </a>
-                                        <a href="#Contact" class="overlay-btn">
-                                            <i class="ri-code-line"></i>
-                                            View Details
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <div class="project-mockup healthcare-mockup">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span></span><span></span><span></span>
-                                        </div>
-                                        <div class="mockup-title">HealthConnect Pro</div>
-                                    </div>
-                                    <div class="mockup-content">
-                                        <div class="video-interface">
-                                            <div class="video-main">
-                                                <div class="video-placeholder">
-                                                    <div class="video-icon">📹</div>
-                                                    <div class="connection-status">Connected</div>
-                                                </div>
-                                                <div class="video-controls">
-                                                    <div class="control-btn active">🎤</div>
-                                                    <div class="control-btn">📷</div>
-                                                    <div class="control-btn end">📞</div>
-                                                </div>
-                                            </div>
-                                            <div class="patient-info">
-                                                <div class="info-row">
-                                                    <span class="label">Patient:</span>
-                                                    <span class="value">John Doe</span>
-                                                </div>
-                                                <div class="info-row">
-                                                    <span class="label">Time:</span>
-                                                    <span class="value">15:30</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <div class="overlay-content">
-                                        <div class="project-category">Healthcare Tech</div>
-                                        <h3>HealthConnect Pro</h3>
-                                        <p>Telemedicine platform connecting patients with healthcare providers through secure video consultations.</p>
-                                        <div class="tech-stack">
-                                            <span class="tech-tag">Angular</span>
-                                            <span class="tech-tag">WebRTC</span>
-                                            <span class="tech-tag">AWS</span>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-actions">
-                                        <a href="#Contact" class="overlay-btn">
-                                            <i class="ri-eye-line"></i>
-                                            Request a Demo
-                                        </a>
-                                        <a href="#Contact" class="overlay-btn">
-                                            <i class="ri-code-line"></i>
-                                            View Details
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <div class="project-mockup property-mockup">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span></span><span></span><span></span>
-                                        </div>
-                                        <div class="mockup-title">PropManager Pro</div>
-                                    </div>
-                                    <div class="mockup-content">
-                                        <div class="property-dashboard">
-                                            <div class="property-list">
-                                                <div class="property-item active">
-                                                    <div class="property-icon">🏢</div>
-                                                    <div class="property-details">
-                                                        <div class="property-name">Downtown Plaza</div>
-                                                        <div class="property-status occupied">Occupied</div>
-                                                    </div>
-                                                </div>
-                                                <div class="property-item">
-                                                    <div class="property-icon">🏠</div>
-                                                    <div class="property-details">
-                                                        <div class="property-name">Garden Apartments</div>
-                                                        <div class="property-status available">Available</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="quick-stats">
-                                                <div class="stat-box">
-                                                    <div class="stat-number">156</div>
-                                                    <div class="stat-label">Units</div>
-                                                </div>
-                                                <div class="stat-box">
-                                                    <div class="stat-number">94%</div>
-                                                    <div class="stat-label">Occupied</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <div class="overlay-content">
-                                        <div class="project-category">Property Management</div>
-                                        <h3>PropManager Pro</h3>
-                                        <p>Comprehensive property management system with tenant portal, maintenance tracking, and financial reporting capabilities.</p>
-                                        <div class="tech-stack">
-                                            <span class="tech-tag">Next.js</span>
-                                            <span class="tech-tag">Python</span>
-                                            <span class="tech-tag">PostgreSQL</span>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-actions">
-                                        <a href="#Contact" class="overlay-btn">
-                                            <i class="ri-eye-line"></i>
-                                            Request a Demo
-                                        </a>
-                                        <a href="#Contact" class="overlay-btn">
-                                            <i class="ri-code-line"></i>
-                                            View Details
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="portfolio-cta">
-                    <p>Interested in seeing more of our work?</p>
-                    <a href="#Contact" class="cta-btn">
-                        <i class="ri-folder-line"></i>
-                        View Full Portfolio
-                    </a>
-                </div>
-            </section>
-
-            <!-- Process Section -->
-            <section class="process" id="process">
-                <div class="center-text">
-                    <h2>Our <span>Process</span></h2>
-                    <p>How we transform your ideas into digital reality in seven steps</p>
-                </div>
-        
-                <div class="process-timeline">
-                    <div class="process-step">
-                        <div class="step-number">01</div>
-                        <div class="step-content">
-                            <h3>Discovery & Planning</h3>
-                            <p>We start by understanding your vision, goals, and requirements to create a comprehensive project roadmap.</p>
-                        </div>
-                    </div>
-            
-                    <div class="process-step">
-                        <div class="step-number">02</div>
-                        <div class="step-content">
-                            <h3>Design & Prototyping</h3>
-                            <p>Creating intuitive user experiences and visual designs that align with your brand and user needs.</p>
-                        </div>
-                    </div>
-            
-                    <div class="process-step">
-                        <div class="step-number">03</div>
-                        <div class="step-content">
-                            <h3>Development</h3>
-                            <p>Building robust, scalable solutions using cutting-edge technologies and best practices.</p>
-                        </div>
-                    </div>
-            
-                    <div class="process-step">
-                        <div class="step-number">04</div>
-                        <div class="step-content">
-                            <h3>Testing & Quality Assurance</h3>
-                            <p>Rigorous testing to ensure your solution is reliable, secure, and performs optimally.</p>
-                        </div>
-                    </div>
-            
-                    <div class="process-step">
-                        <div class="step-number">05</div>
-                        <div class="step-content">
-                            <h3>Deployment</h3>
-                            <p>Launching your solution with proper infrastructure setup and monitoring systems.</p>
-                        </div>
-                    </div>
-            
-                    <div class="process-step">
-                        <div class="step-number">06</div>
-                        <div class="step-content">
-                            <h3>Training & Support</h3>
-                            <p>Providing comprehensive training and ongoing support to ensure smooth operations.</p>
-                        </div>
-                    </div>
-            
-                    <div class="process-step">
-                        <div class="step-number">07</div>
-                        <div class="step-content">
-                            <h3>Growth & Optimization</h3>
-                            <p>Continuous monitoring and optimization to help your solution evolve with your business needs.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Testimonials Section -->
-            <section class="testimonials" id="testimonials">
-                <div class="center-text">
-                    <h2>What Our <span>Clients</span> Say</h2>
-                    <p>Real feedback from businesses we've helped transform</p>
-                </div>
-        
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="ri-double-quotes-l"></i></div>
-                            <p>"Sombono transformed our vision into reality. Their attention to detail and technical expertise exceeded our expectations."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Sarah Johnson</h4>
-                                <span>CEO, TechStart Solutions</span>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="ri-double-quotes-l"></i></div>
-                            <p>"The team's professionalism and innovative approach helped us launch our product ahead of schedule with exceptional quality."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Ntando Mthembu</h4>
-                                <span>Founder, Unipply</span>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="ri-double-quotes-l"></i></div>
-                            <p>"Working with Sombono was a game-changer. They delivered a solution that not only met but exceeded our business requirements."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Lisa Williams</h4>
-                                <span>CTO, Digital Dynamics</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="services" id="services">
-                <div class="center-text">
-                    <h2 data-translate="services-title">Our <span>Services</span></h2>
-                    <p data-translate="services-description">From strategy and design to development, testing and deployment, we deliver solutions that drive real returns.</p>
-                </div>
-
-                <div class="Slider-content">
-                    <div class="box-section">
-                        <div class="box-container">
-                            <div class="box">
-                                <i class="ri-code-box-line"></i>
-                                </br>
-                                <div class="content">
-                                    <h3 data-translate="service-custom-software">Custom Software</h3>
-                                    <p data-translate="service-custom-software-desc">
-                                        Enterprise applications, digital platforms, and mobile apps tailored to your business requirements and built with modern technologies.
-                                    </p>
-                                </div>
-                                <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
-                            </div>
-
-                            <div class="box">
-                                <i class="ri-line-chart-fill"></i>
-                                </br>
-                                <div class="content">
-                                    <h3 data-translate="service-data-analytics">Data & Analytics</h3>
-                                    <p data-translate="service-data-analytics-desc">
-                                        Business intelligence, data science, and data engineering solutions that transform raw data into actionable insights for better decision-making.
-                                    </p>
-                                </div>
-                                <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
-                            </div>
-
-                            <div class="box">
-                                <i class="ri-css3-fill"></i>
-                                </br>
-                                <div class="content">
-                                    <h3 data-translate="service-product-design">Product Design</h3>
-                                    <p data-translate="service-product-design-desc">
-                                        Product strategy, design thinking, and user experience solutions that create intuitive and engaging digital experiences.
-                                    </p>
-                                </div>
-                                <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
-                            </div>
-
-                            <div class="box">
-                                <i class="ri-rocket-line"></i>
-                                </br>
-                                <div class="content">
-                                    <h3 data-translate="service-digital-transformation">Digital Transformation</h3>
-                                    <p data-translate="service-digital-transformation-desc">
-                                        Culture, products, and channels transformation to help businesses adapt and thrive in the digital economy.
-                                    </p>
-                                </div>
-                                <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
-                            </div>
-
-                            <div class="box">
-                                <i class="ri-lightbulb-line"></i>
-                                </br>
-                                <div class="content">
-                                    <h3 data-translate="service-strategy-advisory">Strategy & Advisory</h3>
-                                    <p data-translate="service-strategy-advisory-desc">
-                                        Better software, better teams, and better technology investments through strategic guidance and expert consultation.
-                                    </p>
-                                </div>
-                                <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="logos" id="Logos">
-                    <h2>Companies We've Worked With</h2>
-                    <div class="logo-container">
-                        <img src="../Downloads/PostNet__1_-removebg-preview.png" alt="Company 1">
-                        <img src="../Downloads/FulfilledLiving (2).png" alt="Company 2">
-                        <img src="../Downloads/Group 423.png" alt="Company 3">
-
-                    </div> -->
-                </div>
-            </section>
-            <div class="Diff"></div>
-
-            <section class="join-us" id="Join">
-                <div class="join-content">
-                    <div class="text">
-                        <h2 data-translate="join-title">Join <span>Us</span></h2>
-                        <p data-translate="join-description">If you believe you have what it takes to be part of our innovative team. </br> we want to hear from
-                            you!</p>
-                        <p data-translate="join-email">Submit your CV to <a href="mailto:jobs@sombono.co.za">jobs@sombono.co.za</a></p>
-                    </div>
-                    <div class="image">
-                        <img src="./Assets/Man with join us sign for open recruitment.png" alt="Join Us Image">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Urgency CTA Section -->
-            <section class="urgency-cta">
-                <div class="urgency-container">
-                    <div class="urgency-content">
-                        <h2 data-translate="urgency-title">Ready to Dominate Your Market?</h2>
-                        <p data-translate="urgency-description">Don't let competitors get ahead. Join 50+ successful businesses who chose Sombono</p>
-                        <div class="urgency-badges">
-                            <div class="urgency-badge">
-                                <i class="ri-time-line"></i>
-                                <span data-translate="urgency-consultation">Limited Time: Free Consultation</span>
-                            </div>
-                            <div class="urgency-badge">
-                                <i class="ri-fire-line"></i>
-                                <span data-translate="urgency-slots">Only 3 Slots Left This Month</span>
-                            </div>
-                        </div>
-                        <div class="urgency-actions">
-                            <a href="#Contact" class="urgency-btn primary" data-translate="claim-consultation">Claim Your Free Consultation</a>
-                            <a href="tel:+27123456789" class="urgency-btn secondary">
-                                <i class="ri-phone-line"></i>
-                                Call Now: +27 12 345 6789
+                        <div class="project-actions">
+                            <a href="#Contact" class="view-project-btn primary">
+                                <i class="ri-external-link-line"></i>
+                                Request a Demo
+                            </a>
+                            <a href="#Contact" class="view-project-btn secondary">
+                                <i class="ri-code-line"></i>
+                                View Details
                             </a>
                         </div>
                     </div>
                 </div>
-            </section>
-  
-            <!--Contact Me-->
-            <section class="Contact" id="Contact">
-                <div class="contact-container">
-                    <div class="contact-header">
-                        <h2 data-translate="contact-title">Get in <span>Touch</span></h2>
-                        <p data-translate="contact-description">Ready to transform your ideas into reality? Let's start a conversation.</p>
-                    </div>
-
-                    <div class="contact-content">
-                        <div class="contact-info">
-                            <div class="info-card">
-                                <div class="info-icon">
-                                    <i class="ri-phone-line"></i>
-                                </div>
-                                <div class="info-details">
-                                    <h4 data-translate="contact-phone">Phone</h4>
-                                    <p>073 934 7913</p>
-                                </div>
-                            </div>
-                    
-                            <div class="info-card">
-                                <div class="info-icon">
-                                    <i class="ri-mail-line"></i>
-                                </div>
-                                <div class="info-details">
-                                    <h4 data-translate="contact-email">Email</h4>
-                                    <p>hello@sombono.com</p>
-                                </div>
-                            </div>
-                    
-                            <div class="info-card">
-                                <div class="info-icon">
-                                    <i class="ri-map-pin-line"></i>
-                                </div>
-                                <div class="info-details">
-                                    <h4 data-translate="contact-location">Location</h4>
-                                    <p>South Africa</p>
-                                </div>
-                            </div>
-                    
-                            <div class="info-card">
-                                <div class="info-icon">
-                                    <i class="ri-time-line"></i>
-                                </div>
-                                <div class="info-details">
-                                    <h4 data-translate="contact-response">Response Time</h4>
-                                    <p data-translate="contact-response-time">Within 24 hours</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="contact-form">
-                            <form id="contact-form">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <i class="ri-user-line"></i>
-                                        <input type="text" name="name" placeholder="Your Full Name" required>
-                                    </div>
-                                </div>
-                        
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <i class="ri-mail-line"></i>
-                                        <input type="email" name="email" placeholder="Your Email Address" required>
-                                    </div>
-                                </div>
-                        
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <i class="ri-briefcase-line"></i>
-                                        <select name="service" required>
-                                            <option value="">Select Service Type</option>
-                                            <option value="web-development">Web Development</option>
-                                            <option value="mobile-app">Mobile App Development</option>
-                                            <option value="e-commerce">E-Commerce Solutions</option>
-                                            <option value="analytics">Data Analytics</option>
-                                            <option value="consultation">Technical Consultation</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                </div>
-                        
-                                <div class="form-group">
-                                    <div class="input-group textarea-group">
-                                        <i class="ri-message-3-line"></i>
-                                        <textarea name="message" rows="5" placeholder="Tell us about your project or how we can help you..." required></textarea>
-                                    </div>
-                                </div>
-                        
-                                <button type="submit" class="submit-btn">
-                                    <span>Send Message</span>
-                                    <i class="ri-send-plane-line"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--Footer-->
-            <footer class="footer" id="footer">
-                <div class="footer-container">
-                    <div class="footer-content">
-                        <div class="footer-section">
-                            <div class="footer-logo">
-                                <h3>Sombono<span>.</span></h3>
-                                <p>Turning Vision into Tangible Solutions</p>
-                            </div>
-                            <div class="social-links">
-                                <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-line"></i></a>
-                                <a href="#" aria-label="Twitter"><i class="ri-twitter-line"></i></a>
-                                <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
-                                <a href="#" aria-label="GitHub"><i class="ri-github-line"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="footer-section">
-                            <h4>Quick Links</h4>
-                            <ul>
-                                <li><a href="#Home">Home</a></li>
-                                <li><a href="#About">About</a></li>
-                                <li><a href="#services">Services</a></li>
-                                <li><a href="#Portfolio">Portfolio</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-section">
-                            <h4>Services</h4>
-                            <ul>
-                                <li><a href="#services">Custom Software</a></li>
-                                <li><a href="#services">Data & Analytics</a></li>
-                                <li><a href="#services">Product Design</a></li>
-                                <li><a href="#services">Digital Transformation</a></li>
-                                <li><a href="#services">Strategy & Advisory</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-section">
-                            <h4>Contact Info</h4>
-                            <div class="contact-info">
-                                <p><i class="ri-phone-line"></i> 073 934 7913</p>
-                                <p><i class="ri-mail-line"></i> hello@sombono.com</p>
-                                <p><i class="ri-map-pin-line"></i> South Africa</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-bottom">
-                        <div class="footer-divider"></div>
-                        <div class="footer-bottom-content">
-                            <p>&copy; 2024 Sombono. All Rights Reserved.</p>
-                            <div class="footer-links">
-                                <a href="#">Privacy Policy</a>
-                                <a href="#">Terms of Service</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!--Scripts-->
-
-
-
-            <script>
-                ///////////Enhanced Scrolling and Transitions///////////
-        
-                // Improved smooth scrolling for navigation links
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Smooth scroll for all navigation links
-                    const navLinks = document.querySelectorAll('a[href^="#"]');
-                    navLinks.forEach(link => {
-                        link.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            const targetId = this.getAttribute('href');
-                            const targetElement = document.querySelector(targetId);
-                    
-                            if (targetElement) {
-                                const headerHeight = document.querySelector('header').offsetHeight;
-                                const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                        
-                                window.scrollTo({
-                                    top: targetPosition,
-                                    behavior: 'smooth'
-                                });
-                            }
-                        });
-                    });
-
-                    // Sticky header with improved performance
-                    let ticking = false;
-                    const header = document.querySelector("header");
+            </div>
             
-                    function updateHeader() {
-                        header.classList.toggle("sticky", window.scrollY > 100);
-                        ticking = false;
-                    }
-
-                    window.addEventListener("scroll", function() {
-                        if (!ticking) {
-                            requestAnimationFrame(updateHeader);
-                            ticking = true;
-                        }
-                    });
-
-                    // Enhanced Intersection Observer for smooth animations
-                    const observerOptions = {
-                        threshold: 0.15,
-                        rootMargin: '0px 0px -100px 0px'
-                    };
-
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('animate-in');
-                            }
-                        });
-                    }, observerOptions);
-
-                    // Services card hover improvements
-                 //const serviceCards = document.querySelectorAll('.box');
-                   //erviceCards.forEach(card => {
-                      //card.addEventListener('mouseenter', function() {
-                        //  this.style.transform = 'rotateY(180deg) scale(1.05)';
-                      //});
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="project-mockup banking-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-title">SecureBank Mobile</div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="mobile-interface">
+                                    <div class="account-card">
+                                        <div class="account-header">
+                                            <div class="account-type">Checking</div>
+                                            <div class="balance">$12,450.87</div>
+                                        </div>
+                                        <div class="card-number">****  ****  ****  2847</div>
+                                    </div>
+                                    <div class="quick-actions">
+                                        <div class="action-btn">ðŸ’¸ Transfer</div>
+                                        <div class="action-btn">ðŸ“± Pay</div>
+                                        <div class="action-btn">ðŸ’° Deposit</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <div class="project-category">Mobile App</div>
+                                <h3>SecureBank Mobile</h3>
+                                <p>Revolutionary banking app with biometric authentication and AI-powered financial insights.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">React Native</span>
+                                    <span class="tech-tag">Firebase</span>
+                                    <span class="tech-tag">AI/ML</span>
+                                </div>
+                            </div>
+                            <div class="overlay-actions">
+                                <a href="#Contact" class="overlay-btn">
+                                    <i class="ri-eye-line"></i>
+                                    Request a Demo
+                                </a>
+                                <a href="#Contact" class="overlay-btn">
+                                    <i class="ri-code-line"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                       //ard.addEventListener('mouseleave', function() {
-                      //    this.style.transform = 'rotateY(0deg) scale(1)';
-                       //);
-                  //}); -->
-
-                    // Observe elements for animation with improved stability
-                    const animateElements = document.querySelectorAll(
-                        '.portfolio-item, .process-step, .testimonial-card, .box, .info-card, .contact-form'
-                    );
-            
-                    // Add initial classes to prevent layout shift
-                    animateElements.forEach(el => {
-                        el.classList.add('animate-ready');
-                        observer.observe(el);
-                    });
-
-                    // Portfolio items stability
-                    const portfolioItems = document.querySelectorAll('.portfolio-item');
-                    portfolioItems.forEach(item => {
-                        item.style.minHeight = '400px'; // Prevent height jumping
-                    });
-                });
-
-                // Section divider split effect
-                document.addEventListener('scroll', () => {
-                    const divider = document.querySelector('.section-divider');
-                    if (divider) {
-                        const rect = divider.getBoundingClientRect();
-                        if (rect.top < window.innerHeight && rect.bottom > 0) {
-                            divider.classList.add('split');
-                        } else {
-                            divider.classList.remove('split');
-                        }
-                    }
-                });
-
-                // Menu Icon click event to toggle navigation visibility
-                document.addEventListener('DOMContentLoaded', function () {
-                    const menuIcon = document.getElementById('menu-icon');
-                    const navList = document.querySelector('.navlist');
-
-                    if (menuIcon && navList) {
-                        menuIcon.addEventListener('click', () => {
-                            navList.classList.toggle('active');
-                        });
-                    }
-                });
-
-                // Smooth scrolling for navigation links
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    });
-                });
-            </script>
-            <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-            <script>
-                emailjs.init("HwE_xq6xFlplyEcjE"); // Replace "your-user-id" with your EmailJS user ID
-
-                document.getElementById('contact-form').addEventListener('submit', function(event) {
-                    event.preventDefault();
-
-                    const submitBtn = this.querySelector('.submit-btn');
-                    const btnText = submitBtn.querySelector('span');
-                    const btnIcon = submitBtn.querySelector('i');
-            
-                    // Update button to loading state
-                    submitBtn.disabled = true;
-                    btnText.textContent = 'Sending...';
-                    btnIcon.className = 'ri-loader-4-line';
-                    btnIcon.style.animation = 'spin 1s linear infinite';
-
-                    emailjs.sendForm('your-service-id', 'your-template-id', this) // Replace with your EmailJS service and template IDs
-                        .then(function() {
-                            // Success state
-                            btnText.textContent = 'Message Sent!';
-                            btnIcon.className = 'ri-check-line';
-                            btnIcon.style.animation = 'none';
-                            submitBtn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-                    
-                            // Show success message
-                            showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-                    
-                            // Reset form
-                            document.getElementById('contact-form').reset();
-                    
-                            // Reset button after 3 seconds
-                            setTimeout(() => {
-                                btnText.textContent = 'Send Message';
-                                btnIcon.className = 'ri-send-plane-line';
-                                submitBtn.style.background = 'linear-gradient(135deg, #d32f2f, #f44336)';
-                                submitBtn.disabled = false;
-                            }, 3000);
-                    
-                        }, function(error) {
-                            // Error state
-                            btnText.textContent = 'Failed to Send';
-                            btnIcon.className = 'ri-error-warning-line';
-                            btnIcon.style.animation = 'none';
-                            submitBtn.style.background = 'linear-gradient(135deg, #dc3545, #e74c3c)';
-                    
-                            showNotification('Failed to send message. Please try again or contact us directly.', 'error');
-                    
-                            // Reset button after 3 seconds
-                            setTimeout(() => {
-                                btnText.textContent = 'Send Message';
-                                btnIcon.className = 'ri-send-plane-line';
-                                submitBtn.style.background = 'linear-gradient(135deg, #d32f2f, #f44336)';
-                                submitBtn.disabled = false;
-                            }, 3000);
-                        });
-                });
-
-                // Notification system
-                function showNotification(message, type) {
-                    const notification = document.createElement('div');
-                    notification.className = `notification ${type}`;
-                    notification.innerHTML = `
-                        <i class="${type === 'success' ? 'ri-check-circle-line' : 'ri-error-warning-line'}"></i>
-                        <span>${message}</span>
-                        <button onclick="this.parentElement.remove()" class="close-btn">
-                            <i class="ri-close-line"></i>
-                        </button>
-                    `;
-            
-                    document.body.appendChild(notification);
-            
-                    // Auto remove after 5 seconds
-                    setTimeout(() => {
-                        if (notification.parentElement) {
-                            notification.remove();
-                        }
-                    }, 5000);
-                }
-
-                // WhatsApp functionality
-                document.addEventListener('DOMContentLoaded', function() {
-                    const whatsappFloat = document.getElementById('whatsapp-float');
-            
-                    // Show/hide WhatsApp button based on scroll position
-                    window.addEventListener('scroll', function() {
-                        if (window.scrollY > 300) {
-                            whatsappFloat.style.opacity = '1';
-                            whatsappFloat.style.visibility = 'visible';
-                        } else {
-                            whatsappFloat.style.opacity = '0.7';
-                        }
-                    });
-
-                    // Track WhatsApp button clicks
-                    whatsappFloat.addEventListener('click', function() {
-                        // You can add analytics tracking here if needed
-                        console.log('WhatsApp button clicked');
-                    });
-                });
-            </script>
-            <style>
-                /* Single Spin Animation for Hovered Service Card */
-                .box {
-                    transform-style: preserve-3d;
-                    transition: transform 1.8s ease;
-                }
-                .box:hover {
-                    transform: rotateY(360deg);
-                    animation-iteration-count: 1;
-                }
-            </style>
-            <script>
-        document.addEventListener('scroll', () => {
-            const divider = document.querySelector('.section-divider');
-            const rect = divider.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                divider.classList.add('split');
-            } else {
-                divider.classList.remove('split');
-            }
-        });
-
-        // Dark Mode Toggle Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            const darkModeIcon = document.getElementById('darkModeIcon');
-    
-            // Check for saved theme preference or default to light mode
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-    
-            // Update icon based on current theme
-            updateIcon(currentTheme);
-    
-            darkModeToggle.addEventListener('click', function() {
-                const theme = document.documentElement.getAttribute('data-theme');
-                const newTheme = theme === 'dark' ? 'light' : 'dark';
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="project-mockup analytics-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-title">Analytics Dashboard</div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="dashboard-grid">
+                                    <div class="chart-container">
+                                        <div class="chart-title">Revenue Trends</div>
+                                        <div class="line-chart">
+                                            <div class="chart-line"></div>
+                                            <div class="data-points">
+                                                <div class="point"></div>
+                                                <div class="point"></div>
+                                                <div class="point active"></div>
+                                                <div class="point"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="metrics-panel">
+                                        <div class="metric">
+                                            <div class="metric-value">87%</div>
+                                            <div class="metric-label">Accuracy</div>
+                                        </div>
+                                        <div class="metric">
+                                            <div class="metric-value">2.4M</div>
+                                            <div class="metric-label">Records</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <div class="project-category">Data Analytics</div>
+                                <h3>Smart Analytics Hub</h3>
+                                <p>Real-time business intelligence platform with predictive analytics and automated reporting.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">D3.js</span>
+                                </div>
+                            </div>
+                            <div class="overlay-actions">
+                                <a href="#Contact" class="overlay-btn">
+                                    <i class="ri-eye-line"></i>
+                                    Request a Demo
+                                </a>
+                                <a href="#Contact" class="overlay-btn">
+                                    <i class="ri-code-line"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="project-mockup healthcare-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-title">HealthConnect Pro</div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="video-interface">
+                                    <div class="video-main">
+                                        <div class="video-placeholder">
+                                            <div class="video-icon">ðŸ“¹</div>
+                                            <div class="connection-status">Connected</div>
+                                        </div>
+                                        <div class="video-controls">
+                                            <div class="control-btn active">ðŸŽ¤</div>
+                                            <div class="control-btn">ðŸ“·</div>
+                                            <div class="control-btn end">ðŸ“ž</div>
+                                        </div>
+                                    </div>
+                                    <div class="patient-info">
+                                        <div class="info-row">
+                                            <span class="label">Patient:</span>
+                                            <span class="value">John Doe</span>
+                                        </div>
+                                        <div class="info-row">
+                                            <span class="label">Time:</span>
+                                            <span class="value">15:30</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <div class="project-category">Healthcare Tech</div>
+                                <h3>HealthConnect Pro</h3>
+                                <p>Telemedicine platform connecting patients with healthcare providers through secure video consultations.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Angular</span>
+                                    <span class="tech-tag">WebRTC</span>
+                                    <span class="tech-tag">AWS</span>
+                                </div>
+                            </div>
+                            <div class="overlay-actions">
+                                <a href="#Contact" class="overlay-btn">
+                                    <i class="ri-eye-line"></i>
+                                    Request a Demo
+                                </a>
+                                <a href="#Contact" class="overlay-btn">
+                                    <i class="ri-code-line"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="project-mockup property-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-title">PropManager Pro</div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="property-dashboard">
+                                    <div class="property-list">
+                                        <div class="property-item active">
+                                            <div class="property-icon">ðŸ¢</div>
+                                            <div class="property-details">
+                                                <div class="property-name">Downtown Plaza</div>
+                                                <div class="property-status occupied">Occupied</div>
+                                            </div>
+                                        </div>
+                                        <div class="property-item">
+                                            <div class="property-icon">ðŸ </div>
+                                            <div class="property-details">
+                                                <div class="property-name">Garden Apartments</div>
+                                                <div class="property-status available">Available</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="quick-stats">
+                                        <div class="stat-box">
+                                            <div class="stat-number">156</div>
+                                            <div class="stat-label">Units</div>
+                                        </div>
+                                        <div class="stat-box">
+                                            <div class="stat-number">94%</div>
+                                            <div class="stat-label">Occupied</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <div class="project-category">Property Management</div>
+                                <h3>PropManager Pro</h3>
+                                <p>Comprehensive property management system with tenant portal, maintenance tracking, and financial reporting capabilities.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Next.js</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                </div>
+                            </div>
+                            <div class="overlay-actions">
+                                <a href="#Contact" class="overlay-btn">
+                                    <i class="ri-eye-line"></i>
+                                    Request a Demo
+                                </a>
+                                <a href="#Contact" class="overlay-btn">
+                                    <i class="ri-code-line"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateIcon(newTheme);
-            });
-    
-            function updateIcon(theme) {
-                if (theme === 'dark') {
-                    darkModeIcon.className = 'ri-moon-line';
-                } else {
-                    darkModeIcon.className = 'ri-sun-line';
-                }
-            }
-        });
-        </script>
-
-        <!-- Translation System -->
-        <script src="translation.js"></script>
-
-        <!-- WhatsApp Floating Button -->
-        <div class="whatsapp-float" id="whatsapp-float">
-            <a href="https://wa.me/27739347913?text=Hi%20Sombono!%20I'm%20interested%20in%20your%20services" target="_blank" class="whatsapp-button">
-                <i class="ri-whatsapp-line"></i>
-                <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+        <!-- <div class="portfolio-cta">
+            <p>Interested in seeing more of our work?</p>
+            <a href="#Contact" class="cta-btn">
+                <i class="ri-folder-line"></i>
+                View Full Portfolio
             </a>
+        </div> -->
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="center-text">
+            <h2>Our <span>Process</span></h2>
+            <p>How we transform your ideas into digital reality in seven steps</p>
+        </div>
+        
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Discovery & Planning</h3>
+                    <p>We start by understanding your vision, goals, and requirements to create a comprehensive project roadmap.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Design & Prototyping</h3>
+                    <p>Creating intuitive user experiences and visual designs that align with your brand and user needs.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Development</h3>
+                    <p>Building robust, scalable solutions using cutting-edge technologies and best practices.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h3>Testing & Quality Assurance</h3>
+                    <p>Rigorous testing to ensure your solution is reliable, secure, and performs optimally.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">05</div>
+                <div class="step-content">
+                    <h3>Deployment</h3>
+                    <p>Launching your solution with proper infrastructure setup and monitoring systems.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">06</div>
+                <div class="step-content">
+                    <h3>Training & Support</h3>
+                    <p>Providing comprehensive training and ongoing support to ensure smooth operations.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">07</div>
+                <div class="step-content">
+                    <h3>Growth & Optimization</h3>
+                    <p>Continuous monitoring and optimization to help your solution evolve with your business needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="center-text">
+            <h2>What Our <span>Clients</span> Say</h2>
+            <p>Real feedback from businesses we've helped transform</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i class="ri-double-quotes-l"></i></div>
+                    <p>"Sombono transformed our vision into reality. Their attention to detail and technical expertise exceeded our expectations."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <span>CEO, TechStart Solutions</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i class="ri-double-quotes-l"></i></div>
+                    <p>"The team's professionalism and innovative approach helped us launch our product ahead of schedule with exceptional quality."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-info">
+                        <h4>Ntando Mthembu</h4>
+                        <span>Founder, Unipply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i class="ri-double-quotes-l"></i></div>
+                    <p>"Working with Sombono was a game-changer. They delivered a solution that not only met but exceeded our business requirements."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-info">
+                        <h4>Lisa Williams</h4>
+                        <span>CTO, Digital Dynamics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="center-text">
+            <h2 data-translate="services-title">Our <span>Services</span></h2>
+            <p data-translate="services-description">From strategy and design to development, testing and deployment, we deliver solutions that drive real returns.</p>
         </div>
 
-        </body>
+        <div class="Slider-content">
+            <div class="box-section">
+                <div class="box-container">
+                    <div class="box">
+                        <i class="ri-code-box-line"></i>
+                        </br>
+                        <div class="content">
+                            <h3 data-translate="service-custom-software">Custom Software</h3>
+                            <p data-translate="service-custom-software-desc">
+                                Enterprise applications, digital platforms, and mobile apps tailored to your business requirements and built with modern technologies.
+                            </p>
+                        </div>
+                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                    </div>
 
-        </html>
+                    <div class="box">
+                        <i class="ri-line-chart-fill"></i>
+                        </br>
+                        <div class="content">
+                            <h3 data-translate="service-data-analytics">Data & Analytics</h3>
+                            <p data-translate="service-data-analytics-desc">
+                                Business intelligence, data science, and data engineering solutions that transform raw data into actionable insights for better decision-making.
+                            </p>
+                        </div>
+                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                    </div>
+
+                    <div class="box">
+                        <i class="ri-css3-fill"></i>
+                        </br>
+                        <div class="content">
+                            <h3 data-translate="service-product-design">Product Design</h3>
+                            <p data-translate="service-product-design-desc">
+                                Product strategy, design thinking, and user experience solutions that create intuitive and engaging digital experiences.
+                            </p>
+                        </div>
+                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                    </div>
+
+                    <div class="box">
+                        <i class="ri-rocket-line"></i>
+                        </br>
+                        <div class="content">
+                            <h3 data-translate="service-digital-transformation">Digital Transformation</h3>
+                            <p data-translate="service-digital-transformation-desc">
+                                Culture, products, and channels transformation to help businesses adapt and thrive in the digital economy.
+                            </p>
+                        </div>
+                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                    </div>
+
+                    <div class="box">
+                        <i class="ri-lightbulb-line"></i>
+                        </br>
+                        <div class="content">
+                            <h3 data-translate="service-strategy-advisory">Strategy & Advisory</h3>
+                            <p data-translate="service-strategy-advisory-desc">
+                                Better software, better teams, and better technology investments through strategic guidance and expert consultation.
+                            </p>
+                        </div>
+                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="logos" id="Logos">
+            <h2>Companies We've Worked With</h2>
+            <div class="logo-container">
+                <img src="../Downloads/PostNet__1_-removebg-preview.png" alt="Company 1">
+                <img src="../Downloads/FulfilledLiving (2).png" alt="Company 2">
+                <img src="../Downloads/Group 423.png" alt="Company 3">
+
+            </div> -->
+        </div>
+    </section>
+    
+    <!-- International Presence Section -->
+    <section class="international-presence">
+        <div class="presence-container">
+            <div class="presence-visual">
+                <div class="globe-container">
+                    <div class="globe">
+                        <div class="globe-grid"></div>
+                        <div class="globe-continents">
+                            <div class="continent africa">
+                                <div class="country south-africa"></div>
+                                <div class="country madagascar"></div>
+                            </div>
+                            <div class="continent europe">
+                                <div class="country netherlands"></div>
+                                <div class="country uk"></div>
+                            </div>
+                            <div class="continent asia"></div>
+                        </div>
+                        <div class="globe-dot africa-dot active"></div>
+                        <div class="globe-dot netherlands-dot active"></div>
+                        <div class="connection-line"></div>
+                        <div class="orbit-ring ring-1"></div>
+                        <div class="orbit-ring ring-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="presence-content">
+                <h2>Sombono is a dynamic technology company with a strong presence in <span class="highlight">South Africa</span> and the <span class="highlight">Netherlands</span>.</h2>
+                <p>We bridge continents through innovative software solutions, connecting businesses across borders with cutting-edge technology and expertise.</p>
+                <div class="global-stats">
+                    <div class="stat">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <!-- <div class="stat">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div> -->
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Global Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- <div class="Diff"></div> -->
+
+    <section class="join-us" id="Join">
+        <div class="join-content">
+            <div class="text">
+                <div class="join-header">
+                    <h2 data-translate="join-title">Join Our <span>Team</span></h2>
+                    <div class="join-subtitle">Shape the Future of Technology</div>
+                </div>
+                <div class="join-description">
+                    <p data-translate="join-description">Ready to make an impact? We're looking for passionate innovators, creative problem-solvers, and tech enthusiasts to join our growing team across South Africa and the Netherlands.</p>
+                    
+                    <div class="opportunities">
+                        <div class="opportunity-card">
+                            <div class="opportunity-icon">
+                                <i class="ri-code-line"></i>
+                            </div>
+                            <div class="opportunity-content">
+                                <h4>Developers</h4>
+                                <p>Full-stack, mobile, and specialized developers</p>
+                            </div>
+                        </div>
+                        
+                        <div class="opportunity-card">
+                            <div class="opportunity-icon">
+                                <i class="ri-palette-line"></i>
+                            </div>
+                            <div class="opportunity-content">
+                                <h4>Designers</h4>
+                                <p>UI/UX and product design specialists</p>
+                            </div>
+                        </div>
+                        
+                        <div class="opportunity-card">
+                            <div class="opportunity-icon">
+                                <i class="ri-rocket-line"></i>
+                            </div>
+                            <div class="opportunity-content">
+                                <h4>Project Managers</h4>
+                                <p>Agile and digital transformation leaders</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="join-cta">
+                        <p class="cta-text" data-translate="join-email">Ready to grow with us? Send your CV to <a href="mailto:careers@sombono.co.za" class="email-link">careers@sombono.co.za</a></p>
+                        <div class="perks">
+                            <div class="perk">
+                                <i class="ri-global-line"></i>
+                                <span>Remote Flexibility</span>
+                            </div>
+                            <div class="perk">
+                                <i class="ri-trophy-line"></i>
+                                <span>Growth Opportunities</span>
+                            </div>
+                            <div class="perk">
+                                <i class="ri-team-line"></i>
+                                <span>Collaborative Culture</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="image">
+                <div class="image-container">
+                    <img src="./Assets/Man with join us sign for open recruitment.png" alt="Join Us Image">
+                    <div class="image-overlay">
+                        <div class="overlay-text">Be Part of Something Amazing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency CTA Section -->
+    <section class="urgency-cta">
+        <div class="urgency-container">
+            <div class="urgency-content">
+                <h2 data-translate="urgency-title">Ready to Dominate Your Market?</h2>
+                <p data-translate="urgency-description">Don't let competitors get ahead. Join 50+ successful businesses who chose Sombono</p>
+                <div class="urgency-badges">
+                    <div class="urgency-badge">
+                        <i class="ri-time-line"></i>
+                        <span data-translate="urgency-consultation">Limited Time: Free Consultation</span>
+                    </div>
+                    <div class="urgency-badge">
+                        <i class="ri-fire-line"></i>
+                        <span data-translate="urgency-slots">Only 3 Slots Left This Month</span>
+                    </div>
+                </div>
+                <div class="urgency-actions">
+                    <a href="#Contact" class="urgency-btn primary" data-translate="claim-consultation">Claim Your Free Consultation</a>
+                    <a href="tel:+27123456789" class="urgency-btn secondary">
+                        <i class="ri-phone-line"></i>
+                        Call Now: +27 12 345 6789
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+    <!--Contact Me-->
+    <section class="Contact" id="Contact">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2 data-translate="contact-title">Get in <span>Touch</span></h2>
+                <p data-translate="contact-description">Ready to transform your ideas into reality? Let's start a conversation.</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-phone-line"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4 data-translate="contact-phone">Phone</h4>
+                            <p>073 934 7913</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4 data-translate="contact-email">Email</h4>
+                            <p>hello@sombono.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-map-pin-line"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4 data-translate="contact-location">Location</h4>
+                            <p>South Africa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-time-line"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4 data-translate="contact-response">Response Time</h4>
+                            <p data-translate="contact-response-time">Within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <i class="ri-user-line"></i>
+                                <input type="text" name="name" placeholder="Your Full Name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-group">
+                                <i class="ri-mail-line"></i>
+                                <input type="email" name="email" placeholder="Your Email Address" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-group">
+                                <i class="ri-briefcase-line"></i>
+                                <select name="service" required>
+                                    <option value="">Select Service Type</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="mobile-app">Mobile App Development</option>
+                                    <option value="e-commerce">E-Commerce Solutions</option>
+                                    <option value="analytics">Data Analytics</option>
+                                    <option value="consultation">Technical Consultation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-group textarea-group">
+                                <i class="ri-message-3-line"></i>
+                                <textarea name="message" rows="5" placeholder="Tell us about your project or how we can help you..." required></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="ri-send-plane-line"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>Sombono<span>.</span></h3>
+                        <p>Turning Vision into Tangible Solutions</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-line"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-line"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="ri-github-line"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#Home">Home</a></li>
+                        <li><a href="#About">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#Portfolio">Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Custom Software</a></li>
+                        <li><a href="#services">Data & Analytics</a></li>
+                        <li><a href="#services">Product Design</a></li>
+                        <li><a href="#services">Digital Transformation</a></li>
+                        <li><a href="#services">Strategy & Advisory</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="ri-phone-line"></i> 073 934 7913</p>
+                        <p><i class="ri-mail-line"></i> hello@sombono.com</p>
+                        <p><i class="ri-map-pin-line"></i> South Africa</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Sombono. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Scripts-->
+
+
+
+    <script>
+        ///////////Enhanced Scrolling and Transitions///////////
+        
+        // Improved smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for all navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Sticky header with improved performance
+            let ticking = false;
+            const header = document.querySelector("header");
+            
+            function updateHeader() {
+                header.classList.toggle("sticky", window.scrollY > 100);
+                ticking = false;
+            }
+
+            window.addEventListener("scroll", function() {
+                if (!ticking) {
+                    requestAnimationFrame(updateHeader);
+                    ticking = true;
+                }
+            });
+
+            // Enhanced Intersection Observer for smooth animations
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Services card hover improvements
+         //const serviceCards = document.querySelectorAll('.box');
+           //erviceCards.forEach(card => {
+              //card.addEventListener('mouseenter', function() {
                 //  this.style.transform = 'rotateY(180deg) scale(1.05)';
               //});
                 
@@ -1492,514 +1373,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Scripts -->
 <script src="translation.js"></script>
-    <script src="cookies.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Force overlay visible if no consent
-        const overlay = document.getElementById('cookieOverlay');
-        const consentGiven = localStorage.getItem('sombono_cookie_consent_given');
-        if (!consentGiven) {
-            overlay.classList.remove('hidden');
-            overlay.style.display = 'flex';
-        }
-    });
-    </script>
+<script src="cookies.js"></script>
 
-    // Pac-Man Animation Script
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Wait a bit more to ensure all elements are rendered
-        setTimeout(() => {
-            // Pac-Man Animation Class
-            class PacManGame {
-                constructor() {
-                    this.canvas = document.getElementById('pacman-canvas');
-                    this.ctx = this.canvas.getContext('2d');
-                    this.winMessage = document.getElementById('win-message');
-                    this.processSection = document.getElementById('process');
-                    this.processSteps = document.querySelectorAll('.process-step');
-                    
-                    // Check if all elements exist
-                    if (!this.canvas || !this.ctx || !this.winMessage || !this.processSection || this.processSteps.length === 0) {
-                        console.error('Pac-Man: Missing required elements');
-                        console.log('Canvas:', this.canvas);
-                        console.log('Context:', this.ctx);
-                        console.log('Win message:', this.winMessage);
-                        console.log('Process section:', this.processSection);
-                        console.log('Process steps:', this.processSteps.length);
-                        return;
-                    }
-                    
-                    console.log('Pac-Man game initializing...');
-                    console.log('Found', this.processSteps.length, 'process steps');
-                    console.log('Canvas element:', this.canvas);
-                    console.log('Win message element:', this.winMessage);
-                    console.log('Process section:', this.processSection);
-                    
-                    // Animation state
-                    this.isAnimating = false;
-                    this.hasWon = false;
-                    this.scrollProgress = 0;
-                    this.lastScrollProgress = 0;
-                    this.eatenSteps = new Set();
-                    this.dots = [];
-                    
-                // Pac-Man properties
-                this.pacman = {
-                    x: 100,  // Start more to the right
-                    y: 150, // Start lower
-                    size: 35, // Larger size
-                    baseSpeed: 1.5,
-                    speed: 1.5,
-                    direction: 0,
-                    mouthAngle: 0,
-                    mouthSpeed: 0.08, // Slower mouth animation
-                    targetX: 100,
-                    targetY: 150,
-                    lastDirectionChange: 0,
-                    frameCount: 0 // For reducing log frequency
-                };                    this.init();
-                }
-            
-            init() {
-                this.setupCanvas();
-                this.createStepPositions();
-                this.setupScrollListener();
-                this.startAnimation();
-            }
-            
-            setupCanvas() {
-                const resizeCanvas = () => {
-                    // Use setTimeout to ensure DOM is fully rendered
-                    setTimeout(() => {
-                        const rect = this.canvas.parentElement.getBoundingClientRect();
-                        this.canvas.width = rect.width;
-                        this.canvas.height = rect.height;
-                        console.log('Canvas size:', this.canvas.width, 'x', this.canvas.height);
-                        
-                        // Test draw to make sure canvas is working
-                        this.ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
-                        this.ctx.fillRect(10, 10, 50, 50);
-                        console.log('Test rectangle drawn');
-                    }, 100);
-                };
-                
-                resizeCanvas();
-                window.addEventListener('resize', resizeCanvas);
-            }
-            
-            createStepPositions() {
-                // Create positions for each process step
-                this.stepPositions = [];
-                const canvasRect = this.canvas.parentElement.getBoundingClientRect();
+</body>
 
-                this.processSteps.forEach((step, index) => {
-                    const rect = step.getBoundingClientRect();
-                    const pos = {
-                        x: rect.left + rect.width / 2 - canvasRect.left,
-                        y: rect.top + rect.height / 2 - canvasRect.top,
-                        step: step,
-                        index: index,
-                        eaten: false
-                    };
-                    this.stepPositions.push(pos);
-                    console.log(`Step ${index + 1} (${step.querySelector('h3')?.textContent || 'Unknown'}) position:`, Math.round(pos.x), Math.round(pos.y));
-                });
-
-                console.log('Total step positions created:', this.stepPositions.length);
-                // Create dots along the path between steps
-                this.createPathDots();
-            }
-            
-            createPathDots() {
-                this.dots = [];
-                for (let i = 0; i < this.stepPositions.length - 1; i++) {
-                    const start = this.stepPositions[i];
-                    const end = this.stepPositions[i + 1];
-                    
-                    // Add dots along the path
-                    const distance = Math.sqrt(Math.pow(end.x - start.x, 2) + Math.pow(end.y - start.y, 2));
-                    const numDots = Math.max(8, Math.floor(distance / 30));
-                    
-                    for (let j = 0; j <= numDots; j++) {
-                        const t = j / numDots;
-                        const x = start.x + (end.x - start.x) * t;
-                        const y = start.y + (end.y - start.y) * t;
-                        
-                        // Add some curve to make it more organic
-                        const curveOffset = Math.sin(t * Math.PI) * 20;
-                        const perpendicularX = -(end.y - start.y) / distance;
-                        const perpendicularY = (end.x - start.x) / distance;
-                        
-                        this.dots.push({
-                            x: x + curveOffset * perpendicularX,
-                            y: y + curveOffset * perpendicularY,
-                            eaten: false,
-                            stepIndex: i
-                        });
-                    }
-                }
-                
-                // Add some bonus dots
-                for (let i = 0; i < 10; i++) {
-                    this.dots.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        eaten: false,
-                        bonus: true
-                    });
-                }
-            }
-            
-            setupScrollListener() {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            this.isAnimating = true;
-                            console.log('Process section is now visible - animation started');
-                        } else {
-                            this.isAnimating = false;
-                            console.log('Process section is no longer visible - animation stopped');
-                        }
-                    });
-                });
-                
-                observer.observe(this.processSection);
-                
-                // Track scroll progress within the section
-                window.addEventListener('scroll', () => {
-                    const rect = this.processSection.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
-                    
-                    if (rect.top < windowHeight && rect.bottom > 0) {
-                        const sectionHeight = rect.height;
-                        const scrolled = windowHeight - rect.top;
-                        this.lastScrollProgress = this.scrollProgress;
-                        this.scrollProgress = Math.max(0, Math.min(1, scrolled / (sectionHeight + windowHeight)));
-                        
-                        console.log('Scroll progress:', this.scrollProgress, 'Dots length:', this.dots.length);
-                        
-                        // Update Pac-Man position based on scroll
-                        this.updatePacmanFromScroll();
-                        
-                        // Handle step eating based on scroll direction
-                        this.handleStepEating();
-                    }
-                });
-            }
-            
-            updatePacmanFromScroll() {
-                if (this.dots.length === 0) {
-                    console.log('No dots available');
-                    return;
-                }
-                
-                // Find the target dot based on scroll progress
-                const targetIndex = Math.floor(this.scrollProgress * this.dots.length);
-                const targetDot = this.dots[Math.min(targetIndex, this.dots.length - 1)];
-                
-                if (targetDot) {
-                    this.pacman.targetX = targetDot.x;
-                    this.pacman.targetY = targetDot.y;
-                    console.log('Pac-Man target:', this.pacman.targetX, this.pacman.targetY);
-                }
-            }
-            
-            handleStepEating() {
-                // Determine scroll direction
-                const isScrollingDown = this.scrollProgress > this.lastScrollProgress;
-                const isScrollingUp = this.scrollProgress < this.lastScrollProgress;
-
-                // Calculate which steps should be eaten based on current scroll progress
-                // Make it more gradual - each step takes up more scroll distance
-                const stepsToEat = Math.floor(this.scrollProgress * this.stepPositions.length * 1.2); // 1.2x for more gradual progression
-                const clampedSteps = Math.max(0, Math.min(this.stepPositions.length, stepsToEat));
-
-                console.log('Scroll progress:', this.scrollProgress.toFixed(3), 'Steps to eat:', clampedSteps, 'of', this.stepPositions.length);
-
-                this.stepPositions.forEach((stepPos, index) => {
-                    const shouldBeEaten = index < clampedSteps;
-
-                    if (shouldBeEaten && !stepPos.eaten) {
-                        // Eat the step
-                        this.eatStep(stepPos);
-                    } else if (!shouldBeEaten && stepPos.eaten && isScrollingUp) {
-                        // Uneat the step when scrolling up
-                        this.uneatStep(stepPos);
-                    }
-                });
-            }
-            
-            eatStep(stepPos) {
-                stepPos.eaten = true;
-                stepPos.step.classList.add('eaten');
-                this.eatenSteps.add(stepPos.index);
-                
-                // Create eating effect at step position
-                this.createEatingEffect(stepPos.x, stepPos.y);
-                
-                // Mark related dots as eaten
-                this.dots.forEach(dot => {
-                    if (dot.stepIndex === stepPos.index) {
-                        dot.eaten = true;
-                    }
-                });
-            }
-            
-            uneatStep(stepPos) {
-                stepPos.eaten = false;
-                stepPos.step.classList.remove('eaten');
-                this.eatenSteps.delete(stepPos.index);
-            }
-            
-            startAnimation() {
-                this.isAnimating = true;
-                this.animate();
-            }
-            
-            animate() {
-                if (!this.isAnimating) {
-                    console.log('Animation stopped');
-                    return;
-                }
-                
-                this.update();
-                this.draw();
-                
-                requestAnimationFrame(() => this.animate());
-            }
-            
-            update() {
-                if (this.hasWon) return;
-                
-                // Move Pac-Man towards target
-                this.movePacman();
-                
-                // Check for dot collisions
-                this.checkDotCollisions();
-                
-                // Update mouth animation (slower)
-                this.pacman.mouthAngle += this.pacman.mouthSpeed;
-                if (this.pacman.mouthAngle > Math.PI / 4) { // Smaller mouth opening
-                    this.pacman.mouthSpeed = -0.08; // Slower speed
-                } else if (this.pacman.mouthAngle < -Math.PI / 4) { // Allow full rotation
-                    this.pacman.mouthSpeed = 0.08; // Slower speed
-                }
-                
-                // Add some random movement for more organic feel
-                this.addRandomMovement();
-            }
-            
-            movePacman() {
-                const dx = this.pacman.targetX - this.pacman.x;
-                const dy = this.pacman.targetY - this.pacman.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance > 2) {
-                    // Slower movement with easing
-                    const easeFactor = 0.02; // Reduced from 0.05 for slower movement
-                    const oldX = this.pacman.x;
-                    const oldY = this.pacman.y;
-                    this.pacman.x += dx * easeFactor;
-                    this.pacman.y += dy * easeFactor;
-
-                    this.pacman.frameCount++;
-                    if (this.pacman.frameCount % 30 === 0) { // Log every 30 frames
-                        console.log('Pac-Man moved from', Math.round(oldX), Math.round(oldY), 'to', Math.round(this.pacman.x), Math.round(this.pacman.y));
-                    }
-
-                    // Update direction for mouth orientation
-                    if (Math.abs(dx) > Math.abs(dy)) {
-                        this.pacman.direction = dx > 0 ? 0 : 2; // right or left
-                    } else {
-                        this.pacman.direction = dy > 0 ? 1 : 3; // down or up
-                    }
-                }
-            }
-            
-            addRandomMovement() {
-                // Add slight random movement for more organic feel
-                const time = Date.now() * 0.001;
-                const randomX = Math.sin(time * 0.5) * 0.5;
-                const randomY = Math.cos(time * 0.7) * 0.5;
-                
-                this.pacman.x += randomX;
-                this.pacman.y += randomY;
-                
-                // Keep Pac-Man within canvas bounds
-                this.pacman.x = Math.max(this.pacman.size / 2, Math.min(this.canvas.width - this.pacman.size / 2, this.pacman.x));
-                this.pacman.y = Math.max(this.pacman.size / 2, Math.min(this.canvas.height - this.pacman.size / 2, this.pacman.y));
-            }
-            
-            checkDotCollisions() {
-                this.dots.forEach((dot, index) => {
-                    if (dot.eaten) return;
-                    
-                    const distance = Math.sqrt(
-                        Math.pow(this.pacman.x - dot.x, 2) + 
-                        Math.pow(this.pacman.y - dot.y, 2)
-                    );
-                    
-                    if (distance < this.pacman.size / 2) {
-                        dot.eaten = true;
-                        this.createEatingEffect(dot.x, dot.y);
-                    }
-                });
-                
-                // Check win condition
-                const eatenDots = this.dots.filter(dot => dot.eaten).length;
-                if (eatenDots === this.dots.length && !this.hasWon) {
-                    this.win();
-                }
-            }
-            
-            createEatingEffect(x, y) {
-                // Create particle effect
-                for (let i = 0; i < 8; i++) {
-                    setTimeout(() => {
-                        this.drawParticle(x, y);
-                    }, i * 25);
-                }
-            }
-            
-            drawParticle(x, y) {
-                const colors = ['#ffff00', '#ffeb3b', '#ffd700', '#ffa500', '#ff6666'];
-                this.ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-                this.ctx.beginPath();
-                this.ctx.arc(x + (Math.random() - 0.5) * 30, y + (Math.random() - 0.5) * 30, 2 + Math.random() * 4, 0, Math.PI * 2);
-                this.ctx.fill();
-                
-                // Fade out particle
-                setTimeout(() => {
-                    this.ctx.clearRect(x - 35, y - 35, 70, 70);
-                }, 400);
-            }
-            
-            win() {
-                this.hasWon = true;
-                this.winMessage.classList.add('show');
-                
-                // Stop animation after a delay
-                setTimeout(() => {
-                    this.isAnimating = false;
-                }, 3000);
-            }
-            
-            draw() {
-                // Clear canvas
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                if (this.hasWon) return;
-                
-                // Draw dots first (behind Pac-Man)
-                this.drawDots();
-                
-                // Draw Pac-Man
-                this.drawPacman();
-                
-                // Draw path guide
-                this.drawPathGuide();
-                
-                // Debug: Draw current position
-                this.ctx.fillStyle = 'red';
-                this.ctx.beginPath();
-                this.ctx.arc(this.pacman.x, this.pacman.y, 3, 0, Math.PI * 2);
-                this.ctx.fill();
-            }
-            
-            drawDots() {
-                this.dots.forEach(dot => {
-                    if (dot.eaten) return;
-
-                    if (dot.bonus) {
-                        // Draw bonus dots (larger, different color)
-                        this.ctx.fillStyle = '#ff69b4';
-                        this.ctx.beginPath();
-                        this.ctx.arc(dot.x, dot.y, 8, 0, Math.PI * 2); // Larger bonus dots
-                        this.ctx.fill();
-
-                        // Add sparkle effect
-                        this.ctx.fillStyle = '#ffffff';
-                        this.ctx.beginPath();
-                        this.ctx.arc(dot.x, dot.y, 12, 0, Math.PI * 2); // Larger sparkle
-                        this.ctx.stroke();
-                    } else {
-                        // Regular dots
-                        this.ctx.fillStyle = '#ffffff';
-                        this.ctx.beginPath();
-                        this.ctx.arc(dot.x, dot.y, 4, 0, Math.PI * 2); // Slightly larger dots
-                        this.ctx.fill();
-
-                        // Add subtle glow
-                        this.ctx.shadowColor = '#ffffff';
-                        this.ctx.shadowBlur = 3;
-                        this.ctx.beginPath();
-                        this.ctx.arc(dot.x, dot.y, 4, 0, Math.PI * 2);
-                        this.ctx.fill();
-                        this.ctx.shadowBlur = 0; // Reset shadow
-                    }
-                });
-            }
-            
-            drawPacman() {
-                const { x, y, size, direction } = this.pacman;
-
-                this.ctx.save();
-                this.ctx.translate(x, y);
-
-                // Add glow effect
-                this.ctx.shadowColor = '#ffff00';
-                this.ctx.shadowBlur = 10;
-
-                // Rotate based on direction
-                const rotations = [0, Math.PI / 2, Math.PI, -Math.PI / 2];
-                this.ctx.rotate(rotations[direction]);
-
-                // Draw Pac-Man body
-                this.ctx.fillStyle = '#ffff00';
-                this.ctx.beginPath();
-                this.ctx.arc(0, 0, size / 2, this.pacman.mouthAngle, Math.PI * 2 - this.pacman.mouthAngle);
-                this.ctx.lineTo(0, 0);
-                this.ctx.closePath();
-                this.ctx.fill();
-
-                // Draw eye
-                this.ctx.fillStyle = '#000';
-                this.ctx.beginPath();
-                this.ctx.arc(-size / 6, -size / 6, size / 8, 0, Math.PI * 2);
-                this.ctx.fill();
-
-                this.ctx.restore();
-            }
-            
-            drawPathGuide() {
-                if (this.dots.length === 0) return;
-                
-                // Draw a subtle path guide
-                this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-                this.ctx.setLineDash([10, 10]);
-                this.ctx.lineWidth = 2;
-                this.ctx.beginPath();
-                
-                this.dots.forEach((dot, index) => {
-                    if (index === 0) {
-                        this.ctx.moveTo(dot.x, dot.y);
-                    } else {
-                        this.ctx.lineTo(dot.x, dot.y);
-                    }
-                });
-                
-                this.ctx.stroke();
-                this.ctx.setLineDash([]);
-                this.ctx.lineWidth = 1;
-            }
-        }
-        
-        // Initialize Pac-Man game
-        window.pacmanGame = new PacManGame();
-        }, 500); // Wait 500ms for DOM to be fully ready
-    });
-    </script>
-
-    
-        
+</html>
