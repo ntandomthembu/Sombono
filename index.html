@@ -3,76 +3,235 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sombono - Reshaping Digital Possibilities. End-to-end technology solutions, custom software development, and digital transformation services that drive real results.">
-    <title>Sombono - Digital Solutions & Innovation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Sombono - Leading technology company delivering custom software development, digital transformation, and innovative solutions across South Africa and Netherlands. Get results-driven tech solutions.">
+    <meta name="keywords" content="custom software development, digital transformation, web development, mobile apps, South Africa tech company, Netherlands software, technology solutions, business automation">
+    <meta name="author" content="Sombono">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ff6b35">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Sombono - Digital Solutions & Innovation">
+    <meta property="og:description" content="End-to-end technology solutions that drive real results. Custom software, digital platforms, and innovative solutions for modern businesses.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sombono.com">
+    <meta property="og:image" content="https://sombono.com/Assets/Sombono-social-preview.png">
+    <meta property="og:site_name" content="Sombono">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sombono - Digital Solutions & Innovation">
+    <meta name="twitter:description" content="Custom software development and digital transformation services across South Africa and Netherlands.">
+    <meta name="twitter:image" content="https://sombono.com/Assets/Sombono-social-preview.png">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Sombono",
+        "url": "https://sombono.com",
+        "logo": "https://sombono.com/Assets/Somboni option 2.png",
+        "description": "Technology company specializing in custom software development and digital transformation",
+        "address": [
+            {
+                "@type": "PostalAddress",
+                "addressCountry": "ZA",
+                "addressRegion": "South Africa"
+            },
+            {
+                "@type": "PostalAddress",
+                "addressCountry": "NL",
+                "addressRegion": "Netherlands"
+            }
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+27739347913",
+            "contactType": "customer service",
+            "email": "hello@sombono.com"
+        },
+        "sameAs": [
+            "https://linkedin.com/company/sombono",
+            "https://github.com/sombono"
+        ],
+        "foundingDate": "2024",
+        "numberOfEmployees": "2-10"
+    }
+    </script>
+    
+    <title>Sombono - Custom Software Development & Digital Transformation | South Africa & Netherlands</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./Home.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    
+    <!-- Critical CSS -->
     <link rel="stylesheet" href="./Home.css">
-
-    <!--Box Icons-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <!-- or -->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
-    <!--Remix Icons-->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
-
-    <!--Google fonts-->
+    
+    <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lora&family=Poppins:ital,wght@1,200&display=swap"
-        rel="stylesheet">
-    <!--carousel fonts-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.css"
-        integrity="sha512-6fa77z38zYI1sU8SpABTKGd4FA21UoVc7/SmTFlVTr8n+4o5MZgfNjkXHn7Kz9nTnk5s/y20HVKreiT7wGuOMQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.min.js"
-        integrity="sha512-uRGAgdi/3oUy3PAbQAH/kkq5zNxEj/7KZbjL2AXVaGfYNvwBqaZTLD7v/n57H2r36wkkNpmCt8TAPVD9Rdq7qQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Optimized Icon Loading -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"></noscript>
+    
+    <!-- Defer Non-Critical Scripts -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.min.js" as="script">
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Critical Responsive CSS - DEADLINE FIX -->
+    <style>
+        /* EMERGENCY RESPONSIVE FIXES */
+        * {
+            box-sizing: border-box !important;
+        }
+        
+        html, body {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            -webkit-text-size-adjust: 100% !important;
+            text-size-adjust: 100% !important;
+        }
+        
+        /* Container responsive fixes */
+        .container, section, div {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Image responsive fixes */
+        img, picture {
+            max-width: 100% !important;
+            height: auto !important;
+            display: block !important;
+        }
+        
+        /* Critical mobile header fix */
+        header {
+            width: 100% !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 9999 !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Mobile navigation critical fix */
+        @media (max-width: 768px) {
+            .navlist {
+                position: fixed !important;
+                top: 0 !important;
+                left: -100% !important;
+                width: 100% !important;
+                height: 100vh !important;
+                background: var(--bg-color) !important;
+                z-index: 99999 !important;
+                transition: left 0.3s ease !important;
+            }
+            
+            .navlist.active {
+                left: 0 !important;
+            }
+            
+            .top-btnn {
+                display: none !important;
+            }
+            
+            #menu-icon {
+                display: block !important;
+                z-index: 999999 !important;
+            }
+        }
+        
+        /* Service buttons critical fix */
+        .enquire-link {
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            display: inline-flex !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .enquire-link:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+        }
+        
+        /* Mobile content spacing */
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 5% !important;
+            }
+            
+            .hero {
+                padding-top: 120px !important;
+            }
+            
+            /* Force responsive text */
+            h1, h2, h3, h4, h5, h6 {
+                font-size: clamp(1rem, 4vw, 3rem) !important;
+                line-height: 1.2 !important;
+            }
+            
+            p {
+                font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+                line-height: 1.6 !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <!-- Critical above-the-fold content loads first -->
     <!--Header-->
-    <header>
-        <a href="#" class="logo">Sombon<span>o.</span></a>
+    <header role="banner">
+        <a href="#home" class="logo" aria-label="Sombono Homepage">Sombon<span>o.</span></a>
 
-
-
-        <ul class="navlist">
-            <li><a href="#home" data-translate="nav-home">Home</a></li>
-            <li><a href="#about" data-translate="nav-about">About</a></li>
-           
-            <li><a href="#portfolio" data-translate="nav-portfolio">Portfolio</a></li>
-            <li><a href="#process" data-translate="nav-process">Our Process</a></li>
-             <li><a href="#services" data-translate="nav-services">Services</a></li>
-        </ul>
+        <nav role="navigation" aria-label="Main navigation">
+            <ul class="navlist">
+                <li><a href="#home" data-translate="nav-home" aria-label="Go to Home section">Home</a></li>
+                <li><a href="#about" data-translate="nav-about" aria-label="Go to About section">About</a></li>
+                <li><a href="#portfolio" data-translate="nav-portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
+                <li><a href="#process" data-translate="nav-process" aria-label="Go to Our Process section">Our Process</a></li>
+                <li><a href="#services" data-translate="nav-services" aria-label="Go to Services section">Services</a></li>
+            </ul>
+        </nav>
 
         <div class="top-btnn">
-            <a href="#Contact" class="h-bt" data-translate="contact-us">Contact Us</a>
+            <a href="#Contact" class="h-bt" data-translate="contact-us" aria-label="Contact Sombono">Contact Us</a>
             
             <!-- Language Dropdown -->
             <div class="language-dropdown-container">
-                <button class="language-btn" id="languageBtn">
-                    <img src="https://flagcdn.com/24x18/za.png" alt="South Africa" class="current-flag">
-                    <i class="ri-arrow-down-s-line"></i>
+                <button class="language-btn" id="languageBtn" aria-label="Select language" aria-expanded="false" aria-haspopup="true">
+                    <img src="https://flagcdn.com/24x18/za.png" alt="South Africa flag" class="current-flag" width="24" height="18">
+                    <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
                 </button>
-                <div class="language-options" id="languageOptions">
-                    <div class="language-option active" data-lang="en">
-                        <img src="https://flagcdn.com/24x18/za.png" alt="South Africa" class="flag-icon">
+                <div class="language-options" id="languageOptions" role="menu" aria-label="Language options">
+                    <div class="language-option active" data-lang="en" role="menuitem">
+                        <img src="https://flagcdn.com/24x18/za.png" alt="South Africa flag" class="flag-icon" width="24" height="18">
                         <span>English</span>
                     </div>
-                    <div class="language-option" data-lang="nl">
-                        <img src="https://flagcdn.com/24x18/nl.png" alt="Netherlands" class="flag-icon">
+                    <div class="language-option" data-lang="nl" role="menuitem">
+                        <img src="https://flagcdn.com/24x18/nl.png" alt="Netherlands flag" class="flag-icon" width="24" height="18">
                         <span>Nederlands</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="bx bx-menu" id="menu-icon"></div>
+        <button class="bx bx-menu" id="menu-icon" aria-label="Open mobile menu" aria-expanded="false" aria-controls="navlist"></button>
 
         <!-- Mobile Language Fallback Button -->
         <!-- <div class="mobile-language-fallback" id="mobileLangFallback">
@@ -83,33 +242,48 @@
         </div> -->
 
     </header>
-    <!--Hero Sections-->
-    <section class="hero" id="home">
-        <img src="./Assets/Sombono mobile app mock up.png">
-        <div class="main-content">
-            <h4 data-translate="hero-subtitle">Reshaping Digital Possibilities</h4>
-            <h1><span data-translate="hero-title-1">End-to-end</span> <span data-translate="hero-title-2">technology solutions</span> <span data-translate="hero-title-3">that drive</span> <span data-translate="hero-title-4">real results</span>.</h1>
-            <p data-translate="hero-description">We collaborate with our clients to deliver custom software, digital platforms, and innovative solutions that help businesses go from good to great.</p>
+    <!--Hero Section-->
+    <main>
+        <section class="hero" id="home" role="banner">
+            <picture>
+                <img src="./Assets/Sombono mobile app mock up.png" 
+                     alt="Sombono mobile app mockup showcasing our technology solutions"
+                     loading="eager" 
+                     width="600" 
+                     height="400"
+                     decoding="async">
+            </picture>
             
-            <div class="main-btn">
-                <a href="#Contact" class="btn" data-translate="start-project">Start a Project</a>
-                <a href="#services" class="btn btn2" data-translate="our-services">Our Services</a>
+            <div class="main-content">
+                <h2 class="hero-subtitle" data-translate="hero-subtitle">Reshaping Digital Possibilities</h2>
+                <h1 class="hero-title">
+                    <span data-translate="hero-title-1">End-to-end</span> 
+                    <span data-translate="hero-title-2">technology solutions</span> 
+                    <span data-translate="hero-title-3">that drive</span> 
+                    <span data-translate="hero-title-4">real results</span>.
+                </h1>
+                <p class="hero-description" data-translate="hero-description">
+                    We collaborate with our clients to deliver custom software, digital platforms, and innovative solutions that help businesses go from good to great.
+                </p>
+                
+                <div class="main-btn" role="group" aria-label="Call to action buttons">
+                    <a href="#Contact" class="btn btn-primary" data-translate="start-project" aria-label="Start a new project with Sombono">Start a Project</a>
+                    <a href="#services" class="btn btn-secondary" data-translate="our-services" aria-label="Learn about our services">Our Services</a>
+                </div>
             </div>
-        </div>
 
-        <!-- Faded South African flag outline background -->
-        <div class="sa-flag-bg"></div>
-    <!-- Faded logo background -->
-   
-    </section>
+            <!-- Decorative elements -->
+            <div class="sa-flag-bg" aria-hidden="true"></div>
+        </section>
+    </main>
 
     <!-- Section Transition -->
-    <div class="section-transition"></div>
+    <div class="section-transition" aria-hidden="true"></div>
 
     <!-- Floating Dark Mode Toggle -->
-    <div class="floating-dark-mode-toggle" id="darkModeToggle">
-        <i class="ri-sun-line" id="darkModeIcon"></i>
-    </div>
+    <button class="floating-dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" aria-pressed="true">
+        <i class="ri-sun-line" id="darkModeIcon" aria-hidden="true"></i>
+    </button>
 
 
     
@@ -571,71 +745,173 @@
     <section class="services" id="services">
         <div class="center-text">
             <h2 data-translate="services-title">Our <span>Services</span></h2>
-            <p data-translate="services-description">From strategy and design to development, testing and deployment, we deliver solutions that drive real returns.</p>
+            <p data-translate="services-description">We partner with businesses to design, build, and scale world-class digital solutions. From startups to enterprise organizations, we deliver technology that drives meaningful impact and measurable growth.</p>
         </div>
 
-        <div class="Slider-content">
-            <div class="box-section">
-                <div class="box-container">
-                    <div class="box">
-                        <i class="ri-code-box-line"></i>
-                        </br>
-                        <div class="content">
-                            <h3 data-translate="service-custom-software">Custom Software</h3>
-                            <p data-translate="service-custom-software-desc">
-                                Enterprise applications, digital platforms, and mobile apps tailored to your business requirements and built with modern technologies.
-                            </p>
+        <!-- Services Categories -->
+        <div class="services-categories">
+            <!-- Foundations Category -->
+            <div class="service-category">
+                <div class="category-header">
+                    <div class="category-badge">FOUNDATIONS</div>
+                    <h3>Build Your Digital Foundation</h3>
+                    <p>Essential services to establish your digital presence and capabilities</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-code-box-line"></i>
                         </div>
-                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                        <div class="service-content">
+                            <h4>Custom Software Development</h4>
+                            <p>Enterprise-grade web applications, mobile apps, and cloud-native solutions built with cutting-edge technologies. From MVP to scale, we deliver robust software that grows with your business.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• Full-Stack Development</span>
+                                <span class="highlight-item">• Cloud Architecture</span>
+                                <span class="highlight-item">• DevOps Integration</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Start Your Project</a>
+                            <a href="#Contact" class="service-btn secondary">Learn More</a>
+                        </div>
                     </div>
 
-                    <div class="box">
-                        <i class="ri-line-chart-fill"></i>
-                        </br>
-                        <div class="content">
-                            <h3 data-translate="service-data-analytics">Data & Analytics</h3>
-                            <p data-translate="service-data-analytics-desc">
-                                Business intelligence, data science, and data engineering solutions that transform raw data into actionable insights for better decision-making.
-                            </p>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-palette-line"></i>
                         </div>
-                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                        <div class="service-content">
+                            <h4>Experience Design</h4>
+                            <p>Create exceptional user experiences that delight customers and drive engagement. From research to prototyping, we design digital products that users love.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• UX Research & Strategy</span>
+                                <span class="highlight-item">• UI Design & Prototyping</span>
+                                <span class="highlight-item">• Design Systems</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Design Better</a>
+                            <a href="#Contact" class="service-btn secondary">View Portfolio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Growth Category -->
+            <div class="service-category">
+                <div class="category-header">
+                    <div class="category-badge">GROWTH</div>
+                    <h3>Scale Your Business</h3>
+                    <p>Advanced solutions to accelerate growth and optimize operations</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-line-chart-fill"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Data & Analytics</h4>
+                            <p>Transform your data into competitive advantage with advanced analytics, machine learning, and business intelligence solutions. Make data-driven decisions that accelerate growth.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• AI & Machine Learning</span>
+                                <span class="highlight-item">• Business Intelligence</span>
+                                <span class="highlight-item">• Data Engineering</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Unlock Your Data</a>
+                            <a href="#Contact" class="service-btn secondary">Case Studies</a>
+                        </div>
                     </div>
 
-                    <div class="box">
-                        <i class="ri-css3-fill"></i>
-                        </br>
-                        <div class="content">
-                            <h3 data-translate="service-product-design">Product Design</h3>
-                            <p data-translate="service-product-design-desc">
-                                Product strategy, design thinking, and user experience solutions that create intuitive and engaging digital experiences.
-                            </p>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-rocket-line"></i>
                         </div>
-                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                        <div class="service-content">
+                            <h4>Digital Transformation</h4>
+                            <p>Reimagine your business for the digital age. We help organizations modernize their technology, processes, and culture to stay competitive and drive innovation.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• Legacy Modernization</span>
+                                <span class="highlight-item">• Process Automation</span>
+                                <span class="highlight-item">• Change Management</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Transform Now</a>
+                            <a href="#Contact" class="service-btn secondary">Success Stories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Excellence Category -->
+            <div class="service-category">
+                <div class="category-header">
+                    <div class="category-badge">EXCELLENCE</div>
+                    <h3>Achieve Digital Excellence</h3>
+                    <p>Strategic guidance and specialized training for sustained success</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-lightbulb-line"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Strategy & Advisory</h4>
+                            <p>Navigate complex technology decisions with confidence. Our experts provide strategic guidance on architecture, technology selection, and digital roadmaps.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• Technology Strategy</span>
+                                <span class="highlight-item">• Architecture Review</span>
+                                <span class="highlight-item">• Digital Roadmaps</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Get Expert Advice</a>
+                            <a href="#Contact" class="service-btn secondary">Book Consultation</a>
+                        </div>
                     </div>
 
-                    <div class="box">
-                        <i class="ri-rocket-line"></i>
-                        </br>
-                        <div class="content">
-                            <h3 data-translate="service-digital-transformation">Digital Transformation</h3>
-                            <p data-translate="service-digital-transformation-desc">
-                                Culture, products, and channels transformation to help businesses adapt and thrive in the digital economy.
-                            </p>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-graduation-cap-line"></i>
                         </div>
-                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
+                        <div class="service-content">
+                            <h4>Training & Mentorship</h4>
+                            <p>Empower your team with cutting-edge skills and knowledge. Custom training programs, workshops, and mentorship to accelerate your digital capabilities.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• Technical Training</span>
+                                <span class="highlight-item">• Team Mentorship</span>
+                                <span class="highlight-item">• Best Practices</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Upskill Your Team</a>
+                            <a href="#Contact" class="service-btn secondary">Training Catalog</a>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="box">
-                        <i class="ri-lightbulb-line"></i>
-                        </br>
-                        <div class="content">
-                            <h3 data-translate="service-strategy-advisory">Strategy & Advisory</h3>
-                            <p data-translate="service-strategy-advisory-desc">
-                                Better software, better teams, and better technology investments through strategic guidance and expert consultation.
-                            </p>
-                        </div>
-                        <a href="#Contact" class="enquire-link" data-translate="enquire-now">Enquire Now <i class="ri-arrow-right-line"></i></a>
-                    </div>
+        <!-- Call to Action -->
+        <div class="services-cta">
+            <div class="cta-content">
+                <h3>Ready to Get Started?</h3>
+                <p>Let's discuss how we can help transform your business with the right technology solutions.</p>
+                <div class="cta-actions">
+                    <a href="#Contact" class="cta-btn primary">
+                        <i class="ri-phone-line"></i>
+                        Schedule a Consultation
+                    </a>
+                    <a href="#portfolio" class="cta-btn secondary">
+                        <i class="ri-folder-line"></i>
+                        View Our Work
+                    </a>
                 </div>
             </div>
         </div>
@@ -1138,75 +1414,116 @@
             }
         });
 
-        // Menu Icon click event to toggle navigation visibility
-        document.addEventListener('DOMContentLoaded', function () {
+        // Enhanced smooth scrolling for ALL navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // DEADLINE FIX: Ensure all links work
+            console.log('Sombono: Initializing navigation...');
+            
+            // Enhanced smooth scrolling with offset for fixed header
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    console.log('Sombono: Link clicked:', this.getAttribute('href'));
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    
+                    if (target) {
+                        console.log('Sombono: Scrolling to:', targetId);
+                        const headerHeight = document.querySelector('header').offsetHeight || 80;
+                        const targetPosition = target.offsetTop - headerHeight - 20;
+                        
+                        // Close mobile menu if open
+                        const navList = document.querySelector('.navlist');
+                        if (navList && navList.classList.contains('active')) {
+                            navList.classList.remove('active');
+                        }
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Fallback for older browsers
+                        setTimeout(() => {
+                            if (Math.abs(window.scrollY - targetPosition) > 50) {
+                                window.scrollTo(0, targetPosition);
+                            }
+                        }, 1000);
+                    } else {
+                        console.warn('Sombono: Target not found:', targetId);
+                    }
+                });
+            });
+            
+            // Service button specific fixes
+            document.querySelectorAll('.enquire-link').forEach(button => {
+                button.style.cursor = 'pointer';
+                button.style.pointerEvents = 'auto';
+                
+                // Add click feedback
+                button.addEventListener('click', function(e) {
+                    console.log('Sombono: Service button clicked');
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // Menu functionality
             const menuIcon = document.getElementById('menu-icon');
             const navList = document.querySelector('.navlist');
 
             if (menuIcon && navList) {
-                menuIcon.addEventListener('click', () => {
+                console.log('Sombono: Mobile menu initialized');
+                menuIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Sombono: Mobile menu toggled');
                     navList.classList.toggle('active');
+                    menuIcon.setAttribute('aria-expanded', navList.classList.contains('active'));
                 });
             }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (navList && !navList.contains(e.target) && !menuIcon.contains(e.target)) {
+                    navList.classList.remove('active');
+                    if (menuIcon) menuIcon.setAttribute('aria-expanded', 'false');
                 }
             });
-        });
-    </script>
-        // Notification system
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <i class="${type === 'success' ? 'ri-check-circle-line' : 'ri-error-warning-line'}"></i>
-                <span>${message}</span>
-                <button onclick="this.parentElement.remove()" class="close-btn">
-                    <i class="ri-close-line"></i>
-                </button>
-            `;
             
-            document.body.appendChild(notification);
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.remove();
-                }
-            }, 5000);
-        }
-
-        // WhatsApp functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const whatsappFloat = document.getElementById('whatsapp-float');
-            
-            // Show/hide WhatsApp button based on scroll position
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    whatsappFloat.style.opacity = '1';
-                    whatsappFloat.style.visibility = 'visible';
+            // Additional responsiveness check
+            function checkResponsive() {
+                const width = window.innerWidth;
+                console.log('Sombono: Window width:', width);
+                if (width <= 768) {
+                    document.body.classList.add('mobile-device');
                 } else {
-                    whatsappFloat.style.opacity = '0.7';
+                    document.body.classList.remove('mobile-device');
                 }
-            });
-
-            // Track WhatsApp button clicks
-            whatsappFloat.addEventListener('click', function() {
-                // You can add analytics tracking here if needed
-                console.log('WhatsApp button clicked');
-            });
+            }
+            
+            checkResponsive();
+            window.addEventListener('resize', checkResponsive);
+            
+            // DEADLINE FIX: Force button functionality on mobile
+            if ('ontouchstart' in window) {
+                console.log('Sombono: Touch device detected, enabling touch events');
+                document.querySelectorAll('.enquire-link, .btn').forEach(btn => {
+                    btn.addEventListener('touchstart', function() {
+                        this.style.transform = 'scale(0.95)';
+                    });
+                    btn.addEventListener('touchend', function() {
+                        this.style.transform = '';
+                    });
+                });
+            }
+            
+            console.log('Sombono: All systems initialized successfully!');
         });
     </script>
+       
 
     <style>
         /* Single Spin Animation for Hovered Service Card */
@@ -1261,7 +1578,7 @@
             padding: 14px 18px;
             border-radius: 12px;
             font-weight: 700;
-            color: #ffffff;
+            color: #222;
             z-index: 99999;
             box-shadow: 0 12px 40px rgba(0,0,0,0.45);
             max-width: 460px;
@@ -1270,14 +1587,15 @@
             -webkit-backdrop-filter: blur(6px);
             transform-origin: top right;
             animation: toast-in 240ms ease-out;
+            background: rgba(255,255,255,0.92);
         }
 
-        .notification.success { background: linear-gradient(135deg,#28a745,#34ce57); }
-        .notification.error   { background: linear-gradient(135deg,#dc3545,#e74c3c); }
+    .notification.success { border: 2px solid #28a745; }
+    .notification.error   { border: 2px solid #dc3545; }
 
-        .notification i { font-size: 20px; opacity: 0.96; }
-        .notification span { line-height: 1.2; font-size: 14px; }
-        .notification .close-btn { background: transparent; border: none; color: rgba(255,255,255,0.95); cursor: pointer; font-size: 18px; margin-left: 8px; }
+    .notification i { font-size: 20px; opacity: 0.96; color: inherit; }
+    .notification span { line-height: 1.2; font-size: 14px; color: #222; text-shadow: 0 1px 6px #fff, 0 0 2px #fff; }
+    .notification .close-btn { background: transparent; border: none; color: #222; cursor: pointer; font-size: 18px; margin-left: 8px; }
 
         @keyframes toast-in {
             from { opacity: 0; transform: translateY(-8px) scale(0.98); }
@@ -1299,6 +1617,390 @@
         /* Error state overrides for contact status */
         #contact-status.error { background: linear-gradient(90deg,#fff0f0,#ffecec); color: #a10f0f; }
         #contact-status.success { background: linear-gradient(90deg,#f0fff4,#ecfff5); color: #0a6b2d; }
+    </style>
+    <style>
+    /* Mobile alignment fixes */
+    @media (max-width: 600px) {
+        /* Hero section buttons */
+        .main-btn {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 12px !important;
+        }
+        .main-btn .btn,
+        .main-btn .btn2 {
+            width: 90vw !important;
+            max-width: 340px !important;
+            margin: 0 auto !important;
+            display: block !important;
+        }
+
+        /* COMPREHENSIVE MOBILE OPTIMIZATION */
+        
+        /* Hero Section Mobile */
+        .hero {
+            flex-direction: column !important;
+            text-align: center !important;
+            padding: 120px 5% 60px !important;
+            min-height: auto !important;
+        }
+        
+        .hero picture {
+            order: 1 !important;
+            width: 100% !important;
+            max-width: 300px !important;
+            margin: 0 auto 30px !important;
+            display: block !important;
+        }
+        
+        .hero picture img {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 300px !important;
+            border-radius: 15px !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .hero .main-content {
+            order: 2 !important;
+            text-align: center !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+        }
+        
+        .hero-title {
+            font-size: 2.2rem !important;
+            line-height: 1.2 !important;
+            margin-bottom: 20px !important;
+            font-weight: 700 !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem !important;
+            margin-bottom: 15px !important;
+            color: var(--other-color) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+        
+        .hero-description {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 30px !important;
+            padding: 0 !important;
+            color: var(--other-color) !important;
+        }
+        
+        .main-btn {
+            flex-direction: column !important;
+            gap: 15px !important;
+            width: 100% !important;
+            align-items: center !important;
+        }
+        
+        .main-btn .btn {
+            width: 100% !important;
+            max-width: 280px !important;
+            padding: 15px 20px !important;
+            font-size: 1rem !important;
+            text-align: center !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+        }
+
+        /* Services section - Complete Mobile Overhaul */
+        .services {
+            padding: 60px 5% !important;
+        }
+        
+        .services .center-text {
+            text-align: center !important;
+            margin-bottom: 40px !important;
+        }
+        
+        .services .center-text h2 {
+            font-size: 2.2rem !important;
+            margin-bottom: 15px !important;
+        }
+        
+        .services .center-text p {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+            padding: 0 10px !important;
+        }
+        
+        .Slider-content {
+            padding: 0 !important;
+            width: 100% !important;
+        }
+        
+        .box-section {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+        
+        .box-container {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 20px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .box {
+            width: 100% !important;
+            max-width: 350px !important;
+            margin: 0 auto !important;
+            padding: 25px 20px !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+            border: 1px solid rgba(255, 102, 102, 0.1) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .box:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 35px rgba(255, 102, 102, 0.15) !important;
+        }
+        
+        .box i {
+            font-size: 2.5rem !important;
+            color: var(--main-color) !important;
+            margin-bottom: 15px !important;
+            display: block !important;
+            text-align: center !important;
+        }
+        
+        .box .content {
+            flex-grow: 1 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            text-align: center !important;
+        }
+        
+        .box h3 {
+            font-size: 1.3rem !important;
+            font-weight: 700 !important;
+            color: var(--text-color) !important;
+            margin-bottom: 12px !important;
+            text-align: center !important;
+            line-height: 1.3 !important;
+        }
+        
+        .box p {
+            font-size: 0.95rem !important;
+            color: var(--other-color) !important;
+            line-height: 1.6 !important;
+            margin-bottom: 15px !important;
+            text-align: center !important;
+            flex-grow: 1 !important;
+        }
+        
+        .service-features {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 6px !important;
+            margin: 15px 0 !important;
+            justify-content: center !important;
+        }
+        
+        .feature-tag {
+            font-size: 0.75rem !important;
+            padding: 4px 10px !important;
+            border-radius: 12px !important;
+            background: var(--main-color) !important;
+            color: white !important;
+            font-weight: 500 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+        
+        .enquire-link {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            padding: 12px 20px !important;
+            background: var(--main-color) !important;
+            color: white !important;
+            text-decoration: none !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            margin-top: auto !important;
+            text-align: center !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            border: none !important;
+        }
+        
+        .enquire-link:hover {
+            background: #e55757 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(255, 102, 102, 0.3) !important;
+        }
+        
+        /* FORCE BUTTON FUNCTIONALITY */
+        .enquire-link:active {
+            transform: scale(0.95) !important;
+        }
+
+        /* About Section Mobile */
+        .about {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+            text-align: center !important;
+            padding: 60px 5% !important;
+        }
+        
+        .about-img {
+            order: 1 !important;
+            width: 100% !important;
+            max-width: 300px !important;
+            margin: 0 auto !important;
+        }
+        
+        .about-img img {
+            width: 100% !important;
+            height: auto !important;
+            border-radius: 15px !important;
+        }
+        
+        .about-text {
+            order: 2 !important;
+            text-align: center !important;
+        }
+        
+        .about-text h2 {
+            font-size: 2rem !important;
+            margin-bottom: 20px !important;
+        }
+        
+        .about-text p {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Navigation Mobile */
+        header {
+            padding: 15px 5% !important;
+        }
+        
+        .navlist {
+            position: fixed !important;
+            top: 0 !important;
+            left: -100% !important;
+            width: 100% !important;
+            height: 100vh !important;
+            background: var(--bg-color) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 2rem !important;
+            transition: left 0.3s ease !important;
+            z-index: 9999 !important;
+        }
+        
+        .navlist.open {
+            left: 0 !important;
+        }
+        
+        .navlist a {
+            font-size: 1.5rem !important;
+            margin: 0 !important;
+            color: var(--text-color) !important;
+        }
+        
+        #menu-icon {
+            display: block !important;
+            font-size: 2rem !important;
+            color: var(--text-color) !important;
+            cursor: pointer !important;
+        }
+
+        /* Join Us section */
+        .join-us .join-content {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+        
+        .join-us .text {
+            width: 100% !important;
+            text-align: center !important;
+            margin-bottom: 20px !important;
+        }
+        
+        .join-us .image {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+        }
+        
+        .image-container img {
+            max-width: 90vw !important;
+            height: auto !important;
+        }
+
+        /* Contact Section Mobile */
+        .Contact {
+            padding: 60px 5% !important;
+        }
+        
+        .contact-content {
+            grid-template-columns: 1fr !important;
+            gap: 30px !important;
+        }
+        
+        .contact-form {
+            order: 1 !important;
+        }
+        
+        .contact-info {
+            order: 2 !important;
+        }
+
+        /* General Mobile Improvements */
+        .center-text h2 {
+            font-size: 2rem !important;
+            line-height: 1.2 !important;
+        }
+        
+        .center-text p {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+        }
+        
+        /* Ensure proper touch targets */
+        button, .btn, a {
+            min-height: 44px !important;
+            min-width: 44px !important;
+        }
+        
+        /* Improve readability */
+        * {
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        /* Handle long content gracefully */
+        .box, .about-text, .hero .main-content {
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+    }
     </style>
     <script>
 document.addEventListener('scroll', () => {     
@@ -1441,9 +2143,485 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
+<!-- Mobile & Performance Optimization Styles -->
+<style>
+    /* Critical Performance Optimizations */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+    
+    img, picture {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    /* Mobile-First Responsive Design */
+    @media (max-width: 768px) {
+        /* Reduce animations for better performance */
+        *, *::before, *::after {
+            animation-duration: 0.3s !important;
+            transition-duration: 0.3s !important;
+        }
+        
+        /* Optimized Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding: 80px 15px 40px;
+            text-align: center;
+        }
+        
+        .hero picture img {
+            width: 90%;
+            max-width: 350px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-title {
+            font-size: clamp(1.8rem, 8vw, 2.5rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Mobile Navigation */
+        .navlist {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: var(--bg-color);
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 50px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .navlist.active {
+            left: 0;
+        }
+        
+        .navlist li {
+            margin: 20px 0;
+        }
+        
+        .navlist a {
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        /* Enhanced Mobile Header */
+        header {
+            padding: 12px 5% !important;
+            height: 70px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+        
+        .logo {
+            font-size: 22px !important;
+            font-weight: 700;
+        }
+        
+        #menu-icon {
+            display: block !important;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+        
+        .top-btnn {
+            display: none !important;
+        }
+        
+        /* Mobile Navigation */
+        .navlist {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: var(--bg-color);
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 40px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navlist.active {
+            left: 0;
+        }
+        
+        .navlist li {
+            margin: 15px 0;
+            width: 90%;
+        }
+        
+        .navlist a {
+            display: block;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            text-align: center;
+            border-radius: 8px;
+            width: 100%;
+        }
+        
+        /* Enhanced Mobile Hero */
+        .hero {
+            padding: 90px 5% 60px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+            min-height: calc(100vh - 70px) !important;
+            gap: 20px !important;
+        }
+        
+        .hero picture {
+            order: 1;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 0 20px 0;
+            align-self: center;
+        }
+        
+        .hero img {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 280px !important;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero .main-content {
+            order: 2;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            text-align: left !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 0.9rem !important;
+            margin-bottom: 10px !important;
+            color: var(--other-color) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-title {
+            font-size: 1.8rem !important;
+            line-height: 1.2 !important;
+            margin-bottom: 20px !important;
+            font-weight: 700 !important;
+        }
+        
+        .hero-description {
+            font-size: 0.95rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 30px !important;
+            padding: 0 !important;
+            color: var(--other-color) !important;
+        }
+        
+        /* Enhanced Mobile Buttons - Left Aligned */
+        .main-btn {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 15px !important;
+            align-items: flex-start !important;
+            width: 100% !important;
+            max-width: 300px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .btn {
+            width: 100% !important;
+            max-width: 280px !important;
+            padding: 16px 24px !important;
+            font-size: 1rem !important;
+            text-align: center !important;
+            border-radius: 12px !important;
+            font-weight: 600 !important;
+            min-height: 52px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+            letter-spacing: 0.3px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%) !important;
+            color: white !important;
+            border: none !important;
+            box-shadow: 0 4px 15px rgba(255, 102, 102, 0.3) !important;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(255, 102, 102, 0.4) !important;
+        }
+        
+        .btn-secondary {
+            background: transparent !important;
+            color: var(--main-color) !important;
+            border: 2px solid var(--main-color) !important;
+            box-shadow: 0 2px 10px rgba(255, 102, 102, 0.1) !important;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--main-color) !important;
+            color: white !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(255, 102, 102, 0.3) !important;
+        }
+        
+        /* Enhanced Mobile Services - Left Aligned Like Process Steps */
+        .services {
+            padding: 80px 5% !important;
+        }
+        
+        .box-container {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+            gap: 20px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            max-width: 100% !important;
+            overflow: visible !important;
+        }
+        
+        .box {
+            width: 100% !important;
+            max-width: 320px !important;
+            margin: 0 !important;
+            padding: 25px 20px !important;
+            display: block !important;
+            text-align: left !important;
+        }
+        
+        .box h3 {
+            text-align: left !important;
+        }
+        
+        .box p {
+            text-align: left !important;
+        }
+        
+        .box .enquire-link {
+            text-align: left !important;
+            justify-content: flex-start !important;
+        }
+        
+        /* Service Feature Tags */
+        .service-features {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+            margin: 15px 0 !important;
+        }
+        
+        .feature-tag {
+            display: inline-block !important;
+            background: var(--main-color) !important;
+            color: white !important;
+            padding: 4px 12px !important;
+            border-radius: 16px !important;
+            font-size: 0.8rem !important;
+            font-weight: 500 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            box-shadow: 0 2px 4px rgba(255, 102, 102, 0.2) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .feature-tag:hover {
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 8px rgba(255, 102, 102, 0.3) !important;
+        }
+        
+        /* Dark mode support for feature tags */
+        [data-theme="dark"] .feature-tag {
+            background: rgba(255, 102, 102, 0.8) !important;
+            color: var(--bg-color) !important;
+        }
+        
+        /* Touch Targets */
+        button, .btn, a {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Respect user preference for reduced motion only */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Override mobile animation speeds to match desktop */
+        @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+            .hero-title {
+                animation: fadeInUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both !important;
+                opacity: 0;
+            }
+            
+            .hero-subtitle {
+                animation: fadeInUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both !important;
+                opacity: 0;
+            }
+            
+            .hero-description {
+                animation: fadeInUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.9s both !important;
+                opacity: 0;
+            }
+            
+            .main-btn {
+                animation: fadeInUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s both !important;
+                opacity: 0;
+            }
+            
+            .btn {
+                transition: all 0.3s ease !important;
+            }
+            
+            .btn:hover {
+                transition: all 0.3s ease !important;
+            }
+            
+            /* Mobile navigation animations */
+            .navlist {
+                transition: left 0.3s ease !important;
+            }
+            
+            /* Floating elements */
+            .floating-dark-mode-toggle {
+                transition: all 0.3s ease !important;
+            }
+        }
+        
+        /* Mobile Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+    
+    /* Accessibility Improvements */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+    
+    /* Focus Indicators */
+    a:focus, button:focus, input:focus, textarea:focus, select:focus {
+        outline: 2px solid var(--main-color);
+        outline-offset: 2px;
+    }
+</style>
+
+<!-- Optimized Script Loading -->
+<script>
+    // Critical JavaScript for mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuIcon = document.getElementById('menu-icon');
+        const navList = document.querySelector('.navlist');
+        
+        if (menuIcon && navList) {
+            menuIcon.addEventListener('click', function() {
+                navList.classList.toggle('active');
+                this.setAttribute('aria-expanded', navList.classList.contains('active'));
+            });
+        }
+        
+        // Close menu when clicking nav links on mobile
+        document.querySelectorAll('.navlist a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navList) {
+                    navList.classList.remove('active');
+                    menuIcon.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    });
+    
+    // Defer non-critical scripts
+    window.addEventListener('load', function() {
+        // Load analytics after page load
+        setTimeout(() => {
+            if (window.cookieManager && window.cookieManager.isCookieEnabled('analytics')) {
+                window.cookieManager.initializeAnalytics('G-XXXXXXXXXX');
+            }
+        }, 3000);
+    });
+    
+    // Service Worker Registration for PWA
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => console.log('SW registered'))
+                .catch(registrationError => console.log('SW registration failed'));
+        });
+    }
+</script>
+
 <!-- Scripts -->
-<script src="translation.js"></script>
-<script src="cookies.js"></script>
+<script src="translation.js" defer></script>
+<script src="cookies.js" defer></script>
 
 </body>
 

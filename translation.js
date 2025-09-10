@@ -39,17 +39,19 @@ class TranslationManager {
 
                 // Services Section
                 'services-title': 'Our Services',
-                'services-description': 'From strategy and design to development, testing and deployment, we deliver solutions that drive real returns.',
-                'service-custom-software': 'Custom Software',
-                'service-custom-software-desc': 'Enterprise applications, digital platforms, and mobile apps tailored to your business requirements and built with modern technologies.',
+                'services-description': 'We partner with businesses to design, build, and scale world-class digital solutions. From startups to enterprise organizations, we deliver technology that drives meaningful impact and measurable growth.',
+                'service-custom-software': 'Custom Software Development',
+                'service-custom-software-desc': 'Enterprise-grade web applications, mobile apps, and cloud-native solutions built with cutting-edge technologies. From MVP to scale, we deliver robust software that grows with your business.',
                 'service-data-analytics': 'Data & Analytics',
-                'service-data-analytics-desc': 'Business intelligence, data science, and data engineering solutions that transform raw data into actionable insights for better decision-making.',
-                'service-product-design': 'Product Design',
-                'service-product-design-desc': 'Product strategy, design thinking, and user experience solutions that create intuitive and engaging digital experiences.',
+                'service-data-analytics-desc': 'Transform your data into competitive advantage with advanced analytics, machine learning, and business intelligence solutions. Make data-driven decisions that accelerate growth.',
+                'service-product-design': 'Experience Design',
+                'service-product-design-desc': 'Create exceptional user experiences that delight customers and drive engagement. From research to prototyping, we design digital products that users love.',
                 'service-digital-transformation': 'Digital Transformation',
-                'service-digital-transformation-desc': 'Culture, products, and channels transformation to help businesses adapt and thrive in the digital economy.',
+                'service-digital-transformation-desc': 'Reimagine your business for the digital age. We help organizations modernize their technology, processes, and culture to stay competitive and drive innovation.',
                 'service-strategy-advisory': 'Strategy & Advisory',
-                'service-strategy-advisory-desc': 'Better software, better teams, and better technology investments through strategic guidance and expert consultation.',
+                'service-strategy-advisory-desc': 'Navigate complex technology decisions with confidence. Our experts provide strategic guidance on architecture, technology selection, and digital roadmaps.',
+                'service-training-mentorship': 'Training & Mentorship',
+                'service-training-mentorship-desc': 'Empower your team with cutting-edge skills and knowledge. Custom training programs, workshops, and mentorship to accelerate your digital capabilities.',
                 'enquire-now': 'Enquire Now',
 
                 // Join Section

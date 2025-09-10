@@ -294,17 +294,17 @@ class CookieManager {
     }
 
     showConsentToast(message) {
-        // Create a simple toast notification
+        // Optimized toast with mobile-first design and performance
         const toast = document.createElement('div');
         toast.className = 'cookie-toast';
         toast.innerHTML = `
             <div class="cookie-toast-content">
-                <i class="ri-check-line"></i>
+                <i class="ri-check-line" aria-hidden="true"></i>
                 <span>${message}</span>
             </div>
         `;
         
-        // Add toast styles if not already present
+        // Optimized styles - mobile-first, reduced animations
         if (!document.querySelector('.cookie-toast-styles')) {
             const style = document.createElement('style');
             style.className = 'cookie-toast-styles';
@@ -312,38 +312,62 @@ class CookieManager {
                 .cookie-toast {
                     position: fixed;
                     top: 20px;
-                    right: 20px;
+                    right: 10px;
+                    left: 10px;
+                    max-width: 360px;
+                    margin: 0 auto;
                     background: var(--main-color);
                     color: white;
-                    padding: 16px 20px;
+                    padding: 12px 16px;
                     border-radius: 8px;
-                    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
                     z-index: 10002;
-                    transform: translateX(400px);
-                    transition: transform 0.3s ease;
+                    opacity: 0;
+                    transform: translateY(-20px);
+                    transition: all 0.2s ease;
+                    will-change: transform, opacity;
                 }
                 .cookie-toast.show {
-                    transform: translateX(0);
+                    opacity: 1;
+                    transform: translateY(0);
                 }
                 .cookie-toast-content {
                     display: flex;
                     align-items: center;
                     gap: 8px;
                     font-weight: 500;
+                    font-size: 14px;
+                }
+                .cookie-toast-content span {
+                    color: white !important;
+                    line-height: 1.3;
+                }
+                @media (min-width: 768px) {
+                    .cookie-toast {
+                        right: 20px;
+                        left: auto;
+                        max-width: 400px;
+                        margin: 0;
+                    }
                 }
             `;
             document.head.appendChild(style);
         }
 
         document.body.appendChild(toast);
+        // Optimized animation timing
+        requestAnimationFrame(() => {
+            toast.classList.add('show');
+        });
         
-        // Show toast
-        setTimeout(() => toast.classList.add('show'), 100);
-        
-        // Hide and remove toast
+        // Auto-remove with cleanup
         setTimeout(() => {
             toast.classList.remove('show');
-            setTimeout(() => document.body.removeChild(toast), 300);
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    document.body.removeChild(toast);
+                }
+            }, 200);
         }, 3000);
     }
 
@@ -549,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSectionTransitions();
 });
 
-// Smooth section transitions with scroll effects
+// Optimized section transitions with reduced performance impact
 function initSectionTransitions() {
     const hero = document.querySelector('.hero');
     const about = document.querySelector('.about');
@@ -557,60 +581,73 @@ function initSectionTransitions() {
     
     if (!hero || !about || !transitionElement) return;
     
-    // Create Intersection Observer for smooth transitions
+    // Reduced thresholds for better performance
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        threshold: [0, 0.25, 0.5, 0.75, 1.0] // Reduced from 11 to 5 thresholds
     };
     
+    // Debounced scroll handler for better performance
+    let isScrolling = false;
+    
     const heroObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const ratio = entry.intersectionRatio;
-            
-            if (entry.target === hero) {
-                // Adjust hero opacity and transform as it scrolls out
-                const opacity = Math.max(0.3, ratio);
-                const translateY = (1 - ratio) * 30;
+        if (isScrolling) return;
+        isScrolling = true;
+        
+        requestAnimationFrame(() => {
+            entries.forEach(entry => {
+                const ratio = entry.intersectionRatio;
                 
-                hero.style.opacity = opacity;
-                hero.style.transform = `translateY(${translateY}px)`;
-                
-                // Show transition elements when hero is partially visible
-                if (ratio < 0.8 && ratio > 0.2) {
-                    transitionElement.style.opacity = '1';
-                    transitionElement.style.transform = 'translateY(0)';
-                } else {
-                    transitionElement.style.opacity = '0';
-                    transitionElement.style.transform = 'translateY(20px)';
+                if (entry.target === hero) {
+                    // Simplified animations for mobile
+                    if (window.innerWidth <= 768) {
+                        hero.style.opacity = ratio > 0.5 ? '1' : '0.8';
+                    } else {
+                        const opacity = Math.max(0.3, ratio);
+                        const translateY = (1 - ratio) * 15; // Reduced movement
+                        
+                        hero.style.opacity = opacity;
+                        hero.style.transform = `translateY(${translateY}px)`;
+                    }
+                    
+                    // Simplified transition element
+                    if (ratio < 0.8 && ratio > 0.2) {
+                        transitionElement.style.opacity = '1';
+                    } else {
+                        transitionElement.style.opacity = '0';
+                    }
                 }
-            }
+            });
+            isScrolling = false;
         });
     }, observerOptions);
     
     const aboutObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.target === about && entry.isIntersecting) {
-                // Add entrance animation to about section
+                // Simplified about animation
                 about.style.opacity = '1';
                 about.style.transform = 'translateY(0)';
                 
-                // Animate about content with staggered effect
-                const aboutImg = about.querySelector('.about-img');
-                const aboutText = about.querySelector('.about-text');
-                
-                if (aboutImg) {
-                    setTimeout(() => {
-                        aboutImg.style.opacity = '1';
-                        aboutImg.style.transform = 'translateX(0) scale(1)';
-                    }, 200);
-                }
-                
-                if (aboutText) {
-                    setTimeout(() => {
-                        aboutText.style.opacity = '1';
-                        aboutText.style.transform = 'translateX(0)';
-                    }, 400);
+                // Staggered animations only on desktop
+                if (window.innerWidth > 768) {
+                    const aboutImg = about.querySelector('.about-img');
+                    const aboutText = about.querySelector('.about-text');
+                    
+                    if (aboutImg) {
+                        setTimeout(() => {
+                            aboutImg.style.opacity = '1';
+                            aboutImg.style.transform = 'translateX(0) scale(1)';
+                        }, 100);
+                    }
+                    
+                    if (aboutText) {
+                        setTimeout(() => {
+                            aboutText.style.opacity = '1';
+                            aboutText.style.transform = 'translateX(0)';
+                        }, 200);
+                    }
                 }
             }
         });
@@ -623,41 +660,52 @@ function initSectionTransitions() {
     // Initial setup for about section
     about.style.opacity = '0';
     about.style.transform = 'translateY(30px)';
-    about.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    about.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
     
-    const aboutImg = about.querySelector('.about-img');
-    const aboutText = about.querySelector('.about-text');
-    
-    if (aboutImg) {
-        aboutImg.style.opacity = '0';
-        aboutImg.style.transform = 'translateX(-30px) scale(0.95)';
-        aboutImg.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-    }
-    
-    if (aboutText) {
-        aboutText.style.opacity = '0';
-        aboutText.style.transform = 'translateX(30px)';
-        aboutText.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    // Only add complex animations on desktop
+    if (window.innerWidth > 768) {
+        const aboutImg = about.querySelector('.about-img');
+        const aboutText = about.querySelector('.about-text');
+        
+        if (aboutImg) {
+            aboutImg.style.opacity = '0';
+            aboutImg.style.transform = 'translateX(-30px) scale(0.95)';
+            aboutImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+        
+        if (aboutText) {
+            aboutText.style.opacity = '0';
+            aboutText.style.transform = 'translateX(30px)';
+            aboutText.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
     }
     
     // Setup transition element
     transitionElement.style.opacity = '0';
-    transitionElement.style.transform = 'translateY(20px)';
-    transitionElement.style.transition = 'all 0.4s ease-out';
+    transitionElement.style.transition = 'opacity 0.3s ease-out';
     
     // Start observing
     heroObserver.observe(hero);
     aboutObserver.observe(about);
     
-    // Add scroll smoothing for better performance
+    // Optimized scroll effects with throttling
     let ticking = false;
+    let lastScrollY = 0;
     
     function updateScrollEffects() {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
         
-        // Parallax effect for hero background
-        if (hero && scrolled < window.innerHeight) {
+        // Only update if scroll changed significantly
+        if (Math.abs(scrolled - lastScrollY) < 5) {
+            ticking = false;
+            return;
+        }
+        
+        lastScrollY = scrolled;
+        
+        // Parallax effect only on desktop and when hero is visible
+        if (window.innerWidth > 768 && hero && scrolled < window.innerHeight) {
+            const rate = scrolled * -0.3; // Reduced intensity
             hero.style.backgroundPosition = `center ${rate}px`;
         }
         
@@ -671,7 +719,17 @@ function initSectionTransitions() {
         }
     }
     
-    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    // Only add scroll listener if not on mobile
+    if (window.innerWidth > 768) {
+        window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    }
+    
+    // Cleanup on resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            window.removeEventListener('scroll', requestScrollUpdate);
+        }
+    });
 }
 
 // Export for module usage

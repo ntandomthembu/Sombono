@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# SEO-friendly directives
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.json$
+Disallow: /*?*utm_*
+Disallow: /*?*fbclid*
+
+# Allow important resources
+Allow: /Assets/
+Allow: /Home.css
+Allow: /manifest.json
+Allow: /sw.js
+
+# Sitemap location
+Sitemap: https://sombono.com/sitemap.xml
+
+# Crawl delay (optional - reduces server load)
+Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
