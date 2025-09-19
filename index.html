@@ -81,7 +81,7 @@
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"></noscript>
     
     <!-- Defer Non-Critical Scripts -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.min.js" as="script">
+    <!-- Swiper preload removed: not used on the page and caused console preload warnings -->
     
     <!-- Favicon and App Icons -->
     <!-- Use project Assets logo as favicon to keep files self-contained -->
@@ -140,10 +140,51 @@
                 background: var(--bg-color) !important;
                 z-index: 99999 !important;
                 transition: left 0.3s ease !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                padding-top: 80px !important;
             }
             
             .navlist.active {
                 left: 0 !important;
+            }
+            
+            /* Add backdrop when menu is active */
+            .navlist.active::before {
+                content: '' !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: rgba(0, 0, 0, 0.5) !important;
+                z-index: -1 !important;
+            }
+            
+            .navlist li {
+                margin: 20px 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+            }
+            
+            .navlist a {
+                display: block !important;
+                padding: 15px 30px !important;
+                margin: 0 !important;
+                font-size: 1.2rem !important;
+                border-radius: 8px !important;
+                width: 80% !important;
+                margin: 0 auto !important;
+                color: var(--text-color) !important;
+                text-decoration: none !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .navlist a:hover {
+                background: var(--main-color) !important;
+                color: white !important;
             }
             
             .top-btnn {
@@ -153,6 +194,11 @@
             #menu-icon {
                 display: block !important;
                 z-index: 999999 !important;
+                cursor: pointer !important;
+                background: none !important;
+                border: none !important;
+                padding: 8px !important;
+                color: var(--text-color) !important;
             }
         }
         
@@ -214,8 +260,6 @@
                     <li><a href="#portfolio" data-translate="nav-portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
                     <li><a href="#process" data-translate="nav-process" aria-label="Go to Our Process section">Our Process</a></li>
                     <li><a href="#services" data-translate="nav-services" aria-label="Go to Services section">Services</a></li>
-                     <li><a href="#services" data-translate="nav-services" aria-label="Go to Services section"></a></li>
-                </ul>
                 </ul>
             </nav>
 
@@ -241,7 +285,15 @@
                 </div>
             </div>
 
-            <button class="bx bx-menu" id="menu-icon" aria-label="Open mobile menu" aria-expanded="false" aria-controls="navlist"></button>
+            <button id="menu-icon" type="button" aria-label="Open mobile menu" aria-expanded="false" aria-controls="navlist" class="menu-toggle">
+                <!-- Inline SVG hamburger ensures button is visible without external icon fonts -->
+                <svg width="28" height="24" viewBox="0 0 28 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <rect y="2" width="28" height="3" rx="1.5" fill="currentColor"></rect>
+                    <rect y="10.5" width="28" height="3" rx="1.5" fill="currentColor"></rect>
+                    <rect y="19" width="20" height="3" rx="1.5" fill="currentColor"></rect>
+                </svg>
+                <span class="sr-only">Menu</span>
+            </button>
         </div>
 
         <!-- Mobile Language Fallback Button -->
@@ -1376,9 +1428,47 @@
         }, { once: false });
     });
     </script>
+    <script>
+    // Mobile burger menu & small UI helpers
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuBtn = document.getElementById('menu-icon');
+        const navList = document.getElementById('navlist');
 
-    <!--Footer-->
-    <footer class="footer" id="footer">
+        if (!menuBtn || !navList) return;
+
+        const openMenu = () => {
+            navList.classList.add('active');
+            menuBtn.setAttribute('aria-expanded', 'true');
+        };
+
+        const closeMenu = () => {
+            navList.classList.remove('active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        };
+
+        menuBtn.addEventListener('click', function (e) {
+            const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            if (expanded) closeMenu(); else openMenu();
+        });
+
+        // Close when a nav link is activated (useful on mobile)
+        navList.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', closeMenu);
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMenu();
+        });
+
+        // Close when tapping outside the open nav (mobile)
+        document.addEventListener('click', (e) => {
+            if (!navList.contains(e.target) && e.target !== menuBtn && navList.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    }, { once: true });
+    </script>
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -1598,23 +1688,69 @@
             // Menu functionality
             const menuIcon = document.getElementById('menu-icon');
             const navList = document.querySelector('.navlist');
+            let isMenuIconClick = false;
 
             if (menuIcon && navList) {
                 console.log('Sombono: Mobile menu initialized');
                 menuIcon.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    isMenuIconClick = true;
                     console.log('Sombono: Mobile menu toggled');
-                    navList.classList.toggle('active');
-                    menuIcon.setAttribute('aria-expanded', navList.classList.contains('active'));
+                    const isActive = navList.classList.toggle('active');
+                    menuIcon.setAttribute('aria-expanded', isActive);
+                    console.log('Sombono: Menu is now', isActive ? 'OPEN' : 'CLOSED');
+                    
+                    // Reset the flag after a short delay
+                    setTimeout(() => {
+                        isMenuIconClick = false;
+                    }, 10);
+                }, true); // Use capturing phase
+                
+                // Close menu when clicking on nav links
+                navList.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent default link behavior for smooth scrolling
+                        navList.classList.remove('active');
+                        menuIcon.setAttribute('aria-expanded', 'false');
+                        console.log('Sombono: Menu closed via nav link click');
+                        
+                        // Trigger smooth scroll after menu closes
+                        setTimeout(() => {
+                            const targetId = link.getAttribute('href');
+                            if (targetId && targetId.startsWith('#')) {
+                                const targetElement = document.querySelector(targetId);
+                                if (targetElement) {
+                                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            }
+                        }, 300); // Wait for menu close animation
+                    });
                 });
             }
             
             // Close menu when clicking outside
             document.addEventListener('click', function(e) {
-                if (navList && !navList.contains(e.target) && !menuIcon.contains(e.target)) {
+                // Don't close if menu icon was just clicked
+                if (isMenuIconClick) return;
+                
+                // Check if click is outside both navList and menuIcon (including children)
+                const isOutsideNav = navList && !navList.contains(e.target);
+                const isOutsideMenuIcon = menuIcon && !menuIcon.contains(e.target);
+                
+                if (isOutsideNav && isOutsideMenuIcon) {
                     navList.classList.remove('active');
                     if (menuIcon) menuIcon.setAttribute('aria-expanded', 'false');
+                    console.log('Sombono: Menu closed - clicked outside');
+                }
+            });
+            
+            // Close menu on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navList && navList.classList.contains('active')) {
+                    navList.classList.remove('active');
+                    if (menuIcon) menuIcon.setAttribute('aria-expanded', 'false');
+                    console.log('Sombono: Menu closed via Escape key');
                 }
             });
             
@@ -2172,7 +2308,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- Translation System -->
-<script src="translation.js"></script>
+<!-- Translation System (deferred include at document end) -->
 
 <!-- WhatsApp Floating Button -->
 <div class="whatsapp-float" id="whatsapp-float">
@@ -2183,6 +2319,19 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Cookie Consent Page Overlay - Blocks all interaction until consent -->
+<style>
+    /* Small override: don't let cookie overlay block header/menu by default */
+    .cookie-overlay { display: none !important; pointer-events: none !important; }
+    /* JS can add .active or .show to display the overlay when required */
+    .cookie-overlay.active, .cookie-overlay.show { display: flex !important; pointer-events: auto !important; }
+    /* Ensure menu icon stays clickable and on top */
+    #menu-icon { position: relative; z-index: 100001 !important; pointer-events: auto !important; }
+    /* Ensure nav opens when JS toggles 'active' (some CSS elsewhere uses .open) */
+    .navlist.active, .navlist.open { left: 0 !important; z-index: 100002 !important; }
+    /* If nav is off-canvas via left:-100%, override that here */
+    .navlist { transition: left 0.28s ease !important; }
+</style>
+
 <div class="cookie-overlay" id="cookieOverlay">
     <div class="cookie-overlay-content">
         <div class="cookie-overlay-icon">
