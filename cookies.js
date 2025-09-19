@@ -97,27 +97,25 @@ class CookieManager {
     }
 
     blockPageInteraction() {
-        // Disable scrolling
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
-        
-        // Add event listeners to block interactions
+        // Do not forcibly disable scrolling (prevents published site being unscrollable).
+        // Instead only block interactions outside the overlay while still allowing the page to scroll.
         this.blockEvents = ['click', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'keydown', 'keyup'];
         this.blockHandler = (e) => {
             const overlay = document.getElementById('cookieOverlay');
             const overlayContent = document.querySelector('.cookie-overlay-content');
-            
-            // Allow interactions only within the cookie overlay
+
+            // Only block interactions when overlay is actively shown (not .hidden)
             if (overlay && !overlay.classList.contains('hidden')) {
-                if (!overlayContent.contains(e.target)) {
+                if (overlayContent && !overlayContent.contains(e.target)) {
                     e.preventDefault();
                     e.stopPropagation();
                     return false;
                 }
             }
+            return true;
         };
-        
-        // Add event listeners to document
+
+        // Add event listeners to document (non-passive for touch to allow preventDefault)
         this.blockEvents.forEach(event => {
             document.addEventListener(event, this.blockHandler, { capture: true, passive: false });
         });
