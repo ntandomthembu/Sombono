@@ -78,7 +78,8 @@
         --muted-color: #718096;
         --border-color: #e2e8f0;
 
-        --h1-font: 2.8rem;
+    --header-height: 72px;
+    --h1-font: 2.8rem;
         --h2-font: 2.4rem;
         --h3-font: 1.8rem;
         --p-font: 1rem;
@@ -1088,6 +1089,90 @@
         width: 20px;
     }
 
+
+/* ---------- Navbar rebuild overrides (appended) ---------- */
+/* New header structure: .site-header > .header-inner for consistent layout */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 2px 18px rgba(0,0,0,0.06);
+}
+.site-header .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+
+/* Skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    z-index: 10001;
+    transform: translateY(-120%);
+    transition: transform 160ms ease;
+    font-weight: 700;
+    text-decoration: none;
+}
+.skip-link:focus {
+    transform: translateY(0);
+    outline: 3px solid var(--main-color);
+}
+
+
+/* Ensure header never visually squishes when .sticky toggles */
+header, .site-header, .site-header .header-inner, header.sticky {
+    height: var(--header-height) !important;
+    padding: 0 5% !important;
+    transition: none !important;
+}
+
+
+/* Mobile menu positioning uses header height variable */
+.navlist {
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .navlist {
+        position: fixed !important;
+        top: var(--header-height) !important;
+        height: calc(100vh - var(--header-height)) !important;
+    }
+}
+
+
+/* Re-enable language picker transitions only */
+.language-btn, .language-options, .language-option, .flag-icon, .current-flag {
+    transition: all 0.28s ease !important;
+}
+
+
+/* Defensive: force-disable remaining animations inside header area */
+.site-header *, .site-header *::before, .site-header *::after {
+    transition: none !important;
+    animation: none !important;
+}
+/* But allow language dropdown children to animate */
+.site-header .language-dropdown-container *, .site-header .language-dropdown-container *::before, .site-header .language-dropdown-container *::after {
+    transition: inherit !important;
+    animation: none !important;
+}
+
+/* End navbar rebuild overrides */
+
     .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         padding-top: 30px;
@@ -1231,7 +1316,8 @@
     section {
         position: relative;
         z-index: 1;
-        padding-top: 100px; /* Account for fixed header */
+        /* make section top spacing depend on header height so fixed header doesn't cause double gaps */
+        padding-top: calc(var(--header-height) + 20px);
     }
 
     /* Hero section override - no top padding needed */
@@ -1244,6 +1330,31 @@
         .footer-content {
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+        }
+    }
+
+    /* Desktop/Laptop Optimization for Mobile Mockup */
+    @media (min-width: 1024px) {
+        .about-img {
+            max-width: 700px;
+            /* Even larger on bigger screens */
+            min-height: 600px;
+            /* Increased height for impact */
+        }
+        
+        .about {
+            gap: 5rem;
+            /* Larger gap on desktop */
+            padding: 100px 5% 80px 5%;
+            /* Better padding for desktop */
+        }
+    }
+
+    @media (min-width: 1440px) {
+        .about-img {
+            max-width: 800px;
+            /* Maximum size for very large screens */
+            min-height: 700px;
         }
     }
 
@@ -1367,11 +1478,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 5%;
-        background: rgba(255, 255, 255, 0.98);
+        /* fixed vertical size so toggling .sticky doesn't change height */
+        height: var(--header-height);
+    padding: 0 5%;
+    background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(44, 82, 130, 0.1);
-        transition: all 0.3s ease;
+    transition: none; /* ensure no animated height/padding changes */
         box-shadow: 0 2px 20px rgba(44, 82, 130, 0.08);
     }
 
@@ -1381,6 +1494,9 @@
         font-weight: 700;
         text-decoration: none;
         letter-spacing: -0.02em;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
     }
 
     span {
@@ -1391,7 +1507,6 @@
         display: flex;
         align-items: center;
         gap: 40px;
-        transition: all 0.3s ease;
     }
 
     .navlist a {
@@ -1399,9 +1514,8 @@
         font-weight: 600;
         color: var(--other-color);
         text-decoration: none;
-        transition: all 0.3s ease;
         position: relative;
-        padding: 8px 0;
+    padding: 0 0;
         letter-spacing: -0.01em;
     }
 
@@ -1417,7 +1531,6 @@
         bottom: 0;
         left: 0;
         background: linear-gradient(90deg, var(--main-color), var(--secondary-color));
-        transition: width 0.3s ease;
     }
 
     .navlist a:hover::after {
@@ -1428,7 +1541,6 @@
     .navlist a[href="#home"] {
         opacity: 0;
         transform: translateX(-20px);
-        transition: all 0.3s ease;
         pointer-events: none;
     }
 
@@ -1442,8 +1554,48 @@
         background: rgba(255, 255, 255, 0.99);
         backdrop-filter: blur(25px);
         box-shadow: 0 4px 25px rgba(44, 82, 130, 0.12);
-        padding: 15px 5%;
-        border-bottom-color: rgba(44, 82, 130, 0.15);
+    /* match base header height / horizontal padding so no visual squish */
+        height: var(--header-height);
+    padding: 0 5%;
+    border-bottom-color: rgba(44, 82, 130, 0.15);
+    }
+
+    /* --------------------------------------------------
+       Disable all nav/header animations/transitions
+       except the language picker (language-*) which should
+       keep its interactive effects. This stops the navbar
+       from animating/squishing while preserving the language
+       dropdown UX.
+       -------------------------------------------------- */
+
+    /* Reset transitions/animations for nav elements */
+    .navlist,
+    .navlist li,
+    .navlist a,
+    .navlist a::after,
+    #menu-icon,
+    .logo,
+    .top-btnn,
+    .h-bt {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    /* Ensure pseudo-elements (underlines) appear instantly */
+    .navlist a::after {
+        transition: none !important;
+    }
+
+    /* Keep language picker animations intact by not overriding
+       any .language-* selectors. If a global rule targets
+       all buttons, explicitly re-enable transitions for language */
+    .language-btn,
+    .language-options,
+    .language-option,
+    .flag-icon,
+    .current-flag {
+        transition: inherit;
     }
 
 
@@ -1504,6 +1656,8 @@
         display: flex;
         align-items: center;
         gap: 30px;
+    height: var(--header-height);
+    align-items: center;
     }
 
     /* Language Dropdown - Professional Style */
@@ -1642,7 +1796,7 @@
 
     .h-bt {
         display: inline-block;
-        padding: 12px 28px;
+    padding: 8px 20px;
         background: transparent;
         color: var(--main-color);
         border: 2px solid var(--main-color);
@@ -1968,11 +2122,13 @@
         background: rgba(248, 246, 240, 0.98);
         backdrop-filter: blur(15px);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        padding: 12px 5%;
+    /* use fixed header height and horizontal padding only to avoid size changes */
+    height: var(--header-height);
+    padding: 0 5%;
     }
     .Diff {
         width: 98.6vw;
-    height: 80px; 
+    height: var(--header-height);
     background: url(./Assets/Frame\ 2.png);
     background-size: auto 100%;
     overflow-x: hidden;
@@ -1982,12 +2138,14 @@
     .about {
         background: var(--bg-color);
         display: grid;
-        grid-template-columns: repeat(2, 60fr);
+        grid-template-columns: 1fr 1fr;
+        /* Equal columns for better balance */
         align-items: center;
-        gap: 3rem;
+        gap: 4rem;
+        /* Increased gap for better spacing */
         position: relative;
         margin-top: -50px; /* Overlap with hero gradient */
-        padding-top: 100px; /* Add space for the overlap */
+    padding-top: calc(var(--header-height) + 28px); /* Add space for the overlap */
         z-index: 3;
     }
 
@@ -2099,21 +2257,27 @@
 
     .about-img {
         position: relative;
-        width: 380px;
-        /* Adjust the width of the container */
-        height: 550px;
+        width: 100%;
+        /* Full width for laptop mode */
+        max-width: 600px;
+        /* Maximum width to prevent it from getting too large */
+        height: auto;
+        /* Auto height to maintain aspect ratio */
+        min-height: 550px;
+        /* Minimum height for visual consistency */
     }
 
     .about-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        background-color: rgb(182, 0, 0, 666);
+    /* corrected from invalid rgb(...) with out-of-range value */
+    background-color: rgba(182, 0, 0, 0.66);
         border-radius: 15px;
         transform-style: preserve-3d;
         /* Ensure child elements maintain 3D position */
-        animation: tiltPhone 4s ease-in-out infinite;
-        /* Adjust animation duration and timing */
+        animation: tiltPhone 8s ease-in-out infinite;
+        /* Slower, more elegant animation duration */
         transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
         transition: transform 0.5s ease;
     }
@@ -2192,6 +2356,21 @@
 
         100% {
             transform: rotateY(-30deg) translateZ(0);
+        }
+    }
+
+    /* Mobile-optimized tilt animation */
+    @keyframes tiltPhoneMobile {
+        0% {
+            transform: rotateY(0deg) translateZ(0) scale(1);
+        }
+
+        50% {
+            transform: rotateY(-8deg) translateZ(15px) scale(1.02);
+        }
+
+        100% {
+            transform: rotateY(-15deg) translateZ(0) scale(1);
         }
     }
 
@@ -2790,7 +2969,7 @@
 
     .point.active {
         background: white;
-        animation: pulse 2s ease-in-out infinite;
+        animation: none;
     }
 
     .metrics-panel {
@@ -3302,6 +3481,47 @@
         color: var(--other-color);
         line-height: 1.8;
         font-weight: 500;
+        margin-bottom: 2rem;
+    }
+
+    /* Trust Indicators */
+    .trust-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        padding: 2rem 0;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--main-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .trust-item i {
+        font-size: 1.2rem;
+        color: var(--main-color);
+    }
+
+    @media (max-width: 768px) {
+        .trust-indicators {
+            gap: 1rem;
+        }
+        
+        .trust-item {
+            font-size: 0.85rem;
+        }
+        
+        .trust-item i {
+            font-size: 1rem;
+        }
     }
 
     /* Services Categories Layout */
@@ -3623,6 +3843,53 @@
 
     .cta-btn i {
         font-size: 1.1rem;
+    }
+
+    /* CTA Stats Section */
+    .cta-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 102, 102, 0.2);
+        flex-wrap: wrap;
+    }
+
+    .stat-item {
+        text-align: center;
+        min-width: 120px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--main-color);
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--other-color);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+        .cta-stats {
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+        }
     }
 
     /* Mobile Responsiveness */
@@ -4178,6 +4445,12 @@
             /* Set image width to 100% */
             height: auto;
             /* Let the height adjust proportionally */
+            max-width: 350px;
+            /* Limit maximum size on mobile */
+            margin: 0 auto;
+            /* Center the image */
+            perspective: 600px;
+            /* Enable 3D context for mobile */
         }
 
         .about-img img {
@@ -4189,6 +4462,27 @@
             /* Auto-adjust width */
             height: auto;
             /* Auto-adjust height */
+            border-radius: 15px;
+            /* Maintain border radius */
+            /* Animations removed for mobile */
+            animation: none;
+            transform: none;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            /* Add subtle shadow */
+        }
+
+        .about-img:hover img {
+            transform: scale(1.02);
+            /* Simple scale instead of 3D effect */
+        }
+        
+        /* Responsive raindrop animation for mobile */
+        .about-img::after {
+            width: 6px !important;
+            height: 6px !important;
+            animation: raindropFall 4s linear infinite !important;
+            /* Slower on mobile */
         }
 
         .about-text h2 {
@@ -4298,7 +4592,9 @@
         }
 
         header {
-            padding: 15px 5%;
+            /* keep header sizing consistent across the file */
+            height: 80px;
+            padding: 0 5%;
             position: fixed;
             top: 0;
             left: 0;
@@ -4320,16 +4616,15 @@
 
         .navlist {
             position: fixed;
-            top: 80px;
+            top: var(--header-height);
             left: -100%;
             width: 100%;
-            height: calc(100vh - 80px);
+            height: calc(100vh - var(--header-height));
             background: var(--bg-color);
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             padding-top: 50px;
-            transition: left 0.3s ease;
             z-index: 1000;
             display: flex;
         }
@@ -4350,7 +4645,6 @@
             margin: 0;
             font-size: 1.2rem;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
             width: 80%;
             margin: 0 auto;
         }
@@ -4383,6 +4677,7 @@
             max-width: 300px;
             margin: 0 auto;
             align-self: center;
+            /* Remove 3D context for mobile */
         }
 
         .hero img {
@@ -4391,6 +4686,15 @@
             max-width: 300px;
             border-radius: 15px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            /* Animations removed for mobile */
+            animation: none;
+            transform: none;
+            transition: transform 0.3s ease;
+        }
+
+        .hero img:hover {
+            transform: scale(1.02);
+            /* Simple scale instead of 3D effect */
         }
 
         .hero .main-content {
@@ -4601,9 +4905,7 @@
     .logos {
         padding: 20px;
         text-align: center;
-        width: 100%;
-        width: 98%vw;
-        ;
+    width: 100%;
     }
 
     .logos h2 {
@@ -4787,8 +5089,9 @@
  
     @media screen and (min-width: 1025px) {
         header {
-            padding: 10px 16%;
-         
+            /* keep consistent fixed height across breakpoints */
+            height: var(--header-height);
+            padding: 0 16%;
         }
         .about-text h2 {
         font-size: var(--h2-font);
@@ -5336,7 +5639,7 @@
     bottom: 25px;
     right: 25px;
     z-index: 1000;
-    animation: pulse-whatsapp 2s infinite;
+    animation: none;
 }
 
 .whatsapp-button {
@@ -5379,6 +5682,95 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+}
+
+/* Mobile: prioritize content over decorative mockup image */
+@media (max-width: 768px) {
+    /* Ensure structural containers create proper stacking context */
+    .hero, .about, .international-presence {
+        position: relative;
+    }
+
+    /* Reduce mockup prominence: smaller, slightly transparent, non-interactive and behind content */
+    .hero picture,
+    .about-img {
+        position: absolute !important;
+        right: 12px !important;
+        top: 8% !important;
+        width: 34% !important;
+        max-width: 180px !important;
+        height: auto !important;
+        z-index: 0 !important; /* behind the main content */
+        pointer-events: none !important; /* don't interfere with taps */
+        opacity: 0.65 !important;
+        transform: none !important;
+        filter: blur(0.6px) saturate(0.9) !important;
+        transition: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Keep the actual image size controlled inside the mockup container */
+    .hero picture img,
+    .about-img img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 360px !important;
+        object-fit: contain !important;
+        border-radius: 12px !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    /* Make sure content sits above the mockup and is readable */
+    .hero .main-content,
+    .about .about-text,
+    .presence-content,
+    .join-header,
+    .main-content {
+        position: relative !important;
+        z-index: 2 !important;
+    }
+
+    /* Slight dark overlay behind content to boost contrast when the mockup is visible */
+    .hero::after {
+        /* augment existing gradient on mobile to improve readability */
+        background: linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.45));
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Hide decorative borders/raindrops around mockup on mobile */
+    .about-img::before,
+    .about-img::after {
+        display: none !important;
+    }
+
+    /* Ensure CTA buttons and headings remain fully opaque for readability */
+    .main-content h1,
+    .main-content p,
+    .cta-btn,
+    .btn {
+        color: inherit !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+
+    /* Reduce size further on very small screens */
+    @media (max-width: 420px) {
+        .hero picture,
+        .about-img {
+            right: 8px !important;
+            top: 6% !important;
+            width: 30% !important;
+            max-width: 140px !important;
+            opacity: 0.6 !important;
+        }
+
+        .hero picture img,
+        .about-img img {
+            max-height: 260px !important;
+        }
+    }
 }
 
 .whatsapp-tooltip::after {
@@ -5522,7 +5914,7 @@
     background: var(--main-color);
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(255, 102, 102, 0.8);
-    animation: pulse 2s ease-in-out infinite;
+    animation: none;
     z-index: 5;
 }
 
@@ -5658,7 +6050,7 @@
     position: absolute;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    animation: countryPulse 3s ease-in-out infinite;
+    animation: none;
 }
 
 .south-africa {
@@ -5727,7 +6119,7 @@
     height: 70px;
     background: linear-gradient(to bottom, var(--main-color), transparent);
     transform: rotate(25deg);
-    animation: connectionPulse 3s ease-in-out infinite;
+    animation: none;
 }
 
 .presence-content h2 {
@@ -6395,5 +6787,317 @@
     
     .cookie-modal-footer .cookie-btn {
         width: 100%;
+    }
+}
+
+/* Mobile Animation Optimization - Slower animations for better UX */
+@media (max-width: 768px) {
+    /* Slow down all transitions on mobile for better user experience */
+    * {
+        transition-duration: 0.6s !important;
+        animation-duration: 1.2s !important;
+    }
+    
+    /* Specific mobile animation overrides */
+    .service-card {
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+    
+    .service-card:hover,
+    .service-card:focus {
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+    
+    /* Button animations */
+    .btn,
+    .service-btn,
+    .primary-btn,
+    .secondary-btn {
+        transition: all 0.5s ease !important;
+    }
+    
+    /* Language dropdown animations */
+    .language-dropdown-container {
+        transition: all 0.6s ease !important;
+    }
+    
+    .language-options {
+        transition: all 0.5s ease !important;
+    }
+    
+    /* Toast animations */
+    .mobile-language-toast {
+        transition: all 0.6s ease !important;
+    }
+    
+    /* Hero section animations */
+    .hero-background {
+        animation-duration: 12s !important;
+    }
+    
+    /* Professional float animation mobile optimization */
+    .hero [class*="float"], .hero [class*="professional"] {
+        animation-duration: 10s !important;
+    }
+    
+    @keyframes professionalFloat {
+        0%, 100% { 
+            transform: translate(-50%, -50%) scale(1); 
+            opacity: 0.6; 
+        }
+        50% { 
+            transform: translate(-50%, -50%) scale(1.05); 
+            opacity: 0.8; 
+        }
+    }
+    
+    /* Reduce motion intensity on mobile */
+    .hero::after {
+        animation-duration: 10s !important;
+    }
+    
+    /* Smooth scrolling adjustments */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Responsive Mockup Animation Optimizations */
+    
+    /* Small mobile devices */
+    @media (max-width: 480px) {
+        .hero img, .about-img img {
+            animation: none !important;
+            transform: none !important;
+            /* No animations for small mobile devices */
+        }
+        
+        .hero picture {
+            max-width: 250px;
+            /* Remove perspective */
+        }
+        
+        .about-img {
+            max-width: 280px;
+            /* Remove perspective */
+        }
+    }
+    
+    /* Medium mobile devices and tablets */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .hero img, .about-img img {
+            animation: none !important;
+            transform: none !important;
+            /* No animations for medium mobile devices */
+        }
+        
+        .hero picture {
+            max-width: 320px;
+            /* Remove perspective */
+        }
+        
+        .about-img {
+            max-width: 380px;
+            /* Remove perspective */
+        }
+    }
+    
+    /* Tablet landscape and small laptops */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .hero img {
+            animation: tiltPhone 9s ease-in-out infinite;
+            /* Slower desktop animation */
+        }
+        
+        .about-img img {
+            animation: tiltPhone 8s ease-in-out infinite;
+            /* Slower desktop animation */
+        }
+    }
+    
+    /* Performance optimization for reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+        .hero img, .about-img img {
+            animation: none !important;
+            transform: none !important;
+        }
+        
+        .hero img:hover, .about-img:hover img {
+            transform: scale(1.02) !important;
+            /* Simple scale on hover instead of 3D transforms */
+        }
+    }
+    
+    /* Hardware acceleration for smooth animations */
+    .hero img, .about-img img, .hero picture, .about-img {
+        will-change: transform;
+        /* Hint browser to optimize for animations */
+        backface-visibility: hidden;
+        /* Prevent flickering */
+        -webkit-backface-visibility: hidden;
+        transform-origin: center center;
+    }
+}
+
+/* ---------------------------- FINAL NAV OVERRIDES ---------------------------- */
+/* Disable all header/nav transitions and animations to prevent squish. */
+header,
+header * {
+    transition: none !important;
+    animation: none !important;
+    -webkit-transition: none !important;
+    -webkit-animation: none !important;
+    transform: none !important;
+}
+
+/* Keep language picker interactive transitions */
+.language-btn,
+.language-options,
+.language-option,
+.flag-icon,
+.current-flag {
+    transition: all 0.28s ease !important;
+    -webkit-transition: all 0.28s ease !important;
+}
+
+.language-option:hover {
+    transform: translateX(4px) !important;
+}
+
+/* End overrides */
+
+/* Mobile mockup: fill the red area but keep content prioritized (mobile-only) */
+@media (max-width: 768px) {
+    /* Ensure containers create stacking context */
+    .hero, .about { position: relative; }
+
+    /* Hero mockup: absolute placement to sit in the decorative area */
+    .hero picture {
+        position: absolute !important;
+        right: 12px !important;
+        top: 8% !important;
+        width: 34% !important;
+        max-width: 180px !important;
+        height: auto !important;
+        display: block !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        z-index: 0 !important; /* keep behind main content */
+        pointer-events: none !important; /* don't intercept taps */
+        opacity: 0.75 !important; /* slightly transparent so content reads clearly */
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        box-shadow: none !important;
+    }
+
+    /* About image should remain in normal flow (revert recent about-section changes) */
+    .about-img {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        display: block !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Image should fill the mockup container while preserving aspect ratio */
+    .hero picture img, .about-img img, .hero img {
+        position: relative !important;
+        width: auto !important;
+        height: 100% !important; /* fill the container height */
+        max-height: 100% !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+        transform: none !important;
+        animation: none !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+        /* Make hero text bolder for stronger visual impact */
+        .hero .main-content h1,
+        .hero .main-content h2,
+        .hero .main-content h3 {
+            font-weight: 800 !important;
+        }
+
+        .hero .main-content p,
+        .hero .main-content .cta-btn,
+        .hero .main-content .btn {
+            font-weight: 700 !important;
+        }
+
+    /* Ensure content floats above the mockup; default reserve space for mockup
+       but when we're inside the about section we want text centered to the screen */
+    .hero .main-content, .main-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding-right: 36% !important; /* give room for the absolutely positioned mockup */
+    }
+
+    /* When showing the about section, let its content span the viewport and center-align */
+    .about .main-content,
+    .about .about-text {
+        padding-right: 0 !important;
+        padding-left: 6% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Center about text on mobile for better readability */
+    .about .about-text {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 92% !important;
+    }
+
+    .about .about-text h2,
+    .about .about-text h3,
+    .about .about-text p {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Slight overlay to improve contrast when mockup is visible */
+    .hero::after {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.45));
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Hide decorative borders that can interfere with the fill layout */
+    .about-img::before, .about-img::after { display: none !important; }
+
+    /* Tweak for very small screens */
+    @media (max-width: 420px) {
+        .hero picture {
+            top: 6% !important;
+            right: 8px !important;
+            width: 30% !important;
+            max-width: 140px !important;
+            opacity: 0.6 !important;
+        }
+
+        .about-img {
+            min-height: 0 !important;
+            padding: 8px !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .hero picture img, .about-img img {
+            max-height: 260px !important;
+        }
     }
 }

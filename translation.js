@@ -274,7 +274,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.translationManager = new TranslationManager();
     
     // Wait a bit for all elements to load, then initialize mobile language dropdown
-    setTimeout(initializeMobileLanguageDropdown, 500);
+    // Use longer timeout for mobile devices to ensure smooth initialization
+    const isMobile = window.innerWidth <= 768;
+    const initDelay = isMobile ? 1000 : 500;
+    setTimeout(initializeMobileLanguageDropdown, initDelay);
 });
 
 // Enhanced mobile language switching
@@ -396,10 +399,15 @@ function initializeMobileLanguageDropdown() {
         toast.textContent = message;
         document.body.appendChild(toast);
         
-        setTimeout(() => toast.classList.add('show'), 100);
+        // Slower animations for better mobile UX
+        const isMobile = window.innerWidth <= 768;
+        const showDelay = isMobile ? 250 : 100;
+        const hideDelay = isMobile ? 600 : 300;
+        
+        setTimeout(() => toast.classList.add('show'), showDelay);
         setTimeout(() => {
             toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
+            setTimeout(() => toast.remove(), hideDelay);
         }, 2000);
     }
     

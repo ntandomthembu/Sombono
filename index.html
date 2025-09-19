@@ -176,7 +176,7 @@
             }
             
             .hero {
-                padding-top: 120px !important;
+                padding-top: calc(var(--header-height) + 48px) !important;
             }
             
             /* Force responsive text */
@@ -196,42 +196,49 @@
 <body>
     <!-- Critical above-the-fold content loads first -->
     <!--Header-->
-    <header role="banner">
-        <a href="#home" class="logo" aria-label="Sombono Homepage">Sombon<span>o.</span></a>
+    <header role="banner" class="site-header">
+        <!-- Accessibility: skip link -->
+     
 
-        <nav role="navigation" aria-label="Main navigation">
-            <ul class="navlist">
-                <li><a href="#home" data-translate="nav-home" aria-label="Go to Home section">Home</a></li>
-                <li><a href="#about" data-translate="nav-about" aria-label="Go to About section">About</a></li>
-                <li><a href="#portfolio" data-translate="nav-portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
-                <li><a href="#process" data-translate="nav-process" aria-label="Go to Our Process section">Our Process</a></li>
-                <li><a href="#services" data-translate="nav-services" aria-label="Go to Services section">Services</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner">
+            <a href="#home" class="logo" aria-label="Sombono Homepage">Sombon<span>o.</span></a>
 
-        <div class="top-btnn">
-            <a href="#Contact" class="h-bt" data-translate="contact-us" aria-label="Contact Sombono">Contact Us</a>
-            
-            <!-- Language Dropdown -->
-            <div class="language-dropdown-container">
-                <button class="language-btn" id="languageBtn" aria-label="Select language" aria-expanded="false" aria-haspopup="true">
-                    <img src="https://flagcdn.com/24x18/za.png" alt="South Africa flag" class="current-flag" width="24" height="18">
-                    <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
-                </button>
-                <div class="language-options" id="languageOptions" role="menu" aria-label="Language options">
-                    <div class="language-option active" data-lang="en" role="menuitem">
-                        <img src="https://flagcdn.com/24x18/za.png" alt="South Africa flag" class="flag-icon" width="24" height="18">
-                        <span>English</span>
-                    </div>
-                    <div class="language-option" data-lang="nl" role="menuitem">
-                        <img src="https://flagcdn.com/24x18/nl.png" alt="Netherlands flag" class="flag-icon" width="24" height="18">
-                        <span>Nederlands</span>
+            <nav id="primary-navigation" role="navigation" aria-label="Primary navigation">
+                <ul id="navlist" class="navlist">
+                    <li><a href="#home" data-translate="nav-home" aria-label="Go to Home section">Home</a></li>
+                    <li><a href="#about" data-translate="nav-about" aria-label="Go to About section">About</a></li>
+                    <li><a href="#portfolio" data-translate="nav-portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
+                    <li><a href="#process" data-translate="nav-process" aria-label="Go to Our Process section">Our Process</a></li>
+                    <li><a href="#services" data-translate="nav-services" aria-label="Go to Services section">Services</a></li>
+                     <li><a href="#services" data-translate="nav-services" aria-label="Go to Services section"></a></li>
+                </ul>
+                </ul>
+            </nav>
+
+            <div class="top-btnn">
+                <a href="#Contact" class="h-bt" data-translate="contact-us" aria-label="Contact Sombono">Contact Us</a>
+                
+                <!-- Language Dropdown -->
+                <div class="language-dropdown-container">
+                    <button class="language-btn" id="languageBtn" aria-label="Select language" aria-expanded="false" aria-haspopup="true">
+                        <img src="https://flagcdn.com/24x18/za.png" alt="South Africa flag" class="current-flag" width="24" height="18">
+                        <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+                    </button>
+                    <div class="language-options" id="languageOptions" role="menu" aria-label="Language options">
+                        <div class="language-option active" data-lang="en" role="menuitem">
+                            <img src="https://flagcdn.com/24x18/za.png" alt="South Africa flag" class="flag-icon" width="24" height="18">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" data-lang="nl" role="menuitem">
+                            <img src="https://flagcdn.com/24x18/nl.png" alt="Netherlands flag" class="flag-icon" width="24" height="18">
+                            <span>Nederlands</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <button class="bx bx-menu" id="menu-icon" aria-label="Open mobile menu" aria-expanded="false" aria-controls="navlist"></button>
+            <button class="bx bx-menu" id="menu-icon" aria-label="Open mobile menu" aria-expanded="false" aria-controls="navlist"></button>
+        </div>
 
         <!-- Mobile Language Fallback Button -->
         <!-- <div class="mobile-language-fallback" id="mobileLangFallback">
@@ -746,6 +753,26 @@
         <div class="center-text">
             <h2 data-translate="services-title">Our <span>Services</span></h2>
             <p data-translate="services-description">We partner with businesses to design, build, and scale world-class digital solutions. From startups to enterprise organizations, we deliver technology that drives meaningful impact and measurable growth.</p>
+            
+            <!-- Enterprise-level trust indicators -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="ri-shield-check-line"></i>
+                    <span>Enterprise Security</span>
+                </div>
+                <div class="trust-item">
+                    <i class="ri-time-line"></i>
+                    <span>24/7 Support</span>
+                </div>
+                <div class="trust-item">
+                    <i class="ri-global-line"></i>
+                    <span>Global Scale</span>
+                </div>
+                <div class="trust-item">
+                    <i class="ri-award-line"></i>
+                    <span>Industry Leading</span>
+                </div>
+            </div>
         </div>
 
         <!-- Services Categories -->
@@ -770,6 +797,8 @@
                                 <span class="highlight-item">• Full-Stack Development</span>
                                 <span class="highlight-item">• Cloud Architecture</span>
                                 <span class="highlight-item">• DevOps Integration</span>
+                                <span class="highlight-item">• Microservices Architecture</span>
+                                <span class="highlight-item">• API Development</span>
                             </div>
                         </div>
                         <div class="service-actions">
@@ -784,16 +813,39 @@
                         </div>
                         <div class="service-content">
                             <h4>Experience Design</h4>
-                            <p>Create exceptional user experiences that delight customers and drive engagement. From research to prototyping, we design digital products that users love.</p>
+                            <p>Create exceptional user experiences that delight customers and drive engagement. From research to prototyping, we design digital products that users love and competitors envy.</p>
                             <div class="service-highlights">
                                 <span class="highlight-item">• UX Research & Strategy</span>
                                 <span class="highlight-item">• UI Design & Prototyping</span>
                                 <span class="highlight-item">• Design Systems</span>
+                                <span class="highlight-item">• Brand Identity</span>
+                                <span class="highlight-item">• Mobile-First Design</span>
                             </div>
                         </div>
                         <div class="service-actions">
                             <a href="#Contact" class="service-btn primary">Design Better</a>
                             <a href="#Contact" class="service-btn secondary">View Portfolio</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-smartphone-line"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Mobile App Development</h4>
+                            <p>Native iOS and Android apps that deliver exceptional performance and user experience. Cross-platform solutions that reach maximum audience with minimum development time.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• Native iOS & Android</span>
+                                <span class="highlight-item">• Cross-Platform (React Native)</span>
+                                <span class="highlight-item">• App Store Optimization</span>
+                                <span class="highlight-item">• Push Notifications</span>
+                                <span class="highlight-item">• Offline Capabilities</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Build Mobile</a>
+                            <a href="#Contact" class="service-btn secondary">See Apps</a>
                         </div>
                     </div>
                 </div>
@@ -803,8 +855,8 @@
             <div class="service-category">
                 <div class="category-header">
                     <div class="category-badge">GROWTH</div>
-                    <h3>Scale Your Business</h3>
-                    <p>Advanced solutions to accelerate growth and optimize operations</p>
+                    <h3>Scale Your Business Operations</h3>
+                    <p>Advanced solutions to accelerate growth and outperform competitors like MTN and Vodacom</p>
                 </div>
                 
                 <div class="services-grid">
@@ -813,12 +865,14 @@
                             <i class="ri-line-chart-fill"></i>
                         </div>
                         <div class="service-content">
-                            <h4>Data & Analytics</h4>
-                            <p>Transform your data into competitive advantage with advanced analytics, machine learning, and business intelligence solutions. Make data-driven decisions that accelerate growth.</p>
+                            <h4>Data & Analytics Intelligence</h4>
+                            <p>Transform your data into competitive advantage with advanced analytics, machine learning, and business intelligence solutions. Make data-driven decisions that accelerate growth and market dominance.</p>
                             <div class="service-highlights">
                                 <span class="highlight-item">• AI & Machine Learning</span>
-                                <span class="highlight-item">• Business Intelligence</span>
-                                <span class="highlight-item">• Data Engineering</span>
+                                <span class="highlight-item">• Real-time Business Intelligence</span>
+                                <span class="highlight-item">• Predictive Analytics</span>
+                                <span class="highlight-item">• Custom Dashboards</span>
+                                <span class="highlight-item">• Big Data Processing</span>
                             </div>
                         </div>
                         <div class="service-actions">
@@ -833,16 +887,39 @@
                         </div>
                         <div class="service-content">
                             <h4>Digital Transformation</h4>
-                            <p>Reimagine your business for the digital age. We help organizations modernize their technology, processes, and culture to stay competitive and drive innovation.</p>
+                            <p>Reimagine your business for the digital age. We help organizations modernize their technology, processes, and culture to stay competitive against industry giants and drive innovation.</p>
                             <div class="service-highlights">
-                                <span class="highlight-item">• Legacy Modernization</span>
+                                <span class="highlight-item">• Legacy System Modernization</span>
                                 <span class="highlight-item">• Process Automation</span>
                                 <span class="highlight-item">• Change Management</span>
+                                <span class="highlight-item">• Digital Strategy</span>
+                                <span class="highlight-item">• Cloud Migration</span>
                             </div>
                         </div>
                         <div class="service-actions">
                             <a href="#Contact" class="service-btn primary">Transform Now</a>
                             <a href="#Contact" class="service-btn secondary">Success Stories</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-shopping-cart-line"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Enterprise E-Commerce</h4>
+                            <p>Build powerful online marketplaces and e-commerce platforms that compete with industry leaders. Complete solutions with advanced features, scalability, and performance optimization.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• Multi-vendor Marketplaces</span>
+                                <span class="highlight-item">• Payment Gateway Integration</span>
+                                <span class="highlight-item">• Inventory Management</span>
+                                <span class="highlight-item">• Customer Analytics</span>
+                                <span class="highlight-item">• Mobile Commerce</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Sell Online</a>
+                            <a href="#Contact" class="service-btn secondary">View Platforms</a>
                         </div>
                     </div>
                 </div>
@@ -853,68 +930,112 @@
                 <div class="category-header">
                     <div class="category-badge">EXCELLENCE</div>
                     <h3>Achieve Digital Excellence</h3>
-                    <p>Strategic guidance and specialized training for sustained success</p>
+                    <p>Enterprise-level solutions for organizations ready to lead their industries and compete with telecommunications giants</p>
                 </div>
                 
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="ri-lightbulb-line"></i>
+                            <i class="ri-brain-line"></i>
                         </div>
                         <div class="service-content">
-                            <h4>Strategy & Advisory</h4>
-                            <p>Navigate complex technology decisions with confidence. Our experts provide strategic guidance on architecture, technology selection, and digital roadmaps.</p>
+                            <h4>AI & Machine Learning</h4>
+                            <p>Harness the power of artificial intelligence to automate processes, predict market trends, and create intelligent applications that give you a competitive edge over industry leaders.</p>
                             <div class="service-highlights">
-                                <span class="highlight-item">• Technology Strategy</span>
-                                <span class="highlight-item">• Architecture Review</span>
-                                <span class="highlight-item">• Digital Roadmaps</span>
+                                <span class="highlight-item">• Custom AI Models</span>
+                                <span class="highlight-item">• Natural Language Processing</span>
+                                <span class="highlight-item">• Computer Vision</span>
+                                <span class="highlight-item">• Intelligent Automation</span>
+                                <span class="highlight-item">• Predictive Analytics</span>
                             </div>
                         </div>
                         <div class="service-actions">
-                            <a href="#Contact" class="service-btn primary">Get Expert Advice</a>
-                            <a href="#Contact" class="service-btn secondary">Book Consultation</a>
+                            <a href="#Contact" class="service-btn primary">Explore AI</a>
+                            <a href="#Contact" class="service-btn secondary">AI Consultation</a>
                         </div>
                     </div>
 
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="ri-graduation-cap-line"></i>
+                            <i class="ri-cloud-line"></i>
                         </div>
                         <div class="service-content">
-                            <h4>Training & Mentorship</h4>
-                            <p>Empower your team with cutting-edge skills and knowledge. Custom training programs, workshops, and mentorship to accelerate your digital capabilities.</p>
+                            <h4>Enterprise Cloud Infrastructure</h4>
+                            <p>Scalable, secure, and cost-effective cloud solutions that rival major telecommunications infrastructure. From migration to optimization, we help you leverage enterprise-grade cloud computing.</p>
                             <div class="service-highlights">
-                                <span class="highlight-item">• Technical Training</span>
-                                <span class="highlight-item">• Team Mentorship</span>
-                                <span class="highlight-item">• Best Practices</span>
+                                <span class="highlight-item">• Multi-Cloud Strategy</span>
+                                <span class="highlight-item">• Infrastructure as Code</span>
+                                <span class="highlight-item">• Security & Compliance</span>
+                                <span class="highlight-item">• Disaster Recovery</span>
+                                <span class="highlight-item">• Performance Optimization</span>
                             </div>
                         </div>
                         <div class="service-actions">
-                            <a href="#Contact" class="service-btn primary">Upskill Your Team</a>
-                            <a href="#Contact" class="service-btn secondary">Training Catalog</a>
+                            <a href="#Contact" class="service-btn primary">Go Cloud</a>
+                            <a href="#Contact" class="service-btn secondary">Migration Guide</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="ri-shield-check-line"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Enterprise Solutions & Consulting</h4>
+                            <p>Mission-critical enterprise applications with telecommunications-grade security, compliance, and integration capabilities. Built for scale and designed for industry leadership.</p>
+                            <div class="service-highlights">
+                                <span class="highlight-item">• Enterprise Architecture</span>
+                                <span class="highlight-item">• System Integration</span>
+                                <span class="highlight-item">• 24/7 Enterprise Support</span>
+                                <span class="highlight-item">• Strategic Consulting</span>
+                                <span class="highlight-item">• Technology Leadership</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <a href="#Contact" class="service-btn primary">Scale Enterprise</a>
+                            <a href="#Contact" class="service-btn secondary">Enterprise Demo</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Call to Action -->
+        <!-- Enhanced Call to Action -->
         <div class="services-cta">
             <div class="cta-content">
-                <h3>Ready to Get Started?</h3>
-                <p>Let's discuss how we can help transform your business with the right technology solutions.</p>
+                <h3>Ready to Compete with Industry Leaders?</h3>
+                <p>Join the ranks of businesses that have chosen innovation over status quo. Get enterprise-grade solutions that help you compete with telecommunications giants and industry leaders.</p>
                 <div class="cta-actions">
                     <a href="#Contact" class="cta-btn primary">
                         <i class="ri-phone-line"></i>
-                        Schedule a Consultation
+                        Schedule Strategic Consultation
                     </a>
-                    <a href="#portfolio" class="cta-btn secondary">
-                        <i class="ri-folder-line"></i>
-                        View Our Work
+                    <a href="#Contact" class="cta-btn secondary">
+                        <i class="ri-calculator-line"></i>
+                        Get Enterprise Quote
                     </a>
                 </div>
             </div>
+            <div class="cta-stats">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Enterprise Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime Guarantee</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Enterprise Support</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Global</div>
+                    <div class="stat-label">Scale Capability</div>
+                </div>
+            </div>
         </div>
+    </section>
         <!-- <div class="logos" id="Logos">
             <h2>Companies We've Worked With</h2>
             <div class="logo-container">
@@ -2577,27 +2698,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Optimized Script Loading -->
 <script>
     // Critical JavaScript for mobile menu
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuIcon = document.getElementById('menu-icon');
-        const navList = document.querySelector('.navlist');
-        
-        if (menuIcon && navList) {
-            menuIcon.addEventListener('click', function() {
-                navList.classList.toggle('active');
-                this.setAttribute('aria-expanded', navList.classList.contains('active'));
-            });
-        }
-        
-        // Close menu when clicking nav links on mobile
-        document.querySelectorAll('.navlist a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navList) {
-                    navList.classList.remove('active');
-                    menuIcon.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
-    });
+    
     
     // Defer non-critical scripts
     window.addEventListener('load', function() {
