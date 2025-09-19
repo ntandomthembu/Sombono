@@ -131,32 +131,51 @@
         
         /* Mobile navigation critical fix */
         @media (max-width: 768px) {
-            /* Mobile menu enhancements */
+            /* Compact mobile menu - centered panel that doesn't fill the entire screen */
             .navlist {
                 position: fixed !important;
-                top: 0 !important;
-                left: -100% !important;
-                width: 100% !important;
-                height: 100vh !important;
-                background: linear-gradient(135deg, var(--bg-color) 0%, rgba(0,0,0,0.95) 100%) !important;
-                backdrop-filter: blur(20px) !important;
-                -webkit-backdrop-filter: blur(20px) !important;
-                z-index: 99999 !important;
-                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                /* anchor under the fixed header to avoid overlap */
+                top: calc(var(--header-height, 64px) + 8px) !important;
+                right: 12px !important;
+                left: auto !important;
+                transform: none !important;
+                width: 220px !important;
+                /* ensure the panel fits between header and common bottom UI elements */
+                max-height: calc(100vh - calc(var(--header-height, 64px) + 140px)) !important;
+                height: auto !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                overscroll-behavior: contain !important;
+                background: rgba(255, 255, 255, 0.98) !important;
+                backdrop-filter: blur(6px) !important;
+                -webkit-backdrop-filter: blur(6px) !important;
+                z-index: 100020 !important;
+                transition: opacity 0.18s ease, right 0.2s ease !important;
                 display: flex !important;
                 flex-direction: column !important;
-                align-items: center !important;
+                align-items: stretch !important;
                 justify-content: flex-start !important;
-                padding-top: 100px !important;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.3) !important;
-                border-right: 1px solid rgba(255,255,255,0.1) !important;
+                padding: 10px !important;
+                border-radius: 10px !important;
+                border: 1px solid rgba(0, 0, 0, 0.06) !important;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+                right: -280px !important; /* start off-screen to the right */
+                opacity: 0 !important;
+                pointer-events: none !important;
             }
-            
+
             .navlist.active {
-                left: 0 !important;
+                right: 12px !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
             }
             
-            /* Enhanced backdrop when menu is active */
+            /* Minimalist full-viewport dim backdrop */
+            /* position primary nav relative so absolute children (close button) sit correctly */
+            #primary-navigation { position: relative !important; }
+
+            .navlist::after { display: none !important; } /* hide old pseudo close */
+
             .navlist.active::before {
                 content: '' !important;
                 position: fixed !important;
@@ -164,116 +183,99 @@
                 left: 0 !important;
                 width: 100% !important;
                 height: 100% !important;
-                background: rgba(0, 0, 0, 0.6) !important;
-                backdrop-filter: blur(8px) !important;
-                -webkit-backdrop-filter: blur(8px) !important;
-                z-index: -1 !important;
-                animation: fadeIn 0.3s ease !important;
+                background: rgba(0, 0, 0, 0.28) !important;
+                z-index: 99998 !important;
+                transition: opacity 0.22s ease !important;
+                opacity: 1 !important;
             }
             
-            /* Mobile menu header with logo */
-            .navlist::before {
-                content: 'Sombono.' !important;
+            /* Real close button inside nav for reliable clicks */
+            .navlist-close {
                 position: absolute !important;
-                top: 35px !important;
-                left: 30px !important;
-                font-size: 1.5rem !important;
-                font-weight: 700 !important;
-                color: var(--main-color) !important;
-                z-index: 100001 !important;
-                text-decoration: none !important;
+                top: 8px !important;
+                right: 8px !important;
+                font-size: 1rem !important;
+                color: #666 !important;
+                cursor: pointer !important;
+                z-index: 100025 !important;
+                transition: color 0.12s ease !important;
+                background: none !important;
+                border: none !important;
+                padding: 6px !important;
+                line-height: 1 !important;
+                border-radius: 6px !important;
+                /* hidden by default; shown when menu active */
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
+
+            .navlist-close:hover {
+                color: #ff6b35 !important;
             }
             
+            /* Tighter navigation links */
             .navlist li {
-                margin: 15px 0 !important;
+                margin: 4px 0 !important;
                 width: 100% !important;
                 text-align: center !important;
-                opacity: 0 !important;
-                transform: translateY(20px) !important;
-                animation: slideInUp 0.6s ease forwards !important;
+                opacity: 1 !important;
+                transform: none !important;
+                transition: opacity 0.15s ease !important;
             }
             
-            .navlist li:nth-child(1) { animation-delay: 0.1s !important; }
-            .navlist li:nth-child(2) { animation-delay: 0.2s !important; }
-            .navlist li:nth-child(3) { animation-delay: 0.3s !important; }
-            .navlist li:nth-child(4) { animation-delay: 0.4s !important; }
-            .navlist li:nth-child(5) { animation-delay: 0.5s !important; }
-            
-            @keyframes slideInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+            .navlist li:hover {
+                opacity: 0.8 !important;
             }
             
+            /* Clean navigation links */
             .navlist a {
                 display: block !important;
-                padding: 18px 40px !important;
+                padding: 6px 10px !important;
                 margin: 0 auto !important;
-                font-size: 1.3rem !important;
+                font-size: 0.88rem !important; /* smaller to ensure fit on short screens */
                 font-weight: 500 !important;
-                border-radius: 12px !important;
-                width: 85% !important;
-                max-width: 300px !important;
-                color: var(--text-color) !important;
-                text-decoration: none !important;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-                border: 2px solid transparent !important;
-                position: relative !important;
-                overflow: hidden !important;
-            }
-            
-            .navlist a::before {
-                content: '' !important;
-                position: absolute !important;
-                top: 0 !important;
-                left: -100% !important;
+                border-radius: 8px !important;
                 width: 100% !important;
-                height: 100% !important;
-                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent) !important;
-                transition: left 0.5s ease !important;
+                max-width: 200px !important;
+                color: #222 !important;
+                text-decoration: none !important;
+                transition: background 0.15s ease, transform 0.12s ease !important;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                text-align: center !important;
             }
             
             .navlist a:hover {
-                background: var(--main-color) !important;
-                color: white !important;
-                transform: translateY(-3px) !important;
-                box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3) !important;
-                border-color: var(--main-color) !important;
-            }
-            
-            .navlist a:hover::before {
-                left: 100% !important;
+                background: rgba(255, 107, 53, 0.06) !important;
+                color: #ff6b35 !important;
+                transform: translateY(-1px) !important;
             }
             
             /* Responsive adjustments for smaller screens */
             @media (max-width: 480px) {
                 .navlist {
-                    padding-top: 120px !important;
+                    width: 230px !important;
+                    right: -260px !important;
+                    padding: 12px !important;
                 }
                 
                 .navlist a {
-                    font-size: 1.1rem !important;
-                    padding: 16px 30px !important;
-                    width: 90% !important;
+                    font-size: 0.9rem !important;
+                    padding: 8px 12px !important;
+                    width: 100% !important;
                 }
                 
                 .navlist::before {
                     font-size: 1.3rem !important;
-                    top: 40px !important;
+                    top: 30px !important;
                     left: 20px !important;
                 }
                 
                 .navlist::after {
-                    top: 35px !important;
-                    right: 20px !important;
-                    width: 45px !important;
-                    height: 45px !important;
-                    font-size: 1.8rem !important;
+                    top: 25px !important;
+                    left: 20px !important;
+                    font-size: 1.6rem !important;
                 }
             }
             
@@ -287,29 +289,52 @@
                 cursor: pointer !important;
                 background: none !important;
                 border: none !important;
-                padding: 12px !important;
-                border-radius: 8px !important;
-                transition: all 0.3s ease !important;
-                color: var(--text-color) !important;
+                padding: 10px !important;
+                border-radius: 6px !important;
+                transition: background 0.2s ease !important;
+                color: #333 !important;
                 position: relative !important;
             }
             
             #menu-icon:hover {
-                background: rgba(255, 255, 255, 0.1) !important;
-                transform: scale(1.05) !important;
+                background: rgba(0, 0, 0, 0.05) !important;
             }
             
-            #menu-icon:active {
-                transform: scale(0.95) !important;
-            }
-            
-            /* Menu icon animation */
+            /* Simple menu icon animation */
             #menu-icon svg {
-                transition: transform 0.3s ease !important;
+                transition: transform 0.2s ease !important;
             }
             
             #menu-icon[aria-expanded="true"] svg {
                 transform: rotate(90deg) !important;
+            }
+
+            /* Left-side close (near header) hidden by default; only show when nav active */
+            .navlist-close-left {
+                position: absolute !important;
+                top: 10px !important;
+                left: 8px !important;
+                font-size: 1rem !important;
+                color: #666 !important;
+                cursor: pointer !important;
+                z-index: 100024 !important;
+                background: none !important;
+                border: none !important;
+                padding: 6px !important;
+                border-radius: 6px !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+                transition: color 0.12s ease, opacity 0.12s ease !important;
+            }
+
+            .navlist-close-left:hover { color: #ff6b35 !important; }
+
+            /* Show close buttons when nav is active */
+            .navlist.active .navlist-close,
+            .navlist.active ~ .navlist-close-left,
+            .navlist.active .navlist-close-left {
+                opacity: 1 !important;
+                pointer-events: auto !important;
             }
         }
         
@@ -365,7 +390,9 @@
             <a href="#home" class="logo" aria-label="Sombono Homepage">Sombon<span>o.</span></a>
 
             <nav id="primary-navigation" role="navigation" aria-label="Primary navigation">
+                <button type="button" class="navlist-close-left" aria-label="Close menu">×</button>
                 <ul id="navlist" class="navlist">
+                    <button type="button" class="navlist-close" aria-label="Close menu">×</button>
                     <li><a href="#home" data-translate="nav-home" aria-label="Go to Home section">Home</a></li>
                     <li><a href="#about" data-translate="nav-about" aria-label="Go to About section">About</a></li>
                     <li><a href="#portfolio" data-translate="nav-portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
@@ -1538,47 +1565,63 @@
             });
         }, { once: false });
     });
-    </script>
-    <script>
-    // Mobile burger menu & small UI helpers
+    // Contact form: robust submit handler for Formspree
     document.addEventListener('DOMContentLoaded', function () {
-        const menuBtn = document.getElementById('menu-icon');
-        const navList = document.getElementById('navlist');
+        // initialization placeholder
+    }, { once: false });
+    </script>
 
-        if (!menuBtn || !navList) return;
+    <script>
+    // Mobile nav toggle and close handlers
+    (function () {
+        var menuBtn = document.getElementById('menu-icon');
+        var nav = document.getElementById('navlist');
+        var primaryNav = document.getElementById('primary-navigation');
+    var closeBtns = primaryNav ? primaryNav.querySelectorAll('.navlist-close, .navlist-close-left') : [];
 
-        const openMenu = () => {
-            navList.classList.add('active');
-            menuBtn.setAttribute('aria-expanded', 'true');
-        };
+        function openNav() {
+            nav.classList.add('active');
+            menuBtn && menuBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.touchAction = 'none';
+        }
 
-        const closeMenu = () => {
-            navList.classList.remove('active');
-            menuBtn.setAttribute('aria-expanded', 'false');
-        };
+        function closeNav() {
+            nav.classList.remove('active');
+            menuBtn && menuBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.touchAction = '';
+        }
 
-        menuBtn.addEventListener('click', function (e) {
-            const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-            if (expanded) closeMenu(); else openMenu();
+        // toggle
+        menuBtn && menuBtn.addEventListener('click', function (e) {
+            if (nav.classList.contains('active')) closeNav(); else openNav();
         });
 
-        // Close when a nav link is activated (useful on mobile)
-        navList.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', closeMenu);
+        // close buttons
+        if (closeBtns && closeBtns.length) {
+            Array.prototype.forEach.call(closeBtns, function (btn) {
+                btn.addEventListener('click', function () { closeNav(); });
+            });
+        }
+
+        // close when clicking backdrop
+        document.addEventListener('click', function (e) {
+            if (!nav.classList.contains('active')) return;
+            var isInside = nav.contains(e.target) || (menuBtn && menuBtn.contains(e.target));
+            if (!isInside) closeNav();
+        }, true);
+
+        // close on Escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && nav.classList.contains('active')) closeNav();
         });
 
-        // Close on Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeMenu();
-        });
-
-        // Close when tapping outside the open nav (mobile)
-        document.addEventListener('click', (e) => {
-            if (!navList.contains(e.target) && e.target !== menuBtn && navList.classList.contains('active')) {
-                closeMenu();
+        // close when clicking a nav link
+        nav && nav.addEventListener('click', function (e) {
+            if (e.target && e.target.tagName === 'A') {
+                closeNav();
             }
         });
-    }, { once: true });
+    })();
     </script>
         <div class="footer-container">
             <div class="footer-content">
