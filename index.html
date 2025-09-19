@@ -117,20 +117,28 @@
             height: auto !important;
             display: block !important;
         }
-        
-        /* Critical mobile header fix */
-        header {
-            width: 100% !important;
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            z-index: 9999 !important;
-            box-sizing: border-box !important;
+
+        /* Hide mobile-only close buttons on desktop so the X icons do not appear in full/desktop view */
+        .navlist-close,
+        .navlist-close-left {
+            display: none !important;
         }
+        
+    /* Critical mobile header fix (moved into mobile media block below so desktop layout remains unchanged) */
         
         /* Mobile navigation critical fix */
         @media (max-width: 768px) {
+            /* Mobile-only header fix */
+            header {
+                width: 100% !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 9999 !important;
+                box-sizing: border-box !important;
+            }
+
             /* Compact mobile menu - centered panel that doesn't fill the entire screen */
             .navlist {
                 position: fixed !important;
@@ -2325,8 +2333,10 @@
         }
 
         /* Navigation Mobile */
-        header {
-            padding: 15px 5% !important;
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5% !important;
+            }
         }
         
         .navlist {
@@ -2679,29 +2689,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         /* Enhanced Mobile Header */
-        header {
-            padding: 12px 5% !important;
-            height: 70px;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-        }
-        
-        .logo {
-            font-size: 22px !important;
-            font-weight: 700;
-        }
-        
-        #menu-icon {
-            display: block !important;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text-color);
-            background: none;
-            border: none;
-            padding: 8px;
-            z-index: 1001;
-        }
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 5% !important;
+                height: 70px;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+
+            .logo {
+                font-size: 22px !important;
+                font-weight: 700;
+            }
+
+            #menu-icon {
+                display: block !important;
+                font-size: 24px;
+                cursor: pointer;
+            }
+    }
         
         .top-btnn {
             display: none !important;
