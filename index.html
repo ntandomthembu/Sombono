@@ -131,27 +131,32 @@
         
         /* Mobile navigation critical fix */
         @media (max-width: 768px) {
+            /* Mobile menu enhancements */
             .navlist {
                 position: fixed !important;
                 top: 0 !important;
                 left: -100% !important;
                 width: 100% !important;
                 height: 100vh !important;
-                background: var(--bg-color) !important;
+                background: linear-gradient(135deg, var(--bg-color) 0%, rgba(0,0,0,0.95) 100%) !important;
+                backdrop-filter: blur(20px) !important;
+                -webkit-backdrop-filter: blur(20px) !important;
                 z-index: 99999 !important;
-                transition: left 0.3s ease !important;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 justify-content: flex-start !important;
-                padding-top: 80px !important;
+                padding-top: 100px !important;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.3) !important;
+                border-right: 1px solid rgba(255,255,255,0.1) !important;
             }
             
             .navlist.active {
                 left: 0 !important;
             }
             
-            /* Add backdrop when menu is active */
+            /* Enhanced backdrop when menu is active */
             .navlist.active::before {
                 content: '' !important;
                 position: fixed !important;
@@ -159,32 +164,117 @@
                 left: 0 !important;
                 width: 100% !important;
                 height: 100% !important;
-                background: rgba(0, 0, 0, 0.5) !important;
+                background: rgba(0, 0, 0, 0.6) !important;
+                backdrop-filter: blur(8px) !important;
+                -webkit-backdrop-filter: blur(8px) !important;
                 z-index: -1 !important;
+                animation: fadeIn 0.3s ease !important;
+            }
+            
+            /* Mobile menu header with logo */
+            .navlist::before {
+                content: 'Sombono.' !important;
+                position: absolute !important;
+                top: 35px !important;
+                left: 30px !important;
+                font-size: 1.5rem !important;
+                font-weight: 700 !important;
+                color: var(--main-color) !important;
+                z-index: 100001 !important;
+                text-decoration: none !important;
             }
             
             .navlist li {
-                margin: 20px 0 !important;
+                margin: 15px 0 !important;
                 width: 100% !important;
                 text-align: center !important;
+                opacity: 0 !important;
+                transform: translateY(20px) !important;
+                animation: slideInUp 0.6s ease forwards !important;
+            }
+            
+            .navlist li:nth-child(1) { animation-delay: 0.1s !important; }
+            .navlist li:nth-child(2) { animation-delay: 0.2s !important; }
+            .navlist li:nth-child(3) { animation-delay: 0.3s !important; }
+            .navlist li:nth-child(4) { animation-delay: 0.4s !important; }
+            .navlist li:nth-child(5) { animation-delay: 0.5s !important; }
+            
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
             
             .navlist a {
                 display: block !important;
-                padding: 15px 30px !important;
-                margin: 0 !important;
-                font-size: 1.2rem !important;
-                border-radius: 8px !important;
-                width: 80% !important;
+                padding: 18px 40px !important;
                 margin: 0 auto !important;
+                font-size: 1.3rem !important;
+                font-weight: 500 !important;
+                border-radius: 12px !important;
+                width: 85% !important;
+                max-width: 300px !important;
                 color: var(--text-color) !important;
                 text-decoration: none !important;
-                transition: all 0.3s ease !important;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                border: 2px solid transparent !important;
+                position: relative !important;
+                overflow: hidden !important;
+            }
+            
+            .navlist a::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: -100% !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent) !important;
+                transition: left 0.5s ease !important;
             }
             
             .navlist a:hover {
                 background: var(--main-color) !important;
                 color: white !important;
+                transform: translateY(-3px) !important;
+                box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3) !important;
+                border-color: var(--main-color) !important;
+            }
+            
+            .navlist a:hover::before {
+                left: 100% !important;
+            }
+            
+            /* Responsive adjustments for smaller screens */
+            @media (max-width: 480px) {
+                .navlist {
+                    padding-top: 120px !important;
+                }
+                
+                .navlist a {
+                    font-size: 1.1rem !important;
+                    padding: 16px 30px !important;
+                    width: 90% !important;
+                }
+                
+                .navlist::before {
+                    font-size: 1.3rem !important;
+                    top: 40px !important;
+                    left: 20px !important;
+                }
+                
+                .navlist::after {
+                    top: 35px !important;
+                    right: 20px !important;
+                    width: 45px !important;
+                    height: 45px !important;
+                    font-size: 1.8rem !important;
+                }
             }
             
             .top-btnn {
@@ -197,8 +287,29 @@
                 cursor: pointer !important;
                 background: none !important;
                 border: none !important;
-                padding: 8px !important;
+                padding: 12px !important;
+                border-radius: 8px !important;
+                transition: all 0.3s ease !important;
                 color: var(--text-color) !important;
+                position: relative !important;
+            }
+            
+            #menu-icon:hover {
+                background: rgba(255, 255, 255, 0.1) !important;
+                transform: scale(1.05) !important;
+            }
+            
+            #menu-icon:active {
+                transform: scale(0.95) !important;
+            }
+            
+            /* Menu icon animation */
+            #menu-icon svg {
+                transition: transform 0.3s ease !important;
+            }
+            
+            #menu-icon[aria-expanded="true"] svg {
+                transform: rotate(90deg) !important;
             }
         }
         
@@ -1726,6 +1837,22 @@
                             }
                         }, 300); // Wait for menu close animation
                     });
+                });
+                
+                // Close menu when clicking the X button (top-right area)
+                navList.addEventListener('click', (e) => {
+                    // Check if click is in the close button area (top-right corner)
+                    const rect = navList.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    // Close button area: top-right 60x60px
+                    if (x > rect.width - 60 && y < 60) {
+                        navList.classList.remove('active');
+                        menuIcon.setAttribute('aria-expanded', 'false');
+                        console.log('Sombono: Menu closed via X button area');
+                        e.stopPropagation();
+                    }
                 });
             }
             
