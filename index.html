@@ -84,9 +84,10 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.min.js" as="script">
     
     <!-- Favicon and App Icons -->
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Use project Assets logo as favicon to keep files self-contained -->
+    <link rel="icon" type="image/png" href="Assets/Logo.png" />
+    <link rel="shortcut icon" href="Assets/Logo.png" />
+    <link rel="apple-touch-icon" href="Assets/Logo.png" />
     <link rel="manifest" href="/manifest.json">
     
     <!-- Critical Responsive CSS - DEADLINE FIX -->
@@ -195,6 +196,9 @@
 
 <body>
     <!-- Critical above-the-fold content loads first -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Assets/Logo.png" />
+    <link rel="shortcut icon" href="Assets/Logo.png" />
     <!--Header-->
     <header role="banner" class="site-header">
         <!-- Accessibility: skip link -->
