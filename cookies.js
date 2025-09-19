@@ -77,19 +77,23 @@ class CookieManager {
     showCookieOverlay() {
         const overlay = document.getElementById('cookieOverlay');
         if (overlay) {
+            // Remove any 'hidden' state and add the display classes the stylesheet expects
             overlay.classList.remove('hidden');
-            // Ensure overlay is visible immediately
-            setTimeout(() => {
-                overlay.style.display = 'flex';
-            }, 100);
+            overlay.classList.add('active', 'show');
+            // Ensure pointer events are enabled via class; do not rely on inline styles so !important in CSS works
+            overlay.style.display = '';
+            // Start blocking interactions outside the overlay (but do not disable scrolling)
+            this.blockPageInteraction();
         }
     }
 
     hideCookieOverlay() {
         const overlay = document.getElementById('cookieOverlay');
         if (overlay) {
+            // Remove the visible classes and restore hidden state after animations
+            overlay.classList.remove('active', 'show');
             overlay.classList.add('hidden');
-            // Hide after animation completes
+            // Give CSS time to animate out before fully hiding
             setTimeout(() => {
                 overlay.style.display = 'none';
             }, 500);
