@@ -445,12 +445,12 @@
         </div>
 
         <!-- Mobile Language Fallback Button -->
-        <!-- <div class="mobile-language-fallback" id="mobileLangFallback">
+        <div class="mobile-language-fallback" id="mobileLangFallback">
             <button class="mobile-lang-btn" id="mobileLangBtn">
                 <img src="https://flagcdn.com/24x18/za.png" alt="Current Language" class="mobile-current-flag" id="mobileCurrentFlag">
                 <span>🌐</span>
             </button>
-        </div> -->
+        </div>
 
     </header>
     <!--Hero Section-->
@@ -1474,7 +1474,7 @@
                         
                         <div class="form-group">
                             <div class="input-group">
-                                <i class="ri-briefcase-line"></i>
+                                <!--<i class="ri-briefcase-line"></i>-->
                                 <select name="service" required>
                                     <option value="">Select Service Type</option>
                                     <option value="web-development">Web Development</option>
@@ -1651,10 +1651,11 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#Home">Home</a></li>
-                        <li><a href="#About">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#Portfolio">Portfolio</a></li>
+<li><a href="#home" data-translate="nav-home" aria-label="Go to Home section">Home</a></li>
+                    <li><a href="#about" data-translate="nav-about" aria-label="Go to About section">About</a></li>
+                    <li><a href="#portfolio" data-translate="nav-portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
+                    <li><a href="#process" data-translate="nav-process" aria-label="Go to Our Process section">Our Process</a></li>
+                    <li><a href="#services" data-translate="nav-services" aria-label="Go to Services section">Services</a></li>
                     </ul>
                 </div>
 
@@ -1707,15 +1708,44 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                        
+
+                    // Try to resolve the target element; if querySelector fails, attempt case-insensitive id lookup
+                    var resolvedTarget = targetElement;
+                    if (!resolvedTarget && targetId && targetId.startsWith('#')) {
+                        var idToFind = targetId.slice(1).toLowerCase();
+                        var allById = document.querySelectorAll('[id]');
+                        for (var i = 0; i < allById.length; i++) {
+                            if (allById[i].id && allById[i].id.toLowerCase() === idToFind) { resolvedTarget = allById[i]; break; }
+                        }
+                    }
+
+                    if (resolvedTarget) {
+                        const header = document.querySelector('header');
+                        const headerHeight = header ? header.offsetHeight : 0;
+                        const targetPosition = resolvedTarget.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+
                         window.scrollTo({
                             top: targetPosition,
                             behavior: 'smooth'
                         });
+                    } else {
+                        // If we still haven't resolved the element, set the hash as a fallback so browser jumps to it
+                        if (targetId && targetId.startsWith('#')) {
+                            try { window.location.hash = targetId; } catch (e) { /* ignore */ }
+                        }
+                    }
+
+                    // Ensure mobile nav closes after clicking a link (works even if other handlers run)
+                    try {
+                        var navEl = document.getElementById('navlist');
+                        var menuBtnEl = document.getElementById('menu-icon');
+                        if (navEl && navEl.classList.contains('active')) {
+                            navEl.classList.remove('active');
+                            if (menuBtnEl) menuBtnEl.setAttribute('aria-expanded', 'false');
+                            document.body.style.touchAction = '';
+                        }
+                    } catch (err) {
+                        // ignore
                     }
                 });
             });
@@ -3053,8 +3083,193 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- Scripts -->
+    <!-- Mobile nav link handler: ensure anchor links scroll and close the mobile menu -->
+    <script>
+        (function () {
+            function findTargetByHash(hash) {
+                if (!hash) return null;
+                var id = hash.replace(/^#/, '');
+                var el = document.getElementById(id);
+                if (el) return el;
+                var lower = id.toLowerCase();
+                var all = document.querySelectorAll('[id]');
+                for (var i = 0; i < all.length; i++) {
+                    if (all[i].id && all[i].id.toLowerCase() === lower) return all[i];
+                }
+                var named = document.querySelector('[name="' + id + '"]');
+                if (named) return named;
+                return null;
+            }
+
+            function closeMobileNav() {
+                var nav = document.getElementById('navlist');
+                var menuIcon = document.getElementById('menu-icon');
+                if (!nav) return;
+                nav.classList.remove('active');
+                if (menuIcon) menuIcon.setAttribute('aria-expanded', 'false');
+            }
+
+            document.addEventListener('click', function (e) {
+                var target = e.target;
+                var link = target.closest ? target.closest('#navlist a[href^="#"]') : null;
+                if (!link) return;
+                var href = link.getAttribute('href');
+                if (!href || href.charAt(0) !== '#') return;
+
+                var dest = findTargetByHash(href);
+                if (dest) {
+                    e.preventDefault();
+                    var rect = dest.getBoundingClientRect();
+                    var offset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                    var targetY = rect.top + offset;
+                    var header = document.querySelector('header');
+                    var headerHeight = 0;
+                    try {
+                        if (header && window.getComputedStyle(header).position === 'fixed') {
+                            headerHeight = header.getBoundingClientRect().height || 0;
+                        }
+                    } catch (err) { /* ignore */ }
+                    window.scrollTo({ top: Math.max(0, targetY - headerHeight - 8), behavior: 'smooth' });
+                    setTimeout(closeMobileNav, 220);
+                    return;
+                }
+
+                setTimeout(closeMobileNav, 120);
+            }, false);
+        })();
+    </script>
 <script src="translation.js" defer></script>
 <script src="cookies.js" defer></script>
+
+    <!-- Nav active-state sync: highlight nav item for section in view and on click -->
+    <script>
+    (function () {
+        var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navlist a[href^="#"]'));
+        if (!navLinks || !navLinks.length) return;
+
+        function clearActive() {
+            navLinks.forEach(function (a) { a.classList.remove('active'); if (a.parentElement) a.parentElement.classList.remove('active'); });
+        }
+
+        function setActiveFor(hash) {
+            if (!hash) return;
+            var targetSelector = hash;
+            // normalize hash
+            var id = hash.replace(/^#/, '').toLowerCase();
+            var found = false;
+            navLinks.forEach(function (a) {
+                var href = a.getAttribute('href') || '';
+                if (href.toLowerCase() === ('#' + id)) {
+                    a.classList.add('active');
+                    if (a.parentElement) a.parentElement.classList.add('active');
+                    found = true;
+                }
+            });
+            return found;
+        }
+
+        // Click handler: add active immediately and close nav on mobile
+        navLinks.forEach(function (a) {
+            a.addEventListener('click', function (e) {
+                clearActive();
+                this.classList.add('active');
+                if (this.parentElement) this.parentElement.classList.add('active');
+                // let other scroll handlers run; also close mobile nav if open (existing logic)
+                var nav = document.getElementById('navlist');
+                if (nav && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    var menu = document.getElementById('menu-icon');
+                    if (menu) menu.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        // On scroll, update active based on which section is mostly visible
+        var sections = navLinks.map(function (a) {
+            var href = a.getAttribute('href');
+            if (!href || href.charAt(0) !== '#') return null;
+            var el = document.getElementById(href.replace('#', '')) || document.querySelector(href);
+            return el || null;
+        });
+
+        function onScroll() {
+            var bestIndex = -1;
+            var bestScore = 0;
+            for (var i = 0; i < sections.length; i++) {
+                var s = sections[i];
+                if (!s) continue;
+                var rect = s.getBoundingClientRect();
+                var visible = Math.max(0, Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top));
+                var score = visible / (rect.height || 1);
+                if (score > bestScore && score > 0.15) { bestScore = score; bestIndex = i; }
+            }
+            if (bestIndex >= 0) {
+                clearActive();
+                var link = navLinks[bestIndex];
+                if (link) { link.classList.add('active'); if (link.parentElement) link.parentElement.classList.add('active'); }
+            }
+        }
+
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+            if (!ticking) { window.requestAnimationFrame(function () { onScroll(); ticking = false; }); ticking = true; }
+        }, { passive: true });
+
+        // Initialize on load
+        setTimeout(onScroll, 220);
+    })();
+    </script>
+
+    <!-- Capture-phase nav click handler to ensure links always navigate -->
+    <script>
+    (function () {
+        function resolveTarget(hash) {
+            if (!hash) return null;
+            var id = hash.replace(/^#/, '');
+            var el = document.getElementById(id);
+            if (el) return el;
+            // try case-insensitive id
+            var all = document.querySelectorAll('[id]');
+            for (var i = 0; i < all.length; i++) {
+                if (all[i].id && all[i].id.toLowerCase() === id.toLowerCase()) return all[i];
+            }
+            return null;
+        }
+
+        document.addEventListener('click', function (e) {
+            // Only intercept clicks on navlist anchor tags
+            var link = e.target.closest && e.target.closest('#navlist a[href^="#"]');
+            if (!link) return;
+
+            var href = link.getAttribute('href');
+            if (!href || href.charAt(0) !== '#') return;
+
+            // Prevent other handlers from stopping navigation
+            e.preventDefault();
+            e.stopImmediatePropagation && e.stopImmediatePropagation();
+
+            var target = resolveTarget(href);
+            if (target) {
+                // compute offset for fixed header
+                var header = document.querySelector('header');
+                var headerHeight = (header && window.getComputedStyle(header).position === 'fixed') ? header.getBoundingClientRect().height : 0;
+                var top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
+                window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+                try { history.replaceState(null, '', href); } catch (err) { /* ignore */ }
+            } else {
+                try { window.location.hash = href; } catch (err) { /* ignore */ }
+            }
+
+            // close mobile nav if open
+            var nav = document.getElementById('navlist');
+            var menu = document.getElementById('menu-icon');
+            if (nav && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                if (menu) menu.setAttribute('aria-expanded', 'false');
+            }
+        }, true); // capturing phase
+    })();
+    </script>
 
 </body>
 
