@@ -51,7 +51,7 @@
             "@type": "ContactPoint",
             "telephone": "+27739347913",
             "contactType": "customer service",
-            "email": "hello@sombono.com"
+            "email": "mthembu.nam@gmail.com"
         },
         "sameAs": [
             "https://linkedin.com/company/sombono",
@@ -455,7 +455,7 @@
                     <li><a href="#portfolio" data-translate="nav-portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
                     <li><a href="#process" data-translate="nav-process" aria-label="Go to Our Process section">Our Process</a></li>
                     <li><a href="#services" data-translate="nav-services" aria-label="Go to Services section">Services</a></li>
-                    <li><a href="#Contact" data-translate="nav-contact" aria-label="Go to Contact section">Contact</a></li>
+                    <li><a href="#Contact" data-translate="nav-contact" aria-label="Go to Contact section"></a></li>
                 </ul>
             </nav>
 
@@ -1500,12 +1500,12 @@
                 </div>
 
                 <div class="contact-form">
-                    <form id="contact-form" action="https://formspree.io/f/mandqkal" method="POST">
-                        <!-- Formspree form ID installed: f/mandqkal -->
+                    <form id="contact-form" action="https://formspree.io/f/xpwjqkek" method="POST">
+                        <!-- Formspree form ID updated: f/xpwjqkek -->
                         <input type="hidden" name="_subject" value="New Contact Form Submission from Website">
                         <input type="hidden" name="_captcha" value="false">
                         <!-- Formspree: reply-to and redirect -->
-                        <input type="hidden" name="_replyto" value="sales@sombono.com">
+                        <input type="hidden" name="_replyto" value="mthembu.nam@gmail.com">
                         <input type="hidden" name="_next" value="https://sombono.com/thank-you.html">
                         <div class="form-group">
                             <div class="input-group">
@@ -1523,7 +1523,7 @@
                         
                         <div class="form-group">
                             <div class="input-group">
-                                <i class="ri-briefcase-line"></i>
+                                
                                 <select name="service" required>
                                     <option value="">Select Service Type</option>
                                     <option value="web-development">Web Development</option>
@@ -1616,7 +1616,7 @@
                 status.textContent = 'Message sent. Thank you!';
                 form.reset();
             }).catch(function (err) {
-                status.style.color = '#b02a2a';
+                status.style.color = '#b02a2b';
                 status.textContent = 'Failed to send message. ' + (err && err.message ? err.message : 'Please try again later.');
             }).finally(function () {
                 btn.disabled = false;
@@ -1805,6 +1805,7 @@
             portfolioItems.forEach(item => {
                 item.style.minHeight = '400px'; // Prevent height jumping
             });
+
         });
 
         // Section divider split effect
@@ -2706,12 +2707,8 @@ document.addEventListener('DOMContentLoaded', function() {
             left: 0;
         }
         
-        .navlist li {
-            margin: 20px 0;
-        }
-        
         .navlist a {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             padding: 15px 30px;
             border-radius: 8px;
             transition: background-color 0.3s ease;
@@ -3259,7 +3256,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Click outside menu to close
+        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (isMenuOpen && !navList.contains(e.target) && !menuIcon.contains(e.target)) {
                 closeMenu();
@@ -3357,7 +3354,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var ticking = false;
         window.addEventListener('scroll', function () {
-            if (!ticking) { window.requestAnimationFrame(function () { onScroll(); ticking = false; }); ticking = true; }
+            if (!ticking) { window.requestAnimationFrame(function () { onScroll(); ticking = false; }); ticking = true;
+            }
         }, { passive: true });
 
         // Initialize on load
